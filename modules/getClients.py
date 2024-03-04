@@ -1,18 +1,18 @@
 import storage.cliente as cli
 
-def search():
+def getAllClientName():
     clienteName=list()
     for val in cli.clientes:
-        CodName=dict({
+        CodigoName=dict({
         
             "codigo_cliente": val.get('codigo_cliente'),
             "nombre_cliente": val.get('nombre_cliente'),
         })
-        clienteName.append(CodName)
+        clienteName.append(CodigoName)
         return clienteName
     
 def getOneClienteCodigo(codigo):
-    for i,val in cli.clientes:
+    for val in cli.clientes:
         if(val.get("codigo_cliente")==codigo):
             return{
                     
@@ -28,13 +28,46 @@ def getAllClientsCreditCiudad(limiteCredit, ciudad):
             ClienteCredito.append(val)
         return ClienteCredito 
     
-def getAllClientPaisRegionCiudad(pais,region=None,ciudad=None):
-    clienteZone = list()
+
+    
+def getAllClientPaisRegionCiudad(pais, region=None, ciudad=None):
+    clientZone = list()
     for val in cli.clientes:
-        if(
-            val.get('pais')== pais or
-            (val.get('region')== region or val.get('region')==None) and
-            (val.get('ciudad')== ciudad or val.get('ciudad')==None) 
-        ):
-            clienteZone.append(val)
-    return clienteZone 
+
+        if (val.get('pais') == pais):
+
+            if (val.get('region') == region) or region == None:
+
+                if (val.get('ciudad') == ciudad) or ciudad == None:
+
+                    userInZone = {
+                        "pais": val.get('pais'),
+                        "ciudad": val.get('ciudad'),
+                        "region": val.get('region')
+                    }
+                    clientZone.append(userInZone)
+
+    return clientZone
+
+
+
+    
+def getAllClientsCodigoEmpleadoRepVentas(argumento):
+    codigo_empleado = list()
+    for val in cli.clientes:
+       if (val.get("codigo_empleado_rep_ventas")==11):
+           codigo_empleado.append(val)
+    return codigo_empleado
+       
+       
+
+       
+
+
+    
+
+
+    
+    
+    
+

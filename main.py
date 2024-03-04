@@ -1,4 +1,7 @@
-from tabulate import tabulate 
-import modules.getClients as cliente
+#import modules.getProductos as producto
 
-print(tabulate(cliente.getAllClientPaisRegionCiudad("Australia"),tablefmt="grid"))
+#print(producto.getAllProveedor("Murcia Seasons"))
+
+import modules.getPedido as pedido
+
+print(pedido.getAllcomentario(None))
