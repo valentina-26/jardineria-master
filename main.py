@@ -1,7 +1,8 @@
-#import modules.getProductos as producto
+from tabulate import tabulate
 
-#print(producto.getAllProveedor("Murcia Seasons"))
+import modules.getClients as cliente
+import modules.getEmpleados as empleados
+import modules.getOficina as oficna
 
-import modules.getPedido as pedido
+print (tabulate(empleados.GetAllNombreApellidoEmailJefe(), tablefmt="grid"))
 
-print(pedido.getAllcomentario(None))
