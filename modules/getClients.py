@@ -58,6 +58,45 @@ def getAllClientsCodigoEmpleadoRepVentas(argumento):
        if (val.get("codigo_empleado_rep_ventas")==11):
            codigo_empleado.append(val)
     return codigo_empleado
+
+
+
+def getAllCLientCreditCiudad(limitCredit, ciudad) :
+    clienteCredic= list()
+    for val in cli.clientes :
+        if (val.get('limite_credito') >= limitCredit and val.get('ciudad') == ciudad) :
+            clienteCredic.append(val)
+    return clienteCredic
+
+
+def getAllClientPaisRegionCiudad(pais, region, ciudad):
+    clientZone = list()
+    for val in cli.clientes :
+        if(
+            val.get('pais') == pais and 
+            (val.get('region') == region or val.get('region') == None) or 
+            (val.get('ciudad') == ciudad or val.get('ciudad') == None)
+        ) :
+            clientZone.append(val)
+    return clientZone
+
+
+def getAllclientesEspañoles(pais):
+    clientesEspañoles = []
+    for val in cli.clientes :
+        if(val.get("pais") == "Spain"):
+        
+            clientesEspañoles.append ({
+                "pais": val.get("pais")
+            })
+        
+        return clientesEspañoles 
+    
+          
+          
+       
+       
+       
        
        
 

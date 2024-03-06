@@ -33,6 +33,7 @@ def getAllPuestoNombreApellidoEmailJefe():
                 
                 }  
             )
+                return PuestoNombreApellido          
     
     
     def getAllNombreApellidoPuesto(puesto):
@@ -47,6 +48,7 @@ def getAllPuestoNombreApellidoEmailJefe():
                 "email": val.get ("email")
                 
                 })
+                return NombreApellidoPuesto
             
             
             
