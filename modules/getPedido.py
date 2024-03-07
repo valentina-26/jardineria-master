@@ -105,19 +105,23 @@ def getAllpedidosRechazados2009():
     return pedidosRechazados 
 
 
-#lista pedidos entregados en enero
+#lista pedidos entregados en enero de cualquier año EJERCICIO 12
 def getAllPedidosEnero():
-    pedidosEnero = []
+    PedidosEnero = list()
     for val in ped.pedido:
-        
-        fechaEntrega="/".join(val.get("fecha_Entrega").split("-")[::-1])
-    start = datetime.striptime((fechaEntrega,"%d/%m/%Y") )
+        if (val.get("estado") == "Entregado" and val.get("fecha_entrega") != None):
+            FechaEntregada = "/".join(val.get("fecha_entrega").split("-")[::-1])
+            start = datetime.strptime(FechaEntregada, "%d/%m/%Y")
+            if val.get("estado") == "Entregado" and start.month == 1:
+                PedidosEnero.append(val)
+    return PedidosEnero
+         
+         
+           
     
-    if val.get("estado") == ("Entregado") and start.month == 1:
-        
-           pedidosEnero.append(val)
-    return pedidosEnero       
-    
+
+
+
 
 
 
