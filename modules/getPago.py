@@ -4,8 +4,8 @@ import storage.pago as pag
 
 def getAllPagosFecha():
     pagosFecha = []
-    for val in pago.pag:
-        if("2008") in val.get("fecha_pago") and val.get("forma_pago") is ("PayPal"):
+    for val in pag.pago:
+        if("2008") in val.get("fecha_pago") and val.get("forma_pago") == ("PayPal"):
             pagosFecha.append({
                     "codigo_de_cliente": val.get("codigo_cliente"),
                     "fecha_pago": val.get("fecha_pago"),
@@ -19,12 +19,15 @@ def getAllPagosFecha():
   
   
     #TODAS LAS FORMAS DE PAGO EJERCICIO 14 
-   
-formaPago = val.get("forma_pago")
-if formaPago not in formaPago:
-            tipoPago.add(formaPago)
-            #return formaPago
-            # return formaPago  
+def getAllFormasPago():
+    formadepago = []
+    for val in pag.pago:
+        val.get("forma_pago")
+        formadepago.append(val.get("forma_pago"))
+        convertir = set(str(item)for item in formadepago)
+     
+    return convertir 
+
    
     
     

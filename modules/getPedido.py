@@ -65,6 +65,7 @@ def getAllpedidosEntregadosAtrasadosTiempo():
 #codig cliente
 #fecha esperada
 #y fecha de entrega de pedidos entrgados 2 dias antes de la fecha esperada
+# EJERCICIO 10
                  
             
 def getAllcodigoPedidoCodigoClienteFecha():
@@ -91,7 +92,7 @@ def getAllcodigoPedidoCodigoClienteFecha():
     return pedidoCodigoFecha
 
 
-#todos los pedidios rechazados en el 2009
+#todos los pedidios rechazados en el 2009 EJERCICIO 11
 
 def getAllpedidosRechazados2009():
     pedidosRechazados= []
