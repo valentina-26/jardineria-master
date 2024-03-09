@@ -1,6 +1,6 @@
 import storage.pedido as ped
 
-
+#EJERCICIO 1
 def getAllEstado(entrgado):
     estado_producto=[ ] 
     for val in ped.pedido:
@@ -8,7 +8,7 @@ def getAllEstado(entrgado):
            estado_producto.append(val)
     return estado_producto
 
-
+#EJERCICIO 2
 def getAllcodigocliente():
     codigo_cliente=[] 
     for val in ped.pedido:
@@ -16,7 +16,7 @@ def getAllcodigocliente():
            codigo_cliente.append(val)
     return codigo_cliente
 
-
+#EJERCICIO 3
 def getAllcomentario(codigoproducto):
     comentario=[] 
     for val in ped.pedido:
@@ -25,7 +25,7 @@ def getAllcomentario(codigoproducto):
     return comentario
 
 
-
+#EJERCICIO 4
 def getAllEstadopedido(Entregado,rechazado,pendiente):
     EstadoCliente = [] 
     for val in ped.pedido:
@@ -39,6 +39,7 @@ def getAllEstadopedido(Entregado,rechazado,pendiente):
 
 from datetime import datetime
 
+#EJERCICIO 5
 def getAllpedidosEntregadosAtrasadosTiempo():
     pedidosEntregados=[]
     for val in ped.pedido:
@@ -67,7 +68,7 @@ def getAllpedidosEntregadosAtrasadosTiempo():
 #y fecha de entrega de pedidos entrgados 2 dias antes de la fecha esperada
 # EJERCICIO 10
                  
-            
+ #EJERCICIO 6           
 def getAllcodigoPedidoCodigoClienteFecha():
     pedidoCodigoFecha=[]
     for val in ped.pedido:
@@ -93,7 +94,7 @@ def getAllcodigoPedidoCodigoClienteFecha():
 
 
 #todos los pedidios rechazados en el 2009 EJERCICIO 11
-
+#EJERCICIO 7
 def getAllpedidosRechazados2009():
     pedidosRechazados= []
     for val in ped.pedido:
@@ -105,7 +106,7 @@ def getAllpedidosRechazados2009():
               pedidosRechazados.append(val)
     return pedidosRechazados 
 
-
+#EJERCICIO 8
 #lista pedidos entregados en enero de cualquier año EJERCICIO 12
 def getAllPedidosEnero():
     PedidosEnero = list()

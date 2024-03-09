@@ -88,7 +88,7 @@ def getAllCLientCreditCiudad(limitCredit, ciudad) :
 
 
 # EJERCICIO 6
-def getAllclientesEspañoles(pais):
+def getAllclientesEspañoles():
     clientesEspañoles = []
     for val in cli.clientes :
         if(val.get("pais") == "Spain"):
@@ -97,7 +97,7 @@ def getAllclientesEspañoles(pais):
                 "pais": val.get("pais")
             })
         
-        return clientesEspañoles 
+    return clientesEspañoles 
     
     
     
@@ -109,6 +109,7 @@ def menu():
     
 
     print("""
+          
    / __ \___  ____  ____  _____/ /____     ____/ /__     / /___  _____   _____/ (_)__  ____  / /____  _____
   / /_/ / _ \/ __ \/ __ \/ ___/ __/ _ \   / __  / _ \   / / __ \/ ___/  / ___/ / / _ \/ __ \/ __/ _ \/ ___/
  / _, _/  __/ /_/ / /_/ / /  / /_/  __/  / /_/ /  __/  / / /_/ (__  )  / /__/ / /  __/ / / / /_/  __(__  ) 
@@ -120,6 +121,8 @@ def menu():
             2.obtener u cliente por el codigo(codigo y nombre) 
             3.obtener toda la informacion de un cliente segun su limite de credito y ciudad que pertenece(ejem: 3000 y .0 san francisco)
             4.obtener informacion segun el cogigo del empleado de ventas
+            5.obtener clientes españoles
+            
             
     """)
     
@@ -142,10 +145,17 @@ def menu():
         
     if (opcion == 4):
         codigoEmpleado=int(input("ingrese el codigo del empleado "))
-        print(tabulate(getAllClientsCodigoEmpleadoRepVentas(codigoEmpleado),headers="keys", tablefmt="github"))    
+        print(tabulate(getAllClientsCodigoEmpleadoRepVentas(codigoEmpleado),headers="keys", tablefmt="github"))
         
-    else:
-        print("opccion no valida")
+    elif (opcion == 5):
+        print(tabulate(getAllclientesEspañoles(),headers="keys", tablefmt="github"))
+        
+        
+        
+        
+        
+    #else:
+        #print("opccion no valida")
         
         
           
