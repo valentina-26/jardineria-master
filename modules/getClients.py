@@ -47,7 +47,7 @@ def getAllClientsCreditCiudad(limiteCredit, ciudad):
     return ClienteCredito 
     
 
-#EJERCICIO   
+#EJERCICIO   4
 def getAllClientPaisRegionCiudad(pais, region=None, ciudad=None):
     clientZone = list()
     for val in cli.clientes:
@@ -69,7 +69,7 @@ def getAllClientPaisRegionCiudad(pais, region=None, ciudad=None):
 
 
 
-#EJERCICIO 4 
+#EJERCICIO 5
 def getAllClientsCodigoEmpleadoRepVentas(codigo):
     codigo_empleado = list()
     for val in cli.clientes:
@@ -78,7 +78,7 @@ def getAllClientsCodigoEmpleadoRepVentas(codigo):
     return codigo_empleado
 
 
-#EJERCICIO 5
+
 def getAllCLientCreditCiudad(limitCredit, ciudad) :
     clienteCredic= list()
     for val in cli.clientes :
@@ -120,8 +120,9 @@ def menu():
             1.obtener todos los clientes(codigo y nombre)
             2.obtener u cliente por el codigo(codigo y nombre) 
             3.obtener toda la informacion de un cliente segun su limite de credito y ciudad que pertenece(ejem: 3000 y .0 san francisco)
-            4.obtener informacion segun el cogigo del empleado de ventas
-            5.obtener clientes españoles
+            4.obtener pais, ciudad y region del cliente
+            5.obtener informacion segun el cogigo del empleado de ventas
+            6.obtener clientes españoles
             
             
     """)
@@ -141,21 +142,21 @@ def menu():
         ciudad =input("ingrese el nombre de la ciudad que deseas filtar  de los clientes: ") 
         print(tabulate(getAllClientsCreditCiudad(limite, ciudad), headers="keys", tablefmt="github"))
         
-    
+    elif(opcion == 4):
+            
         
-    if (opcion == 4):
+    
+    elif (opcion == 5):
         codigoEmpleado=int(input("ingrese el codigo del empleado "))
         print(tabulate(getAllClientsCodigoEmpleadoRepVentas(codigoEmpleado),headers="keys", tablefmt="github"))
         
-    elif (opcion == 5):
+    elif (opcion == 6):
         print(tabulate(getAllclientesEspañoles(),headers="keys", tablefmt="github"))
         
         
         
         
-        
-    #else:
-        #print("opccion no valida")
+    menu()
         
         
           

@@ -1,23 +1,34 @@
+from tabulate import tabulate
+
+
 import storage.pedido as ped
 
 #EJERCICIO 1
-def getAllEstado(entrgado):
+def getAllEstado(Entregado):
     estado_producto=[ ] 
     for val in ped.pedido:
-       if(val.get("estado") == entrgado):
+       if(val.get("estado") == "Entregado"):
            estado_producto.append(val)
     return estado_producto
 
 #EJERCICIO 2
-def getAllcodigocliente():
-    codigo_cliente=[] 
+def getAllEstado(rechazado):
+    estado_producto=[ ] 
     for val in ped.pedido:
-       if(val.get("codigo_cliente")):
-           codigo_cliente.append(val)
-    return codigo_cliente
+       if(val.get("estado") == "Rechazado"):
+           estado_producto.append(val)
+    return estado_producto
 
 #EJERCICIO 3
-def getAllcomentario(codigoproducto):
+def getAllEstado(Pendiente):
+    estado_producto=[ ] 
+    for val in ped.pedido:
+       if(val.get("estado") == "Pendiente"):
+           estado_producto.append(val)
+    return estado_producto
+
+#EJERCICIO 4
+def getAllcomentario(codigo_pedido):
     comentario=[] 
     for val in ped.pedido:
        if(val.get("comentario")==None):
@@ -25,17 +36,7 @@ def getAllcomentario(codigoproducto):
     return comentario
 
 
-#EJERCICIO 4
-def getAllEstadopedido(Entregado,rechazado,pendiente):
-    EstadoCliente = [] 
-    for val in ped.pedido:
-        
-        if(val.get('estado') == "Entragado"):
-           (val.get('estado')== "rechazado")
-           (val.get ('estado')== "pendiente")
-        EstadoCliente.append(val)
-        
-    return EstadoCliente
+
 
 from datetime import datetime
 
@@ -119,6 +120,42 @@ def getAllPedidosEnero():
     return PedidosEnero
          
          
+         
+def menu():
+    
+
+    print("""
+          
+   / __ \___  ____  ____  _____/ /____     ____/ /__     / /___  _____   _____/ (_)__  ____  / /____  _____
+  / /_/ / _ \/ __ \/ __ \/ ___/ __/ _ \   / __  / _ \   / / __ \/ ___/  / ___/ / / _ \/ __ \/ __/ _ \/ ___/
+ / _, _/  __/ /_/ / /_/ / /  / /_/  __/  / /_/ /  __/  / / /_/ (__  )  / /__/ / /  __/ / / / /_/  __(__  ) 
+/_/ |_|\___/ .___/\____/_/   \__/\___/   \__,_/\___/  /_/\____/____/   \___/_/_/\___/_/ /_/\__/\___/____/  
+          /_/                                                                                              
+            
+            
+            
+            
+            1.obtener todos los pedidos con estado = entregado
+            2.obtener todos los pedidos con estado = rechazado
+            3.obtener todos los pedidos con estado = pendiente
+            4.obtener el comentario de un pedido segun el codigo del pedido
+            5.obtener si un pedido fue entregado a tiempo o retrazado
+            6.obtener todos los pedidos entregados 2 dias antes de la fecha de entrega
+            7.obtener todos los pedidos rechazados en el 2009
+            8.obtener lista de pedidos entregados en enero de cualquier año
+           
+            
+           
+            
+            
+    """)
+    
+    
+    opcion = opcion = int(input("seleccione una de las opciones: "))
+    
+    if (opcion == 6):
+        print(tabulate(getAllcodigoPedidoCodigoClienteFecha(), headers="keys", tablefmt="github"))
+         
            
     
 
@@ -137,7 +174,7 @@ def getAllPedidosEnero():
 
 
       
-        
+menu()        
         
         
         

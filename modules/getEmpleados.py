@@ -1,10 +1,13 @@
+from tabulate import tabulate
+
 import storage.empleado as emp
 
 
-#EJERCICIO 1
+
+#EJERCICIO 3
 def getAllNombreApellidoEmailJefe(codigo):
     NombreApellidoEmail = []
-    for val in em.empleados:
+    for val in emp.empleados:
         if val.get("codigo_jefe") == codigo:
             NombreApellidoEmail.append(
                 {
@@ -14,10 +17,9 @@ def getAllNombreApellidoEmailJefe(codigo):
                     "jefe":val.get("codigo_jefe")
                 }
             )
+
     
-    return NombreApellidoEmail     
-    
- #EJERCICIO 2   
+ #EJERCICIO 2
 def getAllPuestoNombreApellidoEmailJefe():
     PuestoNombreApellido = []   
     for val in emp.empleados:
@@ -35,8 +37,8 @@ def getAllPuestoNombreApellidoEmailJefe():
             )
                 return PuestoNombreApellido          
     
- #EJERCICIO 3   
-    def getAllNombreApellidoPuesto(puesto):
+ #EJERCICIO 2
+    def getAllNombreApellidoPuesto():
         NombreApellidoPuesto =[]
         for val in emp.empleados:
             if val.get("puesto") != "Representante Ventas" :
@@ -48,7 +50,7 @@ def getAllPuestoNombreApellidoEmailJefe():
                 "email": val.get ("email")
                 
                 })
-                return NombreApellidoPuesto
+        return NombreApellidoPuesto
             
             
 def menu():
@@ -62,17 +64,32 @@ def menu():
 /_/ |_|\___/ .___/\____/_/   \__/\___/   \__,_/\___/  /_/\____/____/   \___/_/_/\___/_/ /_/\__/\___/____/  
           /_/                                                                                              
             
+            1.obtener infromacion del jefe directo
+            2.obtener informacion del director general
+            3.obtener nombre, apellido y puesto de empleados que no sean representantes de ventas
             
-            1.obtener todos los clientes(codigo y nombre)
-            2.obtener u cliente por el codigo(codigo y nombre) 
-            3.obtener toda la informacion de un cliente segun su limite de credito y ciudad que pertenece(ejem: 3000 y .0 san francisco)
-            4.obtener informacion segun el cogigo del empleado de ventas
-            5.obtener clientes españoles
+           
             
             
     """)
     
+    
     opcion = opcion = int(input("seleccione una de las opciones: "))
+    
+    
+    
+    if (opcion == 1):
+        codigoJefe=int(input("Por favor ingrese el codigo del jefe:" ))
+        print(tabulate(getAllNombreApellidoEmailJefe(codigoJefe), headers="keys", tablefmt="github"))
+        
+    elif (opcion == 2):
+        print(tabulate(getAllPuestoNombreApellidoEmailJefe(), headers="keys", tablefmt="github"))
+    
+    else:
+        print(tabulate(getAllNombreApellidoPuesto(), headers="keys", tablefmt="github"))
+        
+        menu()
+            
             
             
             
