@@ -15,9 +15,11 @@ def getAllNombreApellidoEmailJefe(codigo):
                     "apellidos":f'{val.get("apellido1")}{val.get("apellido2")}',
                     "email":val.get("email"),
                     "jefe":val.get("codigo_jefe")
+                    
+                    
                 }
             )
-
+    return NombreApellidoEmail
     
  #EJERCICIO 2
 def getAllPuestoNombreApellidoEmailJefe():
@@ -54,16 +56,16 @@ def getAllNombreApellidoPuesto():
             
             
 def menu():
-    
-
-    print("""
+    while True:
+        print("""
           
  ____ ____ ____  __ ____ ____ ____    ____ ____    ____ _  _ ____ __   ____  __  ____  __  ____ 
 (  _ (  __|  _ \/  (  _ (_  _|  __)  (    (  __)  (  __| \/ |  _ (  ) (  __)/ _\(    \/  \/ ___)
- )   /) _) ) __(  O )   / )(  ) _)    ) D () _)    ) _)/ \/ \) __/ (_/\) _)/    \) D (  O )___ \
+ )   /) _) ) __(  O )   / )(  ) _)    ) D () _)    ) _)/ \/ \) __/ (_/\) _)/    \) D (  O )___ /
 (__\_|____|__)  \__(__\_)(__)(____)  (____(____)  (____)_)(_(__) \____(____)_/\_(____/\__/(____/
 
-            1.obtener infromacion del jefe directo
+            0.Regresar
+            1.obtener informacion del jefe directo
             2.obtener informacion del director general
             3.obtener nombre, apellido y puesto de empleados que no sean representantes de ventas
             
@@ -73,20 +75,26 @@ def menu():
     """)
     
     
-    opcion = int(input("seleccione una de las opciones: "))
-    
-    
-    
-    if (opcion == 1):
-        codigoJefe=int(input("Por favor ingrese el codigo del jefe:" ))
-        print(tabulate(getAllNombreApellidoEmailJefe(codigoJefe), headers="keys", tablefmt="github"))
+        opcion = int(input("seleccione una de las opciones: "))
         
-    elif (opcion == 2):
-        print(tabulate(getAllPuestoNombreApellidoEmailJefe(), headers="keys", tablefmt="github"))
-    
-    elif (opcion == 3):
-        print(tabulate(getAllNombreApellidoPuesto(), headers="keys", tablefmt="github"))
         
+        
+        if (opcion == 1):
+            codigoJefe=int(input("Por favor ingrese el codigo del jefe:" ))
+            print(tabulate(getAllNombreApellidoEmailJefe(codigoJefe), headers="keys", tablefmt="github"))
+            
+        elif (opcion == 2):
+            print(tabulate(getAllPuestoNombreApellidoEmailJefe(), headers="keys", tablefmt="github"))
+        
+        elif (opcion == 3):
+            print(tabulate(getAllNombreApellidoPuesto(), headers="keys", tablefmt="github"))
+            
+        elif(opcion == 0):
+            break
+            
+        
+
+    
         
             
             

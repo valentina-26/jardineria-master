@@ -5,7 +5,7 @@ from datetime import datetime
 import storage.pedido as ped
 
 #EJERCICIO 1
-def getAllEstadoEntregado(Entregado):
+def getAllEstadoEntregado():
     estado_producto=[ ] 
     for val in ped.pedido:
        if(val.get("estado") == "Entregado"):
@@ -13,7 +13,7 @@ def getAllEstadoEntregado(Entregado):
     return estado_producto
 
 #EJERCICIO 2
-def getAllEstadoRechazado(rechazado):
+def getAllEstadoRechazado():
     estado_producto=[ ] 
     for val in ped.pedido:
        if(val.get("estado") == "Rechazado"):
@@ -21,7 +21,7 @@ def getAllEstadoRechazado(rechazado):
     return estado_producto
 
 #EJERCICIO 3
-def getAllEstadoPendiente(Pendiente):
+def getAllEstadoPendiente():
     estado_producto=[ ] 
     for val in ped.pedido:
        if(val.get("estado") == "Pendiente"):
@@ -68,7 +68,7 @@ def getAllpedidosEntregadosAtrasadosTiempo():
 #codig cliente
 #fecha esperada
 #y fecha de entrega de pedidos entrgados 2 dias antes de la fecha esperada
-# EJERCICIO 10
+# EJERCICIO 10lif
                  
  #EJERCICIO 6           
 def getAllcodigoPedidoCodigoClienteFecha():
@@ -85,7 +85,7 @@ def getAllcodigoPedidoCodigoClienteFecha():
             end = datetime.strptime(date_2,"%d/%m/%Y")
                 
             diff = end.date() - start.date()
-            if(diff.days >=2):
+            if(diff.days >= 2):
                    pedidoCodigoFecha.append({
                        "codigo_de_pedido":val.get("codigo_pedido"),
                        "codigo_de_cliente":val.get("codigo_cliente"),
@@ -123,9 +123,8 @@ def getAllPedidosEnero():
          
          
 def menu():
-    
-
-    print("""
+    while True:
+        print("""
           
  ____ ____ ____  __ ____ ____ ____    ____ ____    ____ ____ ____ __ ____  __  
 (  _ (  __|  _ \/  (  _ (_  _|  __)  (    (  __)  (  _ (  __|    (  |    \/  \ 
@@ -134,7 +133,7 @@ def menu():
             
             
             
-            
+            0.Regresar
             1.obtener todos los pedidos con estado = entregado
             2.obtener todos los pedidos con estado = rechazado
             3.obtener todos los pedidos con estado = pendiente
@@ -151,39 +150,38 @@ def menu():
     """)
     
     
-    opcion = int(input("seleccione una de las opciones: "))
-    
-    if (opcion == 1):
-        print(tabulate(getAllEstadoEntregado(), headers="keys", tablefmt="github"))
+        opcion = int(input("seleccione una de las opciones: "))
         
-     
-    elif (opcion == 2):
-        print(tabulate(getAllEstadoPendiente(), headers="keys", tablefmt="github"))
+        if (opcion == 1):
+            print(tabulate(getAllEstadoEntregado(), headers="keys", tablefmt="github"))
+            
         
-     
-    elif (opcion == 3):
-        print(tabulate(getAllEstadoPendiente(), headers="keys", tablefmt="github"))
+        elif (opcion == 2):
+            print(tabulate(getAllEstadoPendiente(), headers="keys", tablefmt="github"))
+            
         
-        
-    elif (opcion == 4):
-        print(tabulate(getAllcomentario(), headers="keys", tablefmt="github"))
-        
-        
-    elif (opcion == 5):
-        print(tabulate(getAllpedidosEntregadosAtrasadosTiempo(), headers="keys", tablefmt="github"))
-        
-        
-    elif (opcion == 6):
-        print(tabulate(getAllcodigoPedidoCodigoClienteFecha(), headers="keys", tablefmt="github"))
-        
-        
-    elif (opcion == 7):
-        print(tabulate(getAllpedidosRechazados2009(), headers="keys", tablefmt="github"))
-        
-        
-    elif(opcion == 8):
-        print(tabulate(getAllPedidosEnero(), headers="keys", tablefmt="github"))
-       
-        
-        
-        
+        elif (opcion == 3):
+            print(tabulate(getAllEstadoPendiente(), headers="keys", tablefmt="github"))
+            
+            
+        elif (opcion == 4):
+            print(tabulate(getAllcomentario(), headers="keys", tablefmt="github"))
+            
+            
+        elif (opcion == 5):
+            print(tabulate(getAllpedidosEntregadosAtrasadosTiempo(), headers="keys", tablefmt="github"))
+            
+            
+        elif (opcion == 6):
+            print(tabulate(getAllcodigoPedidoCodigoClienteFecha(), headers="keys", tablefmt="github"))
+            
+            
+        elif (opcion == 7):
+            print(tabulate(getAllpedidosRechazados2009(), headers="keys", tablefmt="github"))
+            
+            
+        elif(opcion == 8):
+            print(tabulate(getAllPedidosEnero(), headers="keys", tablefmt="github"))
+            
+        elif(opcion == 0):
+            break

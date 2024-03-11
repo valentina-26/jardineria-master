@@ -47,7 +47,7 @@ def getAllClientsCreditCiudad(limiteCredit, ciudad):
     return ClienteCredito 
     
 
-#EJERCICIO   4
+
 def getAllClientPaisRegionCiudad(pais, region=None, ciudad=None):
     clientZone = list()
     for val in cli.clientes:
@@ -69,7 +69,7 @@ def getAllClientPaisRegionCiudad(pais, region=None, ciudad=None):
 
 
 
-#EJERCICIO 5
+#EJERCICIO 4
 def getAllClientsCodigoEmpleadoRepVentas(codigo):
     codigo_empleado = list()
     for val in cli.clientes:
@@ -87,15 +87,13 @@ def getAllCLientCreditCiudad(limitCredit, ciudad) :
     return clienteCredic
 
 
-# EJERCICIO 6
+# EJERCICIO 5
 def getAllclientesEspañoles():
     clientesEspañoles = []
     for val in cli.clientes :
         if(val.get("pais") == "Spain"):
         
-            clientesEspañoles.append ({
-                "pais": val.get("pais")
-            })
+            clientesEspañoles.append (val)
         
     return clientesEspañoles 
     
@@ -106,9 +104,9 @@ def getAllclientesEspañoles():
 
 
 def menu():
-    
 
-    print("""
+   while True:
+        print(f"""
           
  ____ ____ ____  __ ____ ____ ____    ____ ____     ___ __   __ ____ __ _ ____ ____ ____ 
 (  _ (  __|  _ \/  (  _ (_  _|  __)  (    (  __)   / __|  ) (  |  __|  ( (_  _|  __) ___)
@@ -116,40 +114,47 @@ def menu():
 (__\_|____|__)  \__(__\_)(__)(____)  (____(____)   \___)____(__|____)_)__)(__)(____|____/
             
             
+            0.Regresar
             1.obtener todos los clientes(codigo y nombre)
-            2.obtener u cliente por el codigo(codigo y nombre) 
+            2.obtener cliente por el codigo(codigo y nombre) 
             3.obtener toda la informacion de un cliente segun su limite de credito y ciudad que pertenece(ejem: 3000 y .0 san francisco)
             4.obtener informacion segun el cogigo del empleado de ventas
             5.obtener clientes españoles
             
             
+            
     """)
     
-    opcion = int(input("seleccione una de las opciones: "))
-    
-    
-    if (opcion == 1):
-        print(tabulate(getAllClientName(), headers="keys", tablefmt="github"))
+        opcion = int(input("seleccione una de las opciones: "))
+            
+            
+        if (opcion == 1):
+                print(tabulate(getAllClientName(), headers="keys", tablefmt="github"))
+                
+        elif(opcion == 2):
+                codigoCliente = int(input("ingrese el codigo del cliente: "))
+                print(tabulate(getOneClienteCodigo(codigoCliente), headers="keys", tablefmt="github"))
+                
+        elif(opcion == 3):
+                limite = float(input("ingrese el limite credito de los clientes que desa visualizar: "))
+                ciudad =input("ingrese el nombre de la ciudad que deseas filtar  de los clientes: ") 
+                print(tabulate(getAllClientsCreditCiudad(limite, ciudad), headers="keys", tablefmt="github"))
+                
+            
+        elif (opcion == 4):
+                codigoEmpleado=int(input("ingrese el codigo del empleado "))
+                print(tabulate(getAllClientsCodigoEmpleadoRepVentas(codigoEmpleado),headers="keys", tablefmt="github"))
+                
+        elif (opcion == 5):
+            print(tabulate(getAllclientesEspañoles(),headers="keys", tablefmt="github"))
+                
         
-    elif(opcion == 2):
-        codigoCliente = int(input("ingrese el codigo del cliente: "))
-        print(tabulate(getOneClienteCodigo(codigoCliente), headers="keys", tablefmt="github"))
-        
-    elif(opcion == 3):
-        limite = float(input("ingrese el limite credito de los clientes que desa visualizar: "))
-        ciudad =input("ingrese el nombre de la ciudad que deseas filtar  de los clientes: ") 
-        print(tabulate(getAllClientsCreditCiudad(limite, ciudad), headers="keys", tablefmt="github"))
-        
-    
-    elif (opcion == 4):
-        codigoEmpleado=int(input("ingrese el codigo del empleado "))
-        print(tabulate(getAllClientsCodigoEmpleadoRepVentas(codigoEmpleado),headers="keys", tablefmt="github"))
-        
-    elif (opcion == 5):
-     print(tabulate(getAllclientesEspañoles(),headers="keys", tablefmt="github"))
-        
-        
-        
+        elif (opcion == 6):
+                print(tabulate(getAllClientName(), headers="keys", tablefmt="github"))       
+            
+        elif(opcion == 0):
+            break
+                
         
     
         

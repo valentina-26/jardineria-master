@@ -27,14 +27,15 @@ def getAllCiudadTelefono(pais):
 
 
 def menu():
-
-    print("""
+    while True:
+        print("""
           
  ____ ____ ____  __ ____ ____ ____    ____ ____     __ ____ __ ___ __ __ _  __  
 (  _ (  __|  _ \/  (  _ (_  _|  __)  (    (  __)   /  (  __|  ) __|  |  ( \/ _\ 
  )   /) _) ) __(  O )   / )(  ) _)    ) D () _)   (  O ) _) )( (__ )(/    /    \
 (__\_|____|__)  \__(__\_)(__)(____)  (____(____)   \__(__) (__)___|__)_)__)_/\_/
             
+            0.Regreasar
             1.obtener icodigo y ciudad de la oficina
             2.obtener informacion degun el pais
             
@@ -44,17 +45,15 @@ def menu():
     """)
     
     
-    opcion = int(input("seleccione una de las opciones: "))
-    
-    if (opcion == 1):
-      
-        print(tabulate(getAllCodigoCiudad(), headers="keys", tablefmt="github"))
+        opcion = int(input("seleccione una de las opciones: "))
         
-    elif (opcion == 2):
-        pais = input("ingrese el pais: ")
-        print(tabulate(getAllCiudadTelefono(pais), headers="keys", tablefmt="github"))
-
+        if (opcion == 1):
         
-
-        
-    
+            print(tabulate(getAllCodigoCiudad(), headers="keys", tablefmt="github"))
+            
+        elif (opcion == 2):
+            pais = input("ingrese el pais: ")
+            print(tabulate(getAllCiudadTelefono(pais), headers="keys", tablefmt="github"))
+            
+        elif (opcion == 0):
+            break

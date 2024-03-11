@@ -49,15 +49,15 @@ def getAllFormasPago():
 
 
 def menu():
-    
-
-    print("""
+    while True:
+        print("""
           
  ____ ____ ____  __ ____ ____ ____    ____ ____    ____  __   ___  __  
 (  _ (  __|  _ \/  (  _ (_  _|  __)  (    (  __)  (  _ \/ _\ / __)/  \ 
  )   /) _) ) __(  O )   / )(  ) _)    ) D () _)    ) __/    ( (_ (  O )
 (__\_|____|__)  \__(__\_)(__)(____)  (____(____)  (__) \_/\_/\___/\__/ 
 
+            0.Regresar
             1.obtener lista de pagos realizados en el 2008
             2.obtener listado de pagos en el año 2008 por medio de paypal(ordenados de mayor a menor)
             2.obtener listado con todas las formas de pago
@@ -67,19 +67,22 @@ def menu():
             
     """)
     
-    
-opcion = int(input("seleccione una de las opciones: "))
-
-if (opcion==1):
-     print(tabulate(getAllPagos2008(), headers="keys", tablefmt="github"))
-
-    
-elif (opcion == 2):
-        print(tabulate(getAllPagosFecha(), headers="keys", tablefmt="github"))
         
-        
-else:
-        print(tabulate(getAllFormasPago(), headers="keys", tablefmt="github"))
+        opcion = int(input("seleccione una de las opciones: "))
+
+        if (opcion==1):
+            print(tabulate(getAllPagos2008(), headers="keys", tablefmt="github"))
+
+            
+        elif (opcion == 2):
+                print(tabulate(getAllPagosFecha(), headers="keys", tablefmt="github"))
+                
+                
+        elif (opcion == 3):
+                print(tabulate(getAllFormasPago(), headers="keys", tablefmt="github"))
+                
+        elif (opcion == 0):
+            break
 
 
 
