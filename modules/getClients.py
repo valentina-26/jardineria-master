@@ -110,24 +110,22 @@ def menu():
 
     print("""
           
-   / __ \___  ____  ____  _____/ /____     ____/ /__     / /___  _____   _____/ (_)__  ____  / /____  _____
-  / /_/ / _ \/ __ \/ __ \/ ___/ __/ _ \   / __  / _ \   / / __ \/ ___/  / ___/ / / _ \/ __ \/ __/ _ \/ ___/
- / _, _/  __/ /_/ / /_/ / /  / /_/  __/  / /_/ /  __/  / / /_/ (__  )  / /__/ / /  __/ / / / /_/  __(__  ) 
-/_/ |_|\___/ .___/\____/_/   \__/\___/   \__,_/\___/  /_/\____/____/   \___/_/_/\___/_/ /_/\__/\___/____/  
-          /_/                                                                                              
+ ____ ____ ____  __ ____ ____ ____    ____ ____     ___ __   __ ____ __ _ ____ ____ ____ 
+(  _ (  __|  _ \/  (  _ (_  _|  __)  (    (  __)   / __|  ) (  |  __|  ( (_  _|  __) ___)
+ )   /) _) ) __(  O )   / )(  ) _)    ) D () _)   ( (__/ (_/\)( ) _)/    / )(  ) _)\___ \
+(__\_|____|__)  \__(__\_)(__)(____)  (____(____)   \___)____(__|____)_)__)(__)(____|____/
             
             
             1.obtener todos los clientes(codigo y nombre)
             2.obtener u cliente por el codigo(codigo y nombre) 
             3.obtener toda la informacion de un cliente segun su limite de credito y ciudad que pertenece(ejem: 3000 y .0 san francisco)
-            4.obtener pais, ciudad y region del cliente
-            5.obtener informacion segun el cogigo del empleado de ventas
-            6.obtener clientes españoles
+            4.obtener informacion segun el cogigo del empleado de ventas
+            5.obtener clientes españoles
             
             
     """)
     
-    opcion = opcion = int(input("seleccione una de las opciones: "))
+    opcion = int(input("seleccione una de las opciones: "))
     
     
     if (opcion == 1):
@@ -142,21 +140,18 @@ def menu():
         ciudad =input("ingrese el nombre de la ciudad que deseas filtar  de los clientes: ") 
         print(tabulate(getAllClientsCreditCiudad(limite, ciudad), headers="keys", tablefmt="github"))
         
-    elif(opcion == 4):
-            
-        
     
-    elif (opcion == 5):
+    elif (opcion == 4):
         codigoEmpleado=int(input("ingrese el codigo del empleado "))
         print(tabulate(getAllClientsCodigoEmpleadoRepVentas(codigoEmpleado),headers="keys", tablefmt="github"))
         
-    elif (opcion == 6):
-        print(tabulate(getAllclientesEspañoles(),headers="keys", tablefmt="github"))
+    elif (opcion == 5):
+     print(tabulate(getAllclientesEspañoles(),headers="keys", tablefmt="github"))
         
         
         
         
-    menu()
+    
         
         
           

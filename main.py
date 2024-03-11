@@ -1,6 +1,5 @@
 from tabulate import tabulate
 
-import modules.getClients as clientes
 import modules.getEmpleados as empleado
 import modules.getOficina as oficina
 import modules.getClients as cliente
@@ -17,17 +16,16 @@ import sys
 
 
 
-if(__name__ == "__main__"):
-    
+
+def menu():
   
-    print(f"""
-          
-          
-   /  |/  /__  ____  __  __   / __ \_____(_)___  _____(_)___  ____ _/ /
-  / /|_/ / _ \/ __ \/ / / /  / /_/ / ___/ / __ \/ ___/ / __ \/ __ `/ / 
- / /  / /  __/ / / / /_/ /  / ____/ /  / / / / / /__/ / /_/ / /_/ / /  
-/_/  /_/\___/_/ /_/\__,_/  /_/   /_/  /_/_/ /_/\___/_/ .___/\__,_/_/   
-                                                    /_/                
+         print(f"""
+ _  _ ____ __ _  _  _    ____ ____ __ __ _  ___ __ ____  __   __   
+( \/ |  __|  ( \/ )( \  (  _ (  _ (  |  ( \/ __|  |  _ \/ _\ (  )  
+/ \/ \) _)/    /) \/ (   ) __/)   /)(/    ( (__ )( ) __/    \/ (_/\
+\_)(_(____)_)__)\____/  (__) (__\_|__)_)__)\___|__|__) \_/\_/\____/
+
+
                                 1.Cliente
                                 2.Oficina
                                 3.Empleado
@@ -37,7 +35,7 @@ if(__name__ == "__main__"):
                                                    """)
     
     
-opcion = opcion = int(input("seleccione una de las opciones: "))
+opcion = int(input("seleccione una de las opciones: "))
 
 if(opcion == 1):
     cliente.menu()

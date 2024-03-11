@@ -1,10 +1,11 @@
 from tabulate import tabulate
 
+from datetime import datetime
 
 import storage.pedido as ped
 
 #EJERCICIO 1
-def getAllEstado(Entregado):
+def getAllEstadoEntregado(Entregado):
     estado_producto=[ ] 
     for val in ped.pedido:
        if(val.get("estado") == "Entregado"):
@@ -12,7 +13,7 @@ def getAllEstado(Entregado):
     return estado_producto
 
 #EJERCICIO 2
-def getAllEstado(rechazado):
+def getAllEstadoRechazado(rechazado):
     estado_producto=[ ] 
     for val in ped.pedido:
        if(val.get("estado") == "Rechazado"):
@@ -20,7 +21,7 @@ def getAllEstado(rechazado):
     return estado_producto
 
 #EJERCICIO 3
-def getAllEstado(Pendiente):
+def getAllEstadoPendiente(Pendiente):
     estado_producto=[ ] 
     for val in ped.pedido:
        if(val.get("estado") == "Pendiente"):
@@ -28,7 +29,7 @@ def getAllEstado(Pendiente):
     return estado_producto
 
 #EJERCICIO 4
-def getAllcomentario(codigo_pedido):
+def getAllcomentario():
     comentario=[] 
     for val in ped.pedido:
        if(val.get("comentario")==None):
@@ -38,7 +39,7 @@ def getAllcomentario(codigo_pedido):
 
 
 
-from datetime import datetime
+
 
 #EJERCICIO 5
 def getAllpedidosEntregadosAtrasadosTiempo():
@@ -126,11 +127,10 @@ def menu():
 
     print("""
           
-   / __ \___  ____  ____  _____/ /____     ____/ /__     / /___  _____   _____/ (_)__  ____  / /____  _____
-  / /_/ / _ \/ __ \/ __ \/ ___/ __/ _ \   / __  / _ \   / / __ \/ ___/  / ___/ / / _ \/ __ \/ __/ _ \/ ___/
- / _, _/  __/ /_/ / /_/ / /  / /_/  __/  / /_/ /  __/  / / /_/ (__  )  / /__/ / /  __/ / / / /_/  __(__  ) 
-/_/ |_|\___/ .___/\____/_/   \__/\___/   \__,_/\___/  /_/\____/____/   \___/_/_/\___/_/ /_/\__/\___/____/  
-          /_/                                                                                              
+ ____ ____ ____  __ ____ ____ ____    ____ ____    ____ ____ ____ __ ____  __  
+(  _ (  __|  _ \/  (  _ (_  _|  __)  (    (  __)  (  _ (  __|    (  |    \/  \ 
+ )   /) _) ) __(  O )   / )(  ) _)    ) D () _)    ) __/) _) ) D ()( ) D (  O )
+(__\_|____|__)  \__(__\_)(__)(____)  (____(____)  (__) (____|____(__|____/\__/ 
             
             
             
@@ -138,7 +138,7 @@ def menu():
             1.obtener todos los pedidos con estado = entregado
             2.obtener todos los pedidos con estado = rechazado
             3.obtener todos los pedidos con estado = pendiente
-            4.obtener el comentario de un pedido segun el codigo del pedido
+            4.obtener lista de todos lo pedidos que no tienen comentarios
             5.obtener si un pedido fue entregado a tiempo o retrazado
             6.obtener todos los pedidos entregados 2 dias antes de la fecha de entrega
             7.obtener todos los pedidos rechazados en el 2009
@@ -151,30 +151,39 @@ def menu():
     """)
     
     
-    opcion = opcion = int(input("seleccione una de las opciones: "))
+    opcion = int(input("seleccione una de las opciones: "))
     
-    if (opcion == 6):
+    if (opcion == 1):
+        print(tabulate(getAllEstadoEntregado(), headers="keys", tablefmt="github"))
+        
+     
+    elif (opcion == 2):
+        print(tabulate(getAllEstadoPendiente(), headers="keys", tablefmt="github"))
+        
+     
+    elif (opcion == 3):
+        print(tabulate(getAllEstadoPendiente(), headers="keys", tablefmt="github"))
+        
+        
+    elif (opcion == 4):
+        print(tabulate(getAllcomentario(), headers="keys", tablefmt="github"))
+        
+        
+    elif (opcion == 5):
+        print(tabulate(getAllpedidosEntregadosAtrasadosTiempo(), headers="keys", tablefmt="github"))
+        
+        
+    elif (opcion == 6):
         print(tabulate(getAllcodigoPedidoCodigoClienteFecha(), headers="keys", tablefmt="github"))
-         
-           
-    
-
-
-
-
-
-
-                  
-            
-
-
-
-
-
-
-
-      
-menu()        
+        
+        
+    elif (opcion == 7):
+        print(tabulate(getAllpedidosRechazados2009(), headers="keys", tablefmt="github"))
+        
+        
+    elif(opcion == 8):
+        print(tabulate(getAllPedidosEnero(), headers="keys", tablefmt="github"))
+       
         
         
         

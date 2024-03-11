@@ -4,7 +4,7 @@ import storage.empleado as emp
 
 
 
-#EJERCICIO 3
+#EJERCICIO 1
 def getAllNombreApellidoEmailJefe(codigo):
     NombreApellidoEmail = []
     for val in emp.empleados:
@@ -37,8 +37,8 @@ def getAllPuestoNombreApellidoEmailJefe():
             )
                 return PuestoNombreApellido          
     
- #EJERCICIO 2
-    def getAllNombreApellidoPuesto():
+ #EJERCICIO 3
+def getAllNombreApellidoPuesto():
         NombreApellidoPuesto =[]
         for val in emp.empleados:
             if val.get("puesto") != "Representante Ventas" :
@@ -58,12 +58,11 @@ def menu():
 
     print("""
           
-   / __ \___  ____  ____  _____/ /____     ____/ /__     / /___  _____   _____/ (_)__  ____  / /____  _____
-  / /_/ / _ \/ __ \/ __ \/ ___/ __/ _ \   / __  / _ \   / / __ \/ ___/  / ___/ / / _ \/ __ \/ __/ _ \/ ___/
- / _, _/  __/ /_/ / /_/ / /  / /_/  __/  / /_/ /  __/  / / /_/ (__  )  / /__/ / /  __/ / / / /_/  __(__  ) 
-/_/ |_|\___/ .___/\____/_/   \__/\___/   \__,_/\___/  /_/\____/____/   \___/_/_/\___/_/ /_/\__/\___/____/  
-          /_/                                                                                              
-            
+ ____ ____ ____  __ ____ ____ ____    ____ ____    ____ _  _ ____ __   ____  __  ____  __  ____ 
+(  _ (  __|  _ \/  (  _ (_  _|  __)  (    (  __)  (  __| \/ |  _ (  ) (  __)/ _\(    \/  \/ ___)
+ )   /) _) ) __(  O )   / )(  ) _)    ) D () _)    ) _)/ \/ \) __/ (_/\) _)/    \) D (  O )___ \
+(__\_|____|__)  \__(__\_)(__)(____)  (____(____)  (____)_)(_(__) \____(____)_/\_(____/\__/(____/
+
             1.obtener infromacion del jefe directo
             2.obtener informacion del director general
             3.obtener nombre, apellido y puesto de empleados que no sean representantes de ventas
@@ -74,7 +73,7 @@ def menu():
     """)
     
     
-    opcion = opcion = int(input("seleccione una de las opciones: "))
+    opcion = int(input("seleccione una de las opciones: "))
     
     
     
@@ -85,10 +84,10 @@ def menu():
     elif (opcion == 2):
         print(tabulate(getAllPuestoNombreApellidoEmailJefe(), headers="keys", tablefmt="github"))
     
-    else:
+    elif (opcion == 3):
         print(tabulate(getAllNombreApellidoPuesto(), headers="keys", tablefmt="github"))
         
-        menu()
+        
             
             
             
