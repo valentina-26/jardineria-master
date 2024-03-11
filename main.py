@@ -1,3 +1,4 @@
+import os
 from tabulate import tabulate
 
 import modules.getEmpleados as empleado
@@ -37,28 +38,35 @@ if __name__ == "__main__":
                                                                         
                                                         
                                                     """)
+        print("Presiona [Ctrl + C] Para salir del programa...")
         
-        opcion = int(input("seleccione una de las opciones: "))
-
-        if(opcion == 1):
-            cliente.menu()
-            
-        elif(opcion == 2):
-            oficina.menu()
-            
-        elif(opcion == 3):
-            empleado.menu()
-            
-        elif(opcion == 4):
-            pedido.menu()
-    
-        elif(opcion == 5):
-            productos.menu()
-            
-        elif(opcion == 6):
-             pago.menu()
-             
-        elif(opcion == 0):
+        try:
+            opcion = int(input("seleccione una de las opciones: "))
+        except KeyboardInterrupt:
+            os.system("clear")
+            print("Has salido exitosamente!")
             break
-            
+        else:
+
+            if(opcion == 1):
+                cliente.menu()
+                
+            elif(opcion == 2):
+                oficina.menu()
+                
+            elif(opcion == 3):
+                empleado.menu()
+                
+            elif(opcion == 4):
+                pedido.menu()
+        
+            elif(opcion == 5):
+                productos.menu()
+                
+            elif(opcion == 6):
+                pago.menu()
+                
+            elif(opcion == 0):
+                break
+                
         

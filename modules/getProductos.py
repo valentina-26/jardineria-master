@@ -1,3 +1,4 @@
+import os
 from tabulate import tabulate
 
 import storage.producto as pro
@@ -38,16 +39,19 @@ def menu():
             1.obtener lista de todos los productos del proveedor "Murcia Seasons"
         
             
+              
            
     """)
     
-    
-        opcion = int(input("seleccione una de las opciones: "))
-
-
-            
-        if (opcion == 1):
-                print(tabulate(getAllProveedor(), headers="keys", tablefmt="github"))
-                
-        elif(opcion == 0):
+        try:
+            opcion = int(input("seleccione una de las opciones: "))
+        except KeyboardInterrupt:
+            os.system("clear")
+            print("Has salido exitosamente!")
             break
+        else:
+            if (opcion == 1):
+                print(tabulate(getAllProveedor(), headers="keys", tablefmt="github"))
+                    
+            elif (opcion == 0):
+                break
