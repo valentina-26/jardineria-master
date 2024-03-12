@@ -1,6 +1,7 @@
 
 from tabulate import tabulate
 import storage.cliente as cli
+import storage.empleado as emp
 
 #EJERCICIO 1
 def getAllClientName():
@@ -73,7 +74,7 @@ def getAllClientPaisRegionCiudad(pais, region=None, ciudad=None):
 def getAllClientsCodigoEmpleadoRepVentas(codigo):
     codigo_empleado = list()
     for val in cli.clientes:
-       if (val.get("codigo_empleado_rep_ventas")==codigo):
+        if (val.get("codigo_empleado_rep_ventas")==codigo):
            codigo_empleado.append(val)
     return codigo_empleado
 
@@ -91,11 +92,44 @@ def getAllCLientCreditCiudad(limitCredit, ciudad) :
 def getAllclientesEspañoles():
     clientesEspañoles = []
     for val in cli.clientes :
-        if(val.get("pais") == "Spain"):
+        if(val.get("Region") == "Spain"):
         
             clientesEspañoles.append (val)
         
     return clientesEspañoles 
+
+#EJERCICIO 6
+def getAllclientesMadridRepre1138():
+    clienMadr1138 = []
+    for val in cli.clientes:
+        if(val.get("ciudad")== ('Madrid')):
+            if val.get("codigo_empleado_rep_ventas") == 11 or 38:
+                
+                    valen = {
+                        "ciudad": val.get("ciudad"),
+                        "codigo representante de ventas": val.get("codigo_empleado_rep_ventas")
+                        
+                    }
+            
+                    
+            
+                    clienMadr1138.append(valen)
+    return clienMadr1138
+
+
+def getAllnombreCliapellidoRepre():
+    NombreApell=[]
+    for val in cli.clientes:
+        for cast in emp.empleados:
+            if val.get("codigo representante de ventas") == cast.get("codigo_empleado"):
+                
+                otra ={
+                    "nombre cliente":val.get("nombre_cliente"),
+                    "representante de ventas":f' {cast.get("apellido_1")}'
+                }
+                NombreApell.append(otra)
+    return NombreApell
+
     
     
     
@@ -105,7 +139,7 @@ def getAllclientesEspañoles():
 
 def menu():
 
-   while True:
+    while True:
         print(f"""
           
  ____ ____ ____  __ ____ ____ ____    ____ ____     ___ __   __ ____ __ _ ____ ____ ____ 
@@ -120,7 +154,8 @@ def menu():
             3.obtener toda la informacion de un cliente segun su limite de credito y ciudad que pertenece(ejem: 3000 y .0 san francisco)
             4.obtener informacion segun el cogigo del empleado de ventas
             5.obtener clientes españoles
-            
+            6.obtener listado de todos los cliente de la ciudad de madrid y cuyo representante de ventas tenga el codigo de empleado 11 o 38
+            7.obtener nombre de cada cliente y apellido de su representante de ventas
             
             
     """)
@@ -132,33 +167,18 @@ def menu():
                 print(tabulate(getAllClientName(), headers="keys", tablefmt="github"))
                 
         elif(opcion == 2):
-                try:
-                     
-                    opcion = int(input("seleccione una de las opciones: "))
-                except KeyboardInterrupt:
-                     
-                    os.system("clear")
-                    print("Has salido exitosamente!")
-                    break
-        else:
+        
                 codigoCliente = int(input("ingrese el codigo del cliente: "))
                 print(tabulate(getOneClienteCodigo(codigoCliente), headers="keys", tablefmt="github"))
                 
         
-        if(opcion == 3):
+        elif(opcion == 3):
             limite = float(input("ingrese el limite credito de los clientes que desa visualizar: "))
-        # try:
-        #             opcion = int(input("seleccione una de las opciones: "))
-        #          except KeyboardInterrupt:
-        #             os.system("clear")
-        #           print("Has salido exitosamente!")
-        #       break
-        # else:
             ciudad =input("ingrese el nombre de la ciudad que deseas filtar  de los clientes: ") 
-        print(tabulate(getAllClientsCreditCiudad(limite, ciudad), headers="keys", tablefmt="github"))
+            print(tabulate(getAllClientsCreditCiudad(limite, ciudad), headers="keys", tablefmt="github"))
                 
             
-        if (opcion == 4):
+        elif (opcion == 4):
                 codigoEmpleado=int(input("ingrese el codigo del empleado "))
                 print(tabulate(getAllClientsCodigoEmpleadoRepVentas(codigoEmpleado),headers="keys", tablefmt="github"))
                 
@@ -167,7 +187,11 @@ def menu():
                 
         
         elif (opcion == 6):
-                print(tabulate(getAllClientName(), headers="keys", tablefmt="github"))       
+                print(tabulate(getAllclientesMadridRepre1138(), headers="keys", tablefmt="github"))     
+                
+        elif (opcion == 7):
+            print(tabulate(getAllnombreCliapellidoRepre(),headers="keys", tablefmt="github"))
+    
             
         elif(opcion == 0):
             break

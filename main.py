@@ -11,7 +11,7 @@ import modules.getPago as pago
 
 
 
-#print (tabulate(pedidos.getAllpedidosRechazados2009(), tablefmt = "rounded grid"))
+print (tabulate(cliente.getAllclientesMadridRepre1138(), tablefmt = "rounded grid"))
 
 
 
