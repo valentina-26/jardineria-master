@@ -38,35 +38,37 @@ if __name__ == "__main__":
                                                                         
                                                         
                                                     """)
-        print("Presiona [Ctrl + C] Para salir del programa...")
         
-        try:
-            opcion = int(input("seleccione una de las opciones: "))
-        except KeyboardInterrupt:
-            os.system("clear")
-            print("Has salido exitosamente!")
-            break
-        else:
+        opcion = int(input("seleccione una de las opciones: "))
+        #print("Presiona [Ctrl + C] Para salir del programa...")
+        
+        # try:
+        #     opcion = int(input("seleccione una de las opciones: "))
+        # except KeyboardInterrupt:
+        #     os.system("clear")
+        #     print("Has salido exitosamente!")
+        #     break
+        # else:
 
-            if(opcion == 1):
+        if(opcion == 1):
                 cliente.menu()
                 
-            elif(opcion == 2):
+        elif(opcion == 2):
                 oficina.menu()
                 
-            elif(opcion == 3):
+        elif(opcion == 3):
                 empleado.menu()
                 
-            elif(opcion == 4):
+        elif(opcion == 4):
                 pedido.menu()
         
-            elif(opcion == 5):
+        elif(opcion == 5):
                 productos.menu()
                 
-            elif(opcion == 6):
+        elif(opcion == 6):
                 pago.menu()
                 
-            elif(opcion == 0):
+        elif(opcion == 0):
                 break
                 
         

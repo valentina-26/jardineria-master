@@ -132,16 +132,33 @@ def menu():
                 print(tabulate(getAllClientName(), headers="keys", tablefmt="github"))
                 
         elif(opcion == 2):
+                try:
+                     
+                    opcion = int(input("seleccione una de las opciones: "))
+                except KeyboardInterrupt:
+                     
+                    os.system("clear")
+                    print("Has salido exitosamente!")
+                    break
+        else:
                 codigoCliente = int(input("ingrese el codigo del cliente: "))
                 print(tabulate(getOneClienteCodigo(codigoCliente), headers="keys", tablefmt="github"))
                 
-        elif(opcion == 3):
-                limite = float(input("ingrese el limite credito de los clientes que desa visualizar: "))
-                ciudad =input("ingrese el nombre de la ciudad que deseas filtar  de los clientes: ") 
-                print(tabulate(getAllClientsCreditCiudad(limite, ciudad), headers="keys", tablefmt="github"))
+        
+        if(opcion == 3):
+            limite = float(input("ingrese el limite credito de los clientes que desa visualizar: "))
+        # try:
+        #             opcion = int(input("seleccione una de las opciones: "))
+        #          except KeyboardInterrupt:
+        #             os.system("clear")
+        #           print("Has salido exitosamente!")
+        #       break
+        # else:
+            ciudad =input("ingrese el nombre de la ciudad que deseas filtar  de los clientes: ") 
+        print(tabulate(getAllClientsCreditCiudad(limite, ciudad), headers="keys", tablefmt="github"))
                 
             
-        elif (opcion == 4):
+        if (opcion == 4):
                 codigoEmpleado=int(input("ingrese el codigo del empleado "))
                 print(tabulate(getAllClientsCodigoEmpleadoRepVentas(codigoEmpleado),headers="keys", tablefmt="github"))
                 
