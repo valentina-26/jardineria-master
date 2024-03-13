@@ -55,7 +55,7 @@ def getAllClientReprePago():
             for san in pag.pago:
                 
                 if (san.get("codigo_cliente") == val.get("codigo_cliente")) and (val.get("codigo_empleado_rep_ventas") == cast.get("codigo_empleado")):
-                    if val.get("nombre_cliente"): not in conPago:
+                    if val.get("nombre_cliente"): conPago
                     conPago.append({
                              "Nombre Cliente": val.get("nombre_cliente"),
                         "Representante de ventas": f'{cast.get("nombre")} {cast.get("apellido1")}'

@@ -1,11 +1,22 @@
-import os
 from tabulate import tabulate
+import requests
+import modules.postProducto as pstPro
 
-import storage.producto as pro
+
+def getAllData():
+     peticion = requests.get("http://172.16.100.130:5003")
+     data = peticion.json()
+     return data
+     print(data[0])
+
+
+
+
+
 
 def getAllProveedor():
     Nombre_proveedor =[ ] 
-    for val in pro.produto:
+    for val in Nombre_proveedor:
        if(val.get("proveedor")=="Murcia Seasons"):
            Nombre_proveedor.append(val)
     return Nombre_proveedor
@@ -17,7 +28,7 @@ def getAllProveedor():
 
 def getAllStockPriceGama(gama, stock):
     condiciones = []
-    for val in  pro.producto:
+    for val in  getAllData():
         if (val.get("gama") == gama and val.get("cantidad_en_stock")>= stock):
          condiciones.append(val)
     
@@ -60,7 +71,7 @@ def menu():
             0.Regresar
             1.obtener lista de todos los productos del proveedor "Murcia Seasons"
             2.obtener todos losproductos de una categoria ordenandosu preciode venta,tambien que su stock sea
-        
+            3.Guardar
             
               
            
@@ -80,11 +91,25 @@ def menu():
         if (opcion == 1):
                 print(tabulate(getAllProveedor(), headers="keys", tablefmt="github"))
                     
-        elif(opcion == 0):
-                break
-
-        if  (opcion == 2):
+        
+        elif (opcion == 2):
                 gama = (input("ingrese la gama que desea filtrar: "))
                 stock =int(input("ingrese las unidades de stock.  "))
                 print(tabulate(getAllStockPriceGama(gama, stock), headers="keys", tablefmt="github"))
 
+
+        elif (opcion == 3):
+              producto={
+            
+            "codigo_producto": input("ingrese elcodigo delproducto"),
+            "nombre": input("ingrese el nombre delproducto"),
+            "gama": input("ingrese lagam delproducto"),
+            "dimensiones":input("ingrese la dimension delproducto"),
+            "proveedor": input("ingrese elproveedor delproducto"),
+            "descripcion": input("ingrese la descripcion delproducto"),
+            "cantidad_en_stock": input("ingrese  la cantidad destock"),
+            "precio_venta": input("ingrese elprecio de ventas"),
+            "precio_proveedor": input("ingrese elprecio delproveedor")
+        }
+              pstPro.postProducto(producto)
+              print("producto guardado satisfactoriamente")

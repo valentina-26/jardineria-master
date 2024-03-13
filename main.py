@@ -8,6 +8,8 @@ import modules.getPedido as pedido
 import modules.getProductos as productos
 import modules.getPago as pago
 
+productos.getAllData
+
 
 
 
