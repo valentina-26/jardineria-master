@@ -1,5 +1,6 @@
 from tabulate import tabulate
-
+import storage.cliente as cli
+import storage.empleado as emp
 from datetime import datetime
 
 import storage.pago as pag
@@ -45,6 +46,44 @@ def getAllFormasPago():
      
     return convertir 
 
+#EJERCICIO 4
+def getAllClientReprePago():
+    conPago = []
+    otra= set()
+    for val in cli.clientes:
+        for cast in emp.empleados:
+            for san in pag.pago:
+                
+                if (san.get("codigo_cliente") == val.get("codigo_cliente")) and (val.get("codigo_empleado_rep_ventas") == cast.get("codigo_empleado")):
+                    if val.get("nombre_cliente"): not in conPago:
+                    conPago.append({
+                             "Nombre Cliente": val.get("nombre_cliente"),
+                        "Representante de ventas": f'{cast.get("nombre")} {cast.get("apellido1")}'
+                    })
+                    otra.add(val.get("nombre_cliente"))
+    return conPago
+                
+                
+                
+#EJERCICIO 5
+def getAllClientRepresinPago():
+    SINPago = []
+    otra= set()
+    for val in cli.clientes:
+        for cast in emp.empleados:
+            for san in pag.pago:
+                
+                if (san.get("codigo_cliente") != val.get("codigo_cliente")) and (val.get("codigo_empleado_rep_ventas") == cast.get("codigo_empleado")):
+                  SINPago.append  ({
+                     "Nombre Cliente": val.get("nombre_cliente"), 
+                      "Representante de ventas": f'{cast.get("nombre")} {cast.get("apellido1")}'
+                   })
+    return SINPago              
+                
+               
+
+        
+
 
 
 
@@ -60,8 +99,9 @@ def menu():
             0.Regresar
             1.obtener lista de pagos realizados en el 2008
             2.obtener listado de pagos en el año 2008 por medio de paypal(ordenados de mayor a menor)
-            2.obtener listado con todas las formas de pago
-            
+            3.obtener listado con todas las formas de pago
+            4.obtener nombre de cada cliente que ha realizado pagos junto con el  nombre de su representante de ventas
+            5.obtener nombre de los clientes que no han realizado pagos junto con el nombre de su RV
            
             
             
@@ -81,6 +121,14 @@ def menu():
         elif (opcion == 3):
                 print(tabulate(getAllFormasPago(), headers="keys", tablefmt="github"))
                 
+        elif (opcion == 4):
+            print(tabulate(getAllClientReprePago(), headers="keys", tablefmt="github"))
+                
+        elif (opcion == 5):
+             print(tabulate(getAllClientRepresinPago(), headers="keys", tablefmt="github"))
+            
+            
+                    
         elif (opcion == 0):
             break
 

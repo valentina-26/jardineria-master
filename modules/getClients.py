@@ -104,10 +104,11 @@ def getAllclientesMadridRepre1138():
     for val in cli.clientes:
         if(val.get("ciudad")== ('Madrid')):
             if val.get("codigo_empleado_rep_ventas") == 11 or 38:
-                
+                if val.get("nombre") == ("nombre_cliente"):
                     valen = {
                         "ciudad": val.get("ciudad"),
-                        "codigo representante de ventas": val.get("codigo_empleado_rep_ventas")
+                        "codigo representante de ventas": val.get("codigo_empleado_rep_ventas"),
+                        "nombre":val.get("nombre_cliente")
                         
                     }
             
@@ -116,7 +117,7 @@ def getAllclientesMadridRepre1138():
                     clienMadr1138.append(valen)
     return clienMadr1138
 
-
+#EJERCICIO 7
 def getAllnombreCliapellidoRepre():
     NombreApell=[]
     for val in cli.clientes:
@@ -129,6 +130,9 @@ def getAllnombreCliapellidoRepre():
                 }
                 NombreApell.append(otra)
     return NombreApell
+
+#EJERCICIO 8
+
 
     
     
