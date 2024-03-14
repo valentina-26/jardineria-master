@@ -1,7 +1,6 @@
 
 from tabulate import tabulate
 import storage.cliente as cli
-import storage.empleado as emp
 
 #EJERCICIO 1
 def getAllClientName():

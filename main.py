@@ -1,28 +1,54 @@
+#print (tabulate(cliente.getAllclientesMadridRepre1138(), tablefmt = "rounded grid"))
 import os
 from tabulate import tabulate
-
+import os
 import modules.getEmpleados as empleado
 import modules.getOficina as oficina
 import modules.getClients as cliente
 import modules.getPedido as pedido
 import modules.getProductos as productos
 import modules.getPago as pago
-
-productos.getAllData
-
-
+import modules.postProducto as CRUDproducto
+import modules.getProductos as Repproducto
 
 
-print (tabulate(cliente.getAllclientesMadridRepre1138(), tablefmt = "rounded grid"))
+def menuProducto():
+       while True:
+        os.system("clear")
+        print("""
+ ___  __  ___  _  _  _  _  ___  _  _  __  ___    __      __   __      __  __  ___  _  _  _  _   
+(  ,)(  )(  _)( \( )( )( )(  _)( \( )(  )(   \  /  \    (  ) (  )    (  \/  )(  _)( \( )( )( )  
+ ) ,\ )(  ) _) )  (  \\//  ) _) )  (  )(  ) ) )( () )   /__\  )(__    )    (  ) _) )  (  )()(   
+(___/(__)(___)(_)\_) (__) (___)(_)\_)(__)(___/  \__/   (_)(_)(____)  (_/\/\_)(___)(_)\_) \__/   
+ ___  ___    ___  ___   __  ___  _  _  __  ____  __   ___                                       
+(   \(  _)  (  ,\(  ,) /  \(   \( )( )/ _)(_  _)/  \ / __)                                      
+ ) ) )) _)   ) _/ )  \( () )) ) ))()(( (_   )( ( () )\__ \                                      
+(___/(___)  (_)  (_)\_)\__/(___/ \__/ \__) (__) \__/ (___/           
+             
+             
+                   1.Repotar los productos
+                   2.Guardar actualizar y eliminar productos 
+                   0.regresar al menu principal 
+                       """)
+               
+        opcion = int(input("\nSelecione una de las opciones: "))
 
+        if (opcion == 1):
+                        Repproducto.menu()
+        if (opcion == 2):
+                        CRUDproducto
 
+        if (opcion == 0):
+                        break
 
 
 
 
 
 if __name__ == "__main__":
+  
     while True:
+        os.system("clear")
         print(f"""
      _  _ ____ __ _  _  _    ____ ____ __ __ _  ___ __ ____  __   __   
     ( \/ |  __|  ( \/ )( \  (  _ (  _ (  |  ( \/ __|  |  _ \/ _\ (  )  
@@ -42,35 +68,27 @@ if __name__ == "__main__":
                                                     """)
         
         opcion = int(input("seleccione una de las opciones: "))
-        #print("Presiona [Ctrl + C] Para salir del programa...")
-        
-        # try:
-        #     opcion = int(input("seleccione una de las opciones: "))
-        # except KeyboardInterrupt:
-        #     os.system("clear")
-        #     print("Has salido exitosamente!")
-        #     break
-        # else:
+       
 
         if(opcion == 1):
-                cliente.menu()
-                
+                        cliente.menu()
+                        
         elif(opcion == 2):
-                oficina.menu()
-                
+                        oficina.menu()
+                        
         elif(opcion == 3):
-                empleado.menu()
-                
+                        empleado.menu()
+                        
         elif(opcion == 4):
-                pedido.menu()
-        
+                        pedido.menu()
+                
         elif(opcion == 5):
-                productos.menu()
-                
+                        productos.menu()#
+                        
         elif(opcion == 6):
-                pago.menu()
-                
+                        pago.menu()
+                        
         elif(opcion == 0):
-                break
-                
+                        break
+                        
         

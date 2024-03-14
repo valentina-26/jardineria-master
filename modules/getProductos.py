@@ -1,22 +1,19 @@
 from tabulate import tabulate
 import requests
-import modules.postProducto as pstPro
+import os
 
 
 def getAllData():
      peticion = requests.get("http://172.16.100.130:5003")
      data = peticion.json()
      return data
-     print(data[0])
+ 
 
 
 
-
-
-
-def getAllProveedor():
+def getAllProveedor ():
     Nombre_proveedor =[ ] 
-    for val in Nombre_proveedor:
+    for val in getAllData:
        if(val.get("proveedor")=="Murcia Seasons"):
            Nombre_proveedor.append(val)
     return Nombre_proveedor
@@ -61,6 +58,7 @@ def getAllStockPriceGama(gama, stock):
 
 def menu():
     while True:
+        os.system("clear")
         print("""
           
  ____ ____ ____  __ ____ ____ ____    ____ ____    ____ ____  __ ____  _  _  ___ ____ __  ____ 
@@ -71,23 +69,13 @@ def menu():
             0.Regresar
             1.obtener lista de todos los productos del proveedor "Murcia Seasons"
             2.obtener todos losproductos de una categoria ordenandosu preciode venta,tambien que su stock sea
-            3.Guardar
             
-              
-           
     """)
         
         opcion = int(input("seleccione una de las opciones: "))
         
     
-        # try:
-        #     opcion = int(input("seleccione una de las opciones: "))
-        # except KeyboardInterrupt:
-        #     os.system("clear")
-        #     print("Has salido exitosamente!")
-        #     break
-        # else:
-
+      
         if (opcion == 1):
                 print(tabulate(getAllProveedor(), headers="keys", tablefmt="github"))
                     
@@ -97,19 +85,5 @@ def menu():
                 stock =int(input("ingrese las unidades de stock.  "))
                 print(tabulate(getAllStockPriceGama(gama, stock), headers="keys", tablefmt="github"))
 
-
-        elif (opcion == 3):
-              producto={
-            
-            "codigo_producto": input("ingrese elcodigo delproducto"),
-            "nombre": input("ingrese el nombre delproducto"),
-            "gama": input("ingrese lagam delproducto"),
-            "dimensiones":input("ingrese la dimension delproducto"),
-            "proveedor": input("ingrese elproveedor delproducto"),
-            "descripcion": input("ingrese la descripcion delproducto"),
-            "cantidad_en_stock": input("ingrese  la cantidad destock"),
-            "precio_venta": input("ingrese elprecio de ventas"),
-            "precio_proveedor": input("ingrese elprecio delproveedor")
-        }
-              pstPro.postProducto(producto)
-              print("producto guardado satisfactoriamente")
+        elif (opcion == 0 ):
+            break
