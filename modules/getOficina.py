@@ -1,7 +1,6 @@
 
 from tabulate import tabulate
 
-import storage.oficina as ofc
 
 
 def getAllCodigoCiudad():

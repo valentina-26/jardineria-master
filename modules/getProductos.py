@@ -8,8 +8,10 @@ def getAllData():
      data = peticion.json()
      return data
  
-
-
+def getproductCodigo(codigo):
+    for val in getAllData():
+        if(val.get('codigo producto') == codigo):
+            return[val]
 
 def getAllProveedor ():
     Nombre_proveedor =[ ] 

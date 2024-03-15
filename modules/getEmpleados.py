@@ -1,6 +1,6 @@
 from tabulate import tabulate
 
-import storage.empleado as emp
+
 
 
 

@@ -1,6 +1,17 @@
 
 from tabulate import tabulate
-import storage.cliente as cli
+import requests
+import os
+
+
+
+
+def getAllData():
+     peticion = requests.get("http://172.16.100.130:5003")
+     data = peticion.json()
+     return data
+ 
+
 
 #EJERCICIO 1
 def getAllClientName():

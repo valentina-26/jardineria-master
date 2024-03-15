@@ -2,7 +2,7 @@ from tabulate import tabulate
 
 from datetime import datetime
 
-import storage.pedido as ped
+
 
 #EJERCICIO 1
 def getAllEstadoEntregado():

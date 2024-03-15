@@ -1,7 +1,6 @@
 #print (tabulate(cliente.getAllclientesMadridRepre1138(), tablefmt = "rounded grid"))
 import os
 from tabulate import tabulate
-import os
 import modules.getEmpleados as empleado
 import modules.getOficina as oficina
 import modules.getClients as cliente
@@ -10,37 +9,8 @@ import modules.getProductos as productos
 import modules.getPago as pago
 import modules.postProducto as CRUDproducto
 import modules.getProductos as Repproducto
-
-
-def menuProducto():
-       while True:
-        os.system("clear")
-        print("""
- ___  __  ___  _  _  _  _  ___  _  _  __  ___    __      __   __      __  __  ___  _  _  _  _   
-(  ,)(  )(  _)( \( )( )( )(  _)( \( )(  )(   \  /  \    (  ) (  )    (  \/  )(  _)( \( )( )( )  
- ) ,\ )(  ) _) )  (  \\//  ) _) )  (  )(  ) ) )( () )   /__\  )(__    )    (  ) _) )  (  )()(   
-(___/(__)(___)(_)\_) (__) (___)(_)\_)(__)(___/  \__/   (_)(_)(____)  (_/\/\_)(___)(_)\_) \__/   
- ___  ___    ___  ___   __  ___  _  _  __  ____  __   ___                                       
-(   \(  _)  (  ,\(  ,) /  \(   \( )( )/ _)(_  _)/  \ / __)                                      
- ) ) )) _)   ) _/ )  \( () )) ) ))()(( (_   )( ( () )\__ \                                      
-(___/(___)  (_)  (_)\_)\__/(___/ \__/ \__) (__) \__/ (___/           
-             
-             
-                   1.Repotar los productos
-                   2.Guardar actualizar y eliminar productos 
-                   0.regresar al menu principal 
-                       """)
-               
-        opcion = int(input("\nSelecione una de las opciones: "))
-
-        if (opcion == 1):
-                        Repproducto.menu()
-        if (opcion == 2):
-                        CRUDproducto
-
-        if (opcion == 0):
-                        break
-
+import modules.menu as menu
+import re
 
 
 
@@ -67,28 +37,34 @@ if __name__ == "__main__":
                                                         
                                                     """)
         
-        opcion = int(input("seleccione una de las opciones: "))
+        
+        opcion = (input("seleccione una de las opciones: "))
+
+        if(re.match(r'[1-9]+$', opcion)is not None ):
+            opcion =int(opcion)
+            if(opcion>=0 and opcion<=5):
        
 
-        if(opcion == 1):
-                        cliente.menu()
-                        
-        elif(opcion == 2):
-                        oficina.menu()
-                        
-        elif(opcion == 3):
-                        empleado.menu()
-                        
-        elif(opcion == 4):
-                        pedido.menu()
-                
-        elif(opcion == 5):
-                        productos.menu()#
-                        
-        elif(opcion == 6):
-                        pago.menu()
-                        
-        elif(opcion == 0):
-                        break
-                        
-        
+                if(opcion == 1):
+                                    cliente.menu()
+                                    
+                elif(opcion == 2):
+                                    oficina.menu()
+                                    
+                elif(opcion == 3):
+                                    empleado.menu()
+                                    
+                elif(opcion == 4):
+                                    pedido.menu()
+                            
+                elif(opcion == 5):
+                                menu.menuProducto()
+                                    
+                elif(opcion == 6):
+                                    pago.menu()
+                                    
+                elif(opcion == 0):
+                                    break
+              
+                            
+            

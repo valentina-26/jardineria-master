@@ -1,9 +1,8 @@
 from tabulate import tabulate
-import storage.cliente as cli
-import storage.empleado as emp
+
 from datetime import datetime
 
-import storage.pago as pag
+
 
 
 def getAllPagos2008():
