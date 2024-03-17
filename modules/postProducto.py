@@ -7,7 +7,8 @@ import re
 import modules.getProductos as gP
 
 def postProducto():
-    #json-server storage/producto.json -b 5003
+        
+
         producto = dict()
 
         while True:
@@ -71,25 +72,27 @@ def postProducto():
 def menu():
     while True:
         print("""
-  __   ___  __  __  __  _  _  __  ___  ____  ___    __   ___     ___   __  ____  __   ___    ___  ___    ___  ___   __  ___  _  _  __  ____  __   ___ 
- (  ) (   \(  \/  )(  )( \( )(  )/ __)(_  _)(  ,)  (  ) (  ,)   (   \ (  )(_  _)/  \ / __)  (   \(  _)  (  ,\(  ,) /  \(   \( )( )/ _)(_  _)/  \ / __)
- /__\  ) ) ))    (  )(  )  (  )( \__ \  )(   )  \  /__\  )  \    ) ) )/__\  )( ( () )\__ \   ) ) )) _)   ) _/ )  \( () )) ) ))()(( (_   )( ( () )\__ \
-(_)(_)(___/(_/\/\_)(__)(_)\_)(__)(___/ (__) (_)\_)(_)(_)(_)\_)  (___/(_)(_)(__) \__/ (___/  (___/(___)  (_)  (_)\_)\__/(___/ \__/ \__) (__) \__/ (___/
-            
-           
-            1.Guardar un producto nuevo
-            0.regresar al menu principal  
-          
-              
-           
-    """)
-        
+__   ___  __  __  __  _  _  __  ___  ____  ___    __   ___     ___   __  ____  __   ___    ___  ___    ___  ___   __  ___  _  _  __  ____  __   ___ 
+        (  ) (   \(  \/  )(  )( \( )(  )/ __)(_  _)(  ,)  (  ) (  ,)   (   \ (  )(_  _)/  \ / __)  (   \(  _)  (  ,\(  ,) /  \(   \( )( )/ _)(_  _)/  \ / __)
+        /__\  ) ) ))    (  )(  )  (  )( \__ \  )(   )  \  /__\  )  \    ) ) )/__\  )( ( () )\__ \   ) ) )) _)   ) _/ )  \( () )) ) ))()(( (_   )( ( () )\__ \
+        (_)(_)(___/(_/\/\_)(__)(_)\_)(__)(___/ (__) (_)\_)(_)(_)(_)\_)  (___/(_)(_)(__) \__/ (___/  (___/(___)  (_)  (_)\_)\__/(___/ \__/ \__) (__) \__/ (___/
+                    
+                
+                    1.Guardar un producto nuevo
+                    0.regresar al menu principal  
+                
+                    
+                
+            """)
+
+                
         opcion = int(input("seleccione una de las opciones: "))
-        
+                
         if (opcion == 1):
-            print(tabulate(postProducto(),headers="keys",tablefmt="github"))
-            input("precione una tecla para continuar ......")
+                    print(tabulate(postProducto(),headers="keys",tablefmt="github"))
+                    input("precione una tecla para continuar ......")
 
         elif (opcion == 0):
-            break    
-       
+            break
+            
+            

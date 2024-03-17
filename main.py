@@ -5,10 +5,7 @@ import modules.getEmpleados as empleado
 import modules.getOficina as oficina
 import modules.getClients as cliente
 import modules.getPedido as pedido
-import modules.getProductos as productos
 import modules.getPago as pago
-import modules.postProducto as CRUDproducto
-import modules.getProductos as Repproducto
 import modules.menu as menu
 import re
 
@@ -32,6 +29,7 @@ if __name__ == "__main__":
                                     4.Pedidos
                                     5.productos
                                     6.pago
+                                    7.Gama
                                     0.salir                                                   
                                                                         
                                                         
@@ -46,22 +44,25 @@ if __name__ == "__main__":
        
 
                 if(opcion == 1):
-                                    cliente.menu()
+                                menu.menu.menuCLIENTE()
                                     
                 elif(opcion == 2):
-                                    oficina.menu()
+                                menu.menu.menuOFICINA()
                                     
                 elif(opcion == 3):
-                                    empleado.menu()
+                                menu.menu.menuEMPLEADO()
                                     
                 elif(opcion == 4):
-                                    pedido.menu()
+                                menu.menu.menuPEDIDIO()
                             
                 elif(opcion == 5):
-                                menu.menuProducto()
+                                menu.menuPRODUCTO()
                                     
                 elif(opcion == 6):
-                                    pago.menu()
+                                menu.menu.menuPAGO()
+
+                elif(opcion == 7):
+                                menu.menu.menuGAMA()
                                     
                 elif(opcion == 0):
                                     break

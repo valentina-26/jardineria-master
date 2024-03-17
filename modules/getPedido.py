@@ -1,13 +1,16 @@
 from tabulate import tabulate
-
+import requests
 from datetime import datetime
 
-
+def getAllPEDIDO():
+     peticion = requests.get("http://172.16.103.34:5506")
+     data = peticion.json()
+     return data
 
 #EJERCICIO 1
 def getAllEstadoEntregado():
     estado_producto=[ ] 
-    for val in ped.pedido:
+    for val in getAllPEDIDO:
        if(val.get("estado") == "Entregado"):
            estado_producto.append(val)
     return estado_producto
@@ -15,7 +18,7 @@ def getAllEstadoEntregado():
 #EJERCICIO 2
 def getAllEstadoRechazado():
     estado_producto=[ ] 
-    for val in ped.pedido:
+    for val in getAllPEDIDO:
        if(val.get("estado") == "Rechazado"):
            estado_producto.append(val)
     return estado_producto
@@ -23,7 +26,7 @@ def getAllEstadoRechazado():
 #EJERCICIO 3
 def getAllEstadoPendiente():
     estado_producto=[ ] 
-    for val in ped.pedido:
+    for val in getAllPEDIDO:
        if(val.get("estado") == "Pendiente"):
            estado_producto.append(val)
     return estado_producto
@@ -31,7 +34,7 @@ def getAllEstadoPendiente():
 #EJERCICIO 4
 def getAllcomentario():
     comentario=[] 
-    for val in ped.pedido:
+    for val in getAllPEDIDO:
        if(val.get("comentario")==None):
            comentario.append(val)
     return comentario
@@ -44,7 +47,7 @@ def getAllcomentario():
 #EJERCICIO 5
 def getAllpedidosEntregadosAtrasadosTiempo():
     pedidosEntregados=[]
-    for val in ped.pedido:
+    for val in getAllPEDIDO:
         
         if (val.get("estado") == "Entregado" and val.get("fecha_entrega") == None):
             val["fecha_entrega"] = val.get("fecha_esperada")
@@ -73,7 +76,7 @@ def getAllpedidosEntregadosAtrasadosTiempo():
  #EJERCICIO 6           
 def getAllcodigoPedidoCodigoClienteFecha():
     pedidoCodigoFecha=[]
-    for val in ped.pedido:
+    for val in getAllPEDIDO:
         
         if(val.get("estado")=="entregado") and val.get("fecha_de_entrega" == None):
             val.get["fecha_entrega"]  = val.get("fecha_esperada")
@@ -99,7 +102,7 @@ def getAllcodigoPedidoCodigoClienteFecha():
 #EJERCICIO 7
 def getAllpedidosRechazados2009():
     pedidosRechazados= []
-    for val in ped.pedido:
+    for val in getAllPEDIDO:
         fechaPedido = "/".join(val.get("fecha_pedido").split("-")[::-1])
         start = datetime.strptime(fechaPedido,"%d/%m/%Y") 
         
@@ -112,7 +115,7 @@ def getAllpedidosRechazados2009():
 #lista pedidos entregados en enero de cualquier año EJERCICIO 12
 def getAllPedidosEnero():
     PedidosEnero = list()
-    for val in ped.pedido:
+    for val in getAllPEDIDO:
         if (val.get("estado") == "Entregado" and val.get("fecha_entrega") != None):
             FechaEntregada = "/".join(val.get("fecha_entrega").split("-")[::-1])
             start = datetime.strptime(FechaEntregada, "%d/%m/%Y")

@@ -3,19 +3,19 @@ import requests
 import os
 
 
-def getAllData():
-     peticion = requests.get("http://172.16.100.130:5003")
+def getAllPRODUCTOS():
+     peticion = requests.get("http://172.16.103.34:5500")
      data = peticion.json()
      return data
  
 def getproductCodigo(codigo):
-    for val in getAllData():
+    for val in getAllPRODUCTOS():
         if(val.get('codigo producto') == codigo):
             return[val]
 
 def getAllProveedor ():
     Nombre_proveedor =[ ] 
-    for val in getAllData:
+    for val in getAllPRODUCTOS:
        if(val.get("proveedor")=="Murcia Seasons"):
            Nombre_proveedor.append(val)
     return Nombre_proveedor
@@ -27,7 +27,7 @@ def getAllProveedor ():
 
 def getAllStockPriceGama(gama, stock):
     condiciones = []
-    for val in  getAllData():
+    for val in  getAllPRODUCTOS():
         if (val.get("gama") == gama and val.get("cantidad_en_stock")>= stock):
          condiciones.append(val)
     
