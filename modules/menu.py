@@ -46,7 +46,7 @@ def menuPRODUCTO():
                      0.regresar al menu principal 
                             """)
                      
-              opcion = int(input("\nSelecione una de las opciones: "))
+              opcion = (input("\nSelecione una de las opciones: "))
               
               if(re.match(r'[1-9]+$', opcion)is not None ):
                                    opcion =int(opcion)
@@ -82,7 +82,7 @@ def menuCLIENTE():
                    0.regresar al menu principal 
                        """)
                
-        opcion = int(input("\nSelecione una de las opciones: "))
+        opcion = (input("\nSelecione una de las opciones: "))
         
         if(re.match(r'[1-9]+$', opcion)is not None ):
                             opcion =int(opcion)
@@ -117,7 +117,7 @@ def menuEMPLEADO():
                    0.regresar al menu principal 
                        """)
                
-        opcion = int(input("\nSelecione una de las opciones: "))
+        opcion = (input("\nSelecione una de las opciones: "))
         
         if(re.match(r'[1-9]+$', opcion)is not None ):
                             opcion =int(opcion)
@@ -152,7 +152,7 @@ def menuGAMA():
                    0.regresar al menu principal 
                        """)
                
-        opcion = int(input("\nSelecione una de las opciones: "))
+        opcion = (input("\nSelecione una de las opciones: "))
         
         if(re.match(r'[1-9]+$', opcion)is not None ):
                             opcion =int(opcion)
@@ -187,7 +187,7 @@ def menuOFICINA():
                    0.regresar al menu principal 
                        """)
                
-        opcion = int(input("\nSelecione una de las opciones: "))
+        opcion = (input("\nSelecione una de las opciones: "))
         
         if(re.match(r'[1-9]+$', opcion)is not None ):
                             opcion =int(opcion)
@@ -222,7 +222,7 @@ def menuPAGO():
                    0.regresar al menu principal 
                        """)
                
-        opcion = int(input("\nSelecione una de las opciones: "))
+        opcion = (input("\nSelecione una de las opciones: "))
         
         if(re.match(r'[1-9]+$', opcion)is not None ):
                             opcion =int(opcion)
@@ -244,7 +244,7 @@ def menuPEDIDIO():
         os.system("clear")
         print("""
  ___ __ ___ _  _ _  _ ___ _  _ __ ___   __      __  __      __  __ ___ _  _ _  _    ___ ___ 
-(  ,|  |  _| \( | )( |  _| \( |  |   \ /  \    (  )(  )    (  \/  |  _| \( | )( )  (   (  _)
+(  ,|  |  _| \( | )( |  _| \( |  |   \ /  \   (  )(  )    (  \/  |  _| \( | )( )  (   (  _)
  ) ,\)( ) _))  ( \\// ) _))  ( )( ) ) | () )   /__\ )(__    )    ( ) _))  ( )()(    ) ) ) _)
 (___(__|___|_)\_)(__)(___|_)\_|__|___/ \__/   (_)(_|____)  (_/\/\_|___|_)\_)\__/   (___(___)
 (  ,(  _|   (  |   \ /  \                                                                   
@@ -254,6 +254,7 @@ def menuPEDIDIO():
                    1.Repotar los productos
                    2.Guardar actualizar y eliminar productos 
                    0.regresar al menu principal 
+              
                        """)
                
         opcion = int(input("\nSelecione una de las opciones: "))

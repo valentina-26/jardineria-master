@@ -8,6 +8,7 @@ import modules.getPedido as pedido
 import modules.getPago as pago
 import modules.menu as menu
 import re
+import requests
 
 
 
@@ -44,25 +45,25 @@ if __name__ == "__main__":
        
 
                 if(opcion == 1):
-                                menu.menu.menuCLIENTE()
+                                menu.menuCLIENTE()
                                     
                 elif(opcion == 2):
-                                menu.menu.menuOFICINA()
+                                menu.menuOFICINA()
                                     
                 elif(opcion == 3):
-                                menu.menu.menuEMPLEADO()
+                                menu.menuEMPLEADO()
                                     
                 elif(opcion == 4):
-                                menu.menu.menuPEDIDIO()
+                                menu.menuPEDIDIO()
                             
                 elif(opcion == 5):
                                 menu.menuPRODUCTO()
                                     
                 elif(opcion == 6):
-                                menu.menu.menuPAGO()
+                                menu.menuPAGO()
 
                 elif(opcion == 7):
-                                menu.menu.menuGAMA()
+                                menu.menuGAMA()
                                     
                 elif(opcion == 0):
                                     break

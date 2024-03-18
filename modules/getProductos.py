@@ -4,18 +4,27 @@ import os
 
 
 def getAllPRODUCTOS():
-     peticion = requests.get("http://172.16.103.34:5500")
+     peticion = requests.get(" http://172.16.100.130:5500")
      data = peticion.json()
      return data
  
-def getproductCodigo(codigo):
-    for val in getAllPRODUCTOS():
-        if(val.get('codigo producto') == codigo):
-            return[val]
-
+# def getproductCodigo(codigo):
+#     peticion = requests.get(" http://172.16.100.130:5500/{codigo}")
+#     if(peticion.ok):
+#         return[peticion.json()]
+#     else:
+#         return[]
+    
+    
+def getProductoCodigo(codigo):
+    for val in  getAllPRODUCTOS():
+        if(val.get("codigo") == codigo):
+            return val
+    
+    
 def getAllProveedor ():
     Nombre_proveedor =[ ] 
-    for val in getAllPRODUCTOS:
+    for val in getAllPRODUCTOS():
        if(val.get("proveedor")=="Murcia Seasons"):
            Nombre_proveedor.append(val)
     return Nombre_proveedor

@@ -6,6 +6,7 @@ import requests
 import re
 import modules.getProductos as gP
 
+
 def GuardarProducto():
         
 
@@ -13,8 +14,10 @@ def GuardarProducto():
 
     while True:
         try:
+            
+            #CODIGO
             if not producto.get("codigo_producto"):
-             codigo = input("Ingrese el codigo del prodcuto: ")
+             codigo = input("Ingrese el codigo del producto: ")
             if re.match(r'^[A-Z]{2}-\d{3}$', codigo) is not None:
                 if gP.getProductoCodigo(codigo):
                     raise Exception("El codigo ingresado ya existe.")
@@ -94,11 +97,16 @@ def GuardarProducto():
                 
 
 
-    peticion = requests.post("http://172.16.103.34:5500",data=json.dumps(producto, indent=4).encode("UTF-8"))
+    peticion = requests.post(" http://172.16.100.130:5500",data=json.dumps(producto, indent=4).encode("UTF-8"))
     res =peticion.json()
     res["Mensaje"] = "producto guardado exitosamente"
     return [res]
 
+# def deleteProducto(id):
+#     if = (len(gP.getproductCodigo(id)))
+#     peticion =  requests.delete(" http://172.16.100.130:5500/producto/{id}")
+#     print(peticion)
+#     return[res]
 
 def menu():
     while True:
@@ -110,6 +118,7 @@ def menu():
                     
                 
                     1.Guardar un producto nuevo
+                    2. eliminar un producto
                     0.regresar al menu principal  
                 
                     
@@ -122,7 +131,11 @@ def menu():
         if (opcion == 1):
                     print(tabulate(GuardarProducto(),headers="keys",tablefmt="github"))
                     input("precione una tecla para continuar ......")
-
+        # if (opcion == 2): 
+        #     idproducto = input("ingrese elid del producti que desea eliminar. ")
+        #     print(tabulate(deleteProducto(idproducto)["body"],headers = "keys",tablefmt="github"))
+            
+            
         elif (opcion == 0):
             break
             
