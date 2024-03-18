@@ -13,6 +13,11 @@ def getAllCLIENTE():
      return data
 
 
+def getAllTelefono(telefono):
+    for val in getAllCLIENTE():
+        if val.get("telefono") == telefono:
+            return [val]
+
 
 #EJERCICIO 1
 def getAllClientName():

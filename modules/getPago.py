@@ -19,6 +19,18 @@ def getAllEMPLEADO():
      return data
 
 
+
+def getAllformapago(Pago):
+    for val in getAllPAGO():
+        if val.get("forma_pago") == Pago:
+            return [val]
+        
+        
+def getAllIDTransac(id):
+    for val in getAllPAGO():
+        if val.get("id_transaccion") == id:
+            return [val]
+
 def getAllPagos2008():
     Pagos2008SinRepetir = list()
     PagosRepetidos = set()
