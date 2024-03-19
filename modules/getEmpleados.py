@@ -6,12 +6,35 @@ def getAllEMPLEADO():
      peticion = requests.get("http://172.16.103.34:5502")
      data = peticion.json()
      return data
+ 
+ 
+ 
+def getcodigoEmpleado(codigo):
+    peticion = requests.get(f"http://172.16.103.34:5502/empleados/{codigo}")
+    return [peticion.json()] if peticion.ok else []
+
+
+
+
+def getallempleCode(codigo):
+    for val in getAllEMPLEADO():
+        if val.get("codigo_empleado") == codigo:
+            return [val]
+
+
+
+def getallpuestoo(puesto):
+    for val in getAllEMPLEADO():
+        if val.get("puesto") == puesto:
+            return [val]
+
+
 
 
 #EJERCICIO 1
 def getAllNombreApellidoEmailJefe(codigo):
     NombreApellidoEmail = []
-    for val in getAllEMPLEADO:
+    for val in getAllEMPLEADO():
         if val.get("codigo_jefe") == codigo:
             NombreApellidoEmail.append(
                 {
@@ -28,7 +51,7 @@ def getAllNombreApellidoEmailJefe(codigo):
  #EJERCICIO 2
 def getAllPuestoNombreApellidoEmailJefe():
     PuestoNombreApellido = []   
-    for val in getAllEMPLEADO:
+    for val in getAllEMPLEADO():
         if val.get("codigo_jefe") == None:
         
                 PuestoNombreApellido.append(
@@ -46,7 +69,7 @@ def getAllPuestoNombreApellidoEmailJefe():
  #EJERCICIO 3
 def getAllNombreApellidoPuesto():
         NombreApellidoPuesto =[]
-        for val in getAllEMPLEADO:
+        for val in getAllEMPLEADO():
             if val.get("puesto") != "Representante Ventas" :
             
                 NombreApellidoPuesto.append({

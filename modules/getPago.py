@@ -17,6 +17,12 @@ def getAllEMPLEADO():
      peticion = requests.get("http://172.16.103.34:5502")
      data = peticion.json()
      return data
+ 
+ 
+def GETpagocodigo(codigo):
+    peticion = requests.get("http://172.16.103.34:5505/{codigo}")
+    return [peticion.json()] if peticion.ok else []
+ 
 
 
 
@@ -34,7 +40,7 @@ def getAllIDTransac(id):
 def getAllPagos2008():
     Pagos2008SinRepetir = list()
     PagosRepetidos = set()
-    for val in getAllPAGO:
+    for val in getAllPAGO():
         FechaPago = "/".join(val.get("fecha_pago").split("-")[::-1])
         start = datetime.strptime(FechaPago, "%d/%m/%Y")
         if start.year == 2008:
@@ -47,7 +53,7 @@ def getAllPagos2008():
 
 def getAllPagosFecha():
     pagosFecha = []
-    for val in getAllPAGO:
+    for val in getAllPAGO():
         if("2008") in val.get("fecha_pago") and val.get("forma_pago") == ("PayPal"):
             pagosFecha.append({
                     "codigo_de_cliente": val.get("codigo_cliente"),
@@ -64,7 +70,7 @@ def getAllPagosFecha():
     #TODAS LAS FORMAS DE PAGO EJERCICIO 14 
 def getAllFormasPago():
     formadepago = []
-    for val in getAllPAGO:
+    for val in getAllPAGO():
         val.get("forma_pago")
         formadepago.append(val.get("forma_pago"))
         convertir = set(str(item)for item in formadepago)
@@ -75,12 +81,12 @@ def getAllFormasPago():
 def getAllClientReprePago():
     conPago = []
     otra= set()
-    for val in getAllCLIENTE:
-        for cast in getAllEMPLEADO:
-            for san in getAllPAGO:
+    for val in getAllCLIENTE():
+        for cast in getAllEMPLEADO():
+            for san in getAllPAGO():
                 
                 if (san.get("codigo_cliente") == val.get("codigo_cliente")) and (val.get("codigo_empleado_rep_ventas") == cast.get("codigo_empleado")):
-                    if val.get("nombre_cliente"): conPago
+                    if val.get("nombre_cliente"): not in conPago
                     conPago.append({
                              "Nombre Cliente": val.get("nombre_cliente"),
                         "Representante de ventas": f'{cast.get("nombre")} {cast.get("apellido1")}'
@@ -94,9 +100,9 @@ def getAllClientReprePago():
 def getAllClientRepresinPago():
     SINPago = []
     otra= set()
-    for val in getAllCLIENTE:
-        for cast in getAllEMPLEADO:
-            for san in getAllPAGO:
+    for val in getAllCLIENTE():
+        for cast in getAllEMPLEADO():
+            for san in getAllPAGO():
                 
                 if (san.get("codigo_cliente") != val.get("codigo_cliente")) and (val.get("codigo_empleado_rep_ventas") == cast.get("codigo_empleado")):
                   SINPago.append  ({

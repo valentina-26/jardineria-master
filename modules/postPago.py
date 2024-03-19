@@ -86,19 +86,39 @@ def GuardarPago():
 
 
 
+def DeletePago(id):
+    data = Gp.GETpagocodigo(id)
+    if len(data):
+        peticion = requests.delete("http://172.16.103.34:5505/pagos/{id}")
+        if peticion.status_code == 204:
+            data.append({"message":  "Pago eliminado exitosamente"})
+            return {
+                "body": data,
+                "status": peticion.status_code,
+            }     
+    else:
+        return {
+                "body":[{
+                    "Mensaje": "Pago no encontrado.",
+                    "id": id,
+            }],
+            "status": 400,
+            }
+
+
+
+
 
 def menu():
     while True:
         print("""
-   __  ___ __  __ __ _  _ __ ___ ____ ___   __  ___     ___  __ ____ __  ___ 
- (  )(   (  \/  |  | \( |  ) __|_  _|  ,) (  )(  ,)   (   \(  |_  _)  \/ __)
- /__\ ) ) )    ( )( )  ( )(\__ \ )(  )  \ /__\ )  \    ) ) )__\ )(( () )__ \
-(_)(_|___(_/\/\_|__|_)\_|__|___/(__)(_)\_|_)(_|_)\_)  (___(_)(_|__)\__/(___/
-(   (  _)  (  ,(  )/ _)/  \                                                 
- ) ) ) _)   ) _/__( (/( () )                                                
-(___(___)  (_)(_)(_)__/\__/                                                                   
+                        ADMINISTRAR
+                                    DATOS
+                                           DE
+                                              PAGO                                                         
                 
                     1.Guardar un producto nuevo
+                    2.eliminar pago
                     0.regresar al menu principal  
                 
                     
@@ -110,6 +130,14 @@ def menu():
         if (opcion == 1):
                     print(tabulate(GuardarPago(),headers="keys",tablefmt="github"))
                     input("precione una tecla para continuar ......")
+                    
+                    
+                    
+        if (opcion == 2):
+            idPago = int(input("Ingrese el id del pago: "))
+            print(tabulate(DeletePago(idPago), headers="keys", tablefmt="github"))
+            input("precione una tecla para continuar .....")
+            
 
         elif (opcion == 0):
             break

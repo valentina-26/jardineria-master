@@ -8,12 +8,10 @@ def getAllPRODUCTOS():
      data = peticion.json()
      return data
  
-# def getproductCodigo(codigo):
-#     peticion = requests.get(" http://172.16.100.130:5500/{codigo}")
-#     if(peticion.ok):
-#         return[peticion.json()]
-#     else:
-#         return[]
+ 
+def getProductoCodigooo(codigo):
+    peticion = requests.get("http://172.16.100.130:5500/productos/{codigo}")
+    return [peticion.json()] if peticion.ok else []
     
     
 def getProductoCodigo(codigo):

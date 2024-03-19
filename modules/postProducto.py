@@ -24,7 +24,7 @@ def GuardarProducto():
                 else:
                     producto["codigo_producto"] = codigo
             else:
-                raise Exception(f"El codigo no cumple con el estandar establecido ( ejm: XX-111 ).")      
+                raise Exception("El codigo no cumple con el estandar establecido ejm: XX-444 ")      
                 
 
 
@@ -102,21 +102,47 @@ def GuardarProducto():
     res["Mensaje"] = "producto guardado exitosamente"
     return [res]
 
-# def deleteProducto(id):
-#     if = (len(gP.getproductCodigo(id)))
-#     peticion =  requests.delete(" http://172.16.100.130:5500/producto/{id}")
-#     print(peticion)
-#     return[res]
+
+
+
+
+def DeleteProducto(id):
+    data = gP.getProductoCodigooo(id)
+    if len(data):
+        peticion = requests.delete("http://192.168.1.6:5501/productos/{id}")
+        if peticion.status_code == 204:
+            data.append({"message":  "Producto eliminado correctamente"})
+            return {
+                "body": data,
+                "status": peticion.status_code,
+            }     
+    else:
+        return {
+                "body":[{
+                    "Mensaje": "Producto no encontrado.",
+                    "id": id,
+            }],
+            "status": 400,
+            }
+        
+        
+        
+        
+        
+        
+        
+    
 
 def menu():
     while True:
         print("""
-  __   ___  __  __  __  _  _  __  ___  ____  ___    __   ___     ___   __  ____  __   ___    ___  ___    ___  ___   __  ___  _  _  __  ____  __   ___ 
- (  ) (   \(  \/  )(  )( \( )(  )/ __)(_  _)(  ,)  (  ) (  ,)   (   \ (  )(_  _)/  \ / __)  (   \(  _)  (  ,\(  ,) /  \(   \( )( )/ _)(_  _)/  \ / __)
- /__\  ) ) ))    (  )(  )  (  )( \__ \  )(   )  \  /__\  )  \    ) ) )/__\  )( ( () )\__ \   ) ) )) _)   ) _/ )  \( () )) ) ))()(( (_   )( ( () )\__ \
-(_)(_)(___/(_/\/\_)(__)(_)\_)(__)(___/ (__) (_)\_)(_)(_)(_)\_)  (___/(_)(_)(__) \__/ (___/  (___/(___)  (_)  (_)\_)\__/(___/ \__/ \__) (__) \__/ (___/
-                    
-                
+                                        ADMINISTRAR
+                                                   DATOS
+                                                        DE
+                                                          PRODUCTOS
+                                                          
+                                                          
+                                                          
                     1.Guardar un producto nuevo
                     2. eliminar un producto
                     0.regresar al menu principal  
@@ -131,9 +157,11 @@ def menu():
         if (opcion == 1):
                     print(tabulate(GuardarProducto(),headers="keys",tablefmt="github"))
                     input("precione una tecla para continuar ......")
-        # if (opcion == 2): 
-        #     idproducto = input("ingrese elid del producti que desea eliminar. ")
-        #     print(tabulate(deleteProducto(idproducto)["body"],headers = "keys",tablefmt="github"))
+                    
+        elif opcion == 2:
+                idProducto = int(input("Ingrese el id del producto: "))
+                print(tabulate(DeleteProducto(idProducto), headers="keys", tablefmt="github"))
+                input("precione una tecla para continuar:......")
             
             
         elif (opcion == 0):

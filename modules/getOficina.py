@@ -6,12 +6,24 @@ def getAllOFICINA():
      peticion = requests.get("http://172.16.103.34:5504")
      data = peticion.json()
      return data
+ 
+ 
+def getCodigosOficiina(codigo):
+    peticion = requests.get(f"http://172.16.103.34:5504/oficinas/{codigo}")
+    return [peticion.json()] if peticion.ok else []
+ 
+ 
+ 
+def GETCodigoOficina(codigo):
+    for val in getAllOFICINA():
+        if val.get("codigo_oficina") == codigo:
+            return [val]
 
 
 
 def getAllCodigoCiudad():
     codigoCiudad = []
-    for val in getAllOFICINA:
+    for val in getAllOFICINA():
         codigoCiudad.append({
             "codigo": val.get("codigo_oficina"),
             "ciudad": val.get("ciudad")
@@ -20,7 +32,7 @@ def getAllCodigoCiudad():
 
 def getAllCiudadTelefono(pais):
     ciudadTelefono = []
-    for val in getAllOFICINA:
+    for val in getAllOFICINA():
         if (val.get("pais") == pais):
             ciudadTelefono.append({
                 "ciudad": val.get("ciudad"),
