@@ -8,7 +8,7 @@ import modules.getEmpleados as emp
 
 
 def getAllCLIENTE():
-     peticion = requests.get("http://172.16.103.34:5501")
+     peticion = requests.get("http://154.38.171.54:5001/cliente")
      data = peticion.json()
      return data
 

@@ -111,7 +111,7 @@ def GuardarEmpleado():
                 
             
             
-    peticion = requests.get("http://172.16.103.34:5502",data=json.dumps(guardar, indent=4).encode("UTF-8"))
+    peticion = requests.get("http://154.38.171.54:5003/empleados",data=json.dumps(guardar, indent=4).encode("UTF-8"))
     res = peticion.json.json()
     res["mensaje"] = "Empleado guardado exitosamnete"
     return[res]
@@ -121,7 +121,7 @@ def GuardarEmpleado():
 def DeleteEmpleado(id):
     data = gE.getcodigoEmpleado(id)
     if len(data):
-        peticion = requests.delete("http://172.16.103.34:5502/empleados/{id}")
+        peticion = requests.delete("http://154.38.171.54:5003/empleados/{id}")
         if peticion.status_code == 204:
             data.append({"message":  "Empleado eliminado correctamente"})
             return {

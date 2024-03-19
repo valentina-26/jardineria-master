@@ -97,7 +97,7 @@ def GuardarProducto():
                 
 
 
-    peticion = requests.post(" http://172.16.100.130:5500",data=json.dumps(producto, indent=4).encode("UTF-8"))
+    peticion = requests.post("http://154.38.171.54:5008/productos",data=json.dumps(producto, indent=4).encode("UTF-8"))
     res =peticion.json()
     res["Mensaje"] = "producto guardado exitosamente"
     return [res]
@@ -109,7 +109,7 @@ def GuardarProducto():
 def DeleteProducto(id):
     data = gP.getProductoCodigooo(id)
     if len(data):
-        peticion = requests.delete("http://192.168.1.6:5501/productos/{id}")
+        peticion = requests.delete("http://154.38.171.54:5008/productos/{id}")
         if peticion.status_code == 204:
             data.append({"message":  "Producto eliminado correctamente"})
             return {

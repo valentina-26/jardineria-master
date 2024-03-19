@@ -4,13 +4,13 @@ import os
 
 
 def getAllPRODUCTOS():
-     peticion = requests.get(" http://172.16.100.130:5500")
+     peticion = requests.get(" http://154.38.171.54:5008/productos")
      data = peticion.json()
      return data
  
  
 def getProductoCodigooo(codigo):
-    peticion = requests.get("http://172.16.100.130:5500/productos/{codigo}")
+    peticion = requests.get("http://154.38.171.54:5008/productos/{codigo}")
     return [peticion.json()] if peticion.ok else []
     
     

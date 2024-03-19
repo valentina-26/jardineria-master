@@ -19,10 +19,12 @@ def guardarCliente():
                 if re.match(r'^[0-9]+$', codigo) is not None:
                     codigo = int(codigo)
                     if gC.getOneClienteCodigo(codigo):
-                        raise Exception("el codio del cliente a existe")
+                        raise Exception("el codio del cliente ya existe")
                     else:
-                        raise Exception ("el codigo inresado no es valido,por favor ingrese solo digitos numericos")
-            
+                        cliente["codigo_cliente"] = codigo
+                else:
+                    raise Exception ("el codigo ingresado no es valido,por favor ingrese solo digitos numericos")
+                    
             
              #NOMBRE CLIENTE
              
@@ -149,7 +151,7 @@ def guardarCliente():
         except Exception as error:
             print(error)
 
-    peticion = requests.post("http://172.16.103.34:5501", data=json.dumps(cliente, indent=4).encode("UTF-8"))
+    peticion = requests.post("http://154.38.171.54:5001/cliente", data=json.dumps(cliente, indent=4).encode("UTF-8"))
     res = peticion.json()
     res["Mensaje"] = "Cliente Guardado exitosamente"
     return [res]   
@@ -163,7 +165,7 @@ def menu():
                                           DE
                                             CLIENTES
                 
-                    1.Guardar un producto nuevo
+                    1.Guardar un cliente nuevo
                     0.regresar al menu principal  
                 
                     

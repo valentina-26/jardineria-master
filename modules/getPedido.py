@@ -3,13 +3,13 @@ import requests
 from datetime import datetime
 
 def getAllPEDIDO():
-     peticion = requests.get("http://172.16.103.34:5506")
+     peticion = requests.get("http://154.38.171.54:5007/pedidos")
      data = peticion.json()
      return data
  
  
 def getPedidoCodigoasd(codigo):
-    peticion = requests.get("http://172.16.103.34:5506/pedidos/{codigo}")
+    peticion = requests.get("http://154.38.171.54:5007/pedidos/{codigo}")
     return [peticion.json()] if peticion.ok else []
  
  

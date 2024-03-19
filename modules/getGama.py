@@ -1,7 +1,7 @@
 import requests
 
 def getAllGAMA():
-    peticion = requests.get("http://172.16.103.34:5503")
+    peticion = requests.get("http://154.38.171.54:5004/gama")
     data = peticion.json()
     return data
 

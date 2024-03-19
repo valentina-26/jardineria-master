@@ -4,17 +4,17 @@ from datetime import datetime
 
 
 def getAllPAGO():
-     peticion = requests.get("http://172.16.103.34:5505")
+     peticion = requests.get("http://154.38.171.54:5006/pagos")
      data = peticion.json()
      return data
 
 def getAllCLIENTE():
-     peticion = requests.get("http://172.16.103.34:5501")
+     peticion = requests.get("http://154.38.171.54:5001/cliente")
      data = peticion.json()
      return data
 
 def getAllEMPLEADO():
-     peticion = requests.get("http://172.16.103.34:5502")
+     peticion = requests.get("http://154.38.171.54:5003/empleados")
      data = peticion.json()
      return data
  
@@ -86,7 +86,7 @@ def getAllClientReprePago():
             for san in getAllPAGO():
                 
                 if (san.get("codigo_cliente") == val.get("codigo_cliente")) and (val.get("codigo_empleado_rep_ventas") == cast.get("codigo_empleado")):
-                    if val.get("nombre_cliente"): not in conPago
+                    if val.get("nombre_cliente"):conPago
                     conPago.append({
                              "Nombre Cliente": val.get("nombre_cliente"),
                         "Representante de ventas": f'{cast.get("nombre")} {cast.get("apellido1")}'

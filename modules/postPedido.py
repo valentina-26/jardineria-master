@@ -63,7 +63,7 @@ def guardarPedido():
             #CODIGO CLIENTE
             if not pedido.get("codigo_cliente"):
                 codigo_cliente=input("ingrese el codigo del cliente")
-                if re.match if re.match(r'^[0-9]+$',codigo)is not None:
+                if re.match(r'^[0-9]+$',codigo)is not None:
                     codigo_cliente = int(codigo_cliente)
                     AAA =Pe.getAllcodigoCliente(codigo)
                     if AAA:
@@ -77,7 +77,7 @@ def guardarPedido():
         except Exception as error:
             print(error)
             
-    peticion = requests.post("http://172.16.103.34:5506", data=json.dumps(pedido, indent=4).encode("UTF-8"))
+    peticion = requests.post("http://154.38.171.54:5007/pedidos", data=json.dumps(pedido, indent=4).encode("UTF-8"))
     res = peticion.json()
     res["Mensaje"] = "Pedido Guardado exitosamente"
     return [res]
@@ -87,7 +87,7 @@ def guardarPedido():
 def DeletePedido(id):
     data = Pe.getPedidoCodigoasd(id)
     if len(data):
-        peticion = requests.delete(f"http://192.168.1.6:5506/pedidos/{id}")
+        peticion = requests.delete("http://154.38.171.54:5007/pedidos/{id}")
         if peticion.status_code == 204:
             data.append({"message":  "Pedido eliminado exitosamente"})
             return {

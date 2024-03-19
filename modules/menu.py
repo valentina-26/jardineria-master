@@ -7,6 +7,15 @@
 #& json-server storage/pedido.json -b 5506
 
 
+# cliente:  http://154.38.171.54:5001/cliente
+# detalles: http://154.38.171.54:5002/detalle_pedido
+# empleados: http://154.38.171.54:5003/empleados
+# gama?producto: http://154.38.171.54:5004/gama
+# oficina: http://154.38.171.54:5005/oficinas
+# pago: http://154.38.171.54:5006/pagos
+# pedido: http://154.38.171.54:5007/pedidos
+# producto: http://154.38.171.54:5008/productos
+
 import re
 import modules.postProducto as CRUDproducto
 import modules.getProductos as Repproducto
@@ -56,7 +65,7 @@ def menuPRODUCTO():
                                           if (opcion == 1):
                                                  Repproducto.menu()
                                           if (opcion == 2):
-                                                 CRUDcliente.menu()
+                                                 CRUDproducto.menu()
 
                                           if (opcion == 0):
                                                  break
@@ -68,17 +77,15 @@ def menuCLIENTE():
        while True:
         os.system("clear")
         print("""
-  ___ __ ___ _  _ _  _ ___ _  _ __ ___   __      __  __      __  __ ___ _  _ _  _    ___ ___ 
-(  ,|  |  _| \( | )( |  _| \( |  |   \ /  \    (  )(  )    (  \/  |  _| \( | )( )  (   (  _)
- ) ,\)( ) _))  ( \\// ) _))  ( )( ) ) | () )   /__\ )(__    )    ( ) _))  ( )()(    ) ) ) _)
-(___(__|___|_)\_)(__)(___|_)\_|__|___/ \__/   (_)(_|____)  (_/\/\_|___|_)\_)\__/   (___(___)
- / _|  ) (  |  _| \( |_  _|  _) __)                                                         
-( (_ )(__ )( ) _))  (  )(  ) _)__ \                                                         
- \__|____|__|___|_)\_)(__)(___|___/                                                                                                                                                                                    
+                                  BIENVENIDO
+                                            AL
+                                              MENU
+                                                   DE
+                                                      CLIENTES                                                                                                                                                                                   
                                                                                                                               
              
-                   1.Repotar los productos
-                   2.Guardar actualizar y eliminar productos 
+                   1.Repotar los clientes
+                   2.Guardar actualizar y eliminar clientes
                    0.regresar al menu principal 
                        """)
                
@@ -92,7 +99,7 @@ def menuCLIENTE():
                                    if (opcion == 1):
                                           repCliente.menu()
                                    if (opcion == 2):
-                                          CRUDproducto.menu()
+                                          CRUDcliente.menu()
 
                                    if (opcion == 0):
                                           break
@@ -241,9 +248,9 @@ def menuPAGO():
                                    
 def menuPEDIDIO():
        while True:
-        os.system("clear")
-        print("""
- ___ __ ___ _  _ _  _ ___ _  _ __ ___   __      __  __      __  __ ___ _  _ _  _    ___ ___ 
+              os.system("clear")
+              print("""
+___ __ ___ _  _ _  _ ___ _  _ __ ___   __      __  __      __  __ ___ _  _ _  _    ___ ___ 
 (  ,|  |  _| \( | )( |  _| \( |  |   \ /  \   (  )(  )    (  \/  |  _| \( | )( )  (   (  _)
  ) ,\)( ) _))  ( \\// ) _))  ( )( ) ) | () )   /__\ )(__    )    ( ) _))  ( )()(    ) ) ) _)
 (___(__|___|_)\_)(__)(___|_)\_|__|___/ \__/   (_)(_|____)  (_/\/\_|___|_)\_)\__/   (___(___)
@@ -256,22 +263,20 @@ def menuPEDIDIO():
                    0.regresar al menu principal 
               
                        """)
-               
-        opcion = int(input("\nSelecione una de las opciones: "))
-        
-        if(re.match(r'[1-9]+$', opcion)is not None ):
-                            opcion =int(opcion)
-                            if(opcion>=0 and opcion<=5):
+                     
+              opcion = input("\nSelecione una de las opciones: ")
               
+              if re.match(r'[1-9]+$', opcion)is not None :
+                     opcion =int(opcion)
+                     
+                     if (opcion == 1):
+                            Reppedido.menu()
+                     elif (opcion == 2):
+                            CRUDpedido.menu()
 
-                                   if (opcion == 1):
-                                          Reppedido.menu()
-                                   if (opcion == 2):
-                                          CRUDpedido.menu()
-
-                                   if (opcion == 0):
-                                          break     
-                                   
+                     elif (opcion == 0):
+                            break     
+                     
 
 
                                                      
