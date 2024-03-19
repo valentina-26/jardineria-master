@@ -79,7 +79,7 @@ def GuardarPago():
             print(error)
 
 
-    peticion = requests.get("http://154.38.171.54:5006/pagos",data=json.dumps(GuardarPago, indent=4).encode("UTF-8"))
+    peticion = requests.post("http://154.38.171.54:5006/pagos",data=json.dumps(GuardarPago, indent=4).encode("UTF-8"))
     res = peticion.json.json()
     res["mensaje"] = "Pago guardado exitosamnete"
     return[res]

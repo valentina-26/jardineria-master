@@ -110,17 +110,15 @@ def menuEMPLEADO():
        while True:
         os.system("clear")
         print("""
- ___ __ ___ _  _ _  _ ___ _  _ __ ___   __      __  __      __  __ ___ _  _ _  _    ___ ___ 
-(  ,|  |  _| \( | )( |  _| \( |  |   \ /  \    (  )(  )    (  \/  |  _| \( | )( )  (   (  _)
- ) ,\)( ) _))  ( \\// ) _))  ( )( ) ) | () )   /__\ )(__    )    ( ) _))  ( )()(    ) ) ) _)
-(___(__|___|_)\_)(__)(___|_)\_|__|___/ \__/   (_)(_|____)  (_/\/\_|___|_)\_)\__/   (___(___)
-(  _|  \/  |  ,(  ) (  _)(  )(   \ /  \/ __)                                                
- ) _))    ( ) _/)(__ ) _)/__\ ) ) | () )__ \                                                
-(___|_/\/\_|_) (____|___|_)(_|___/ \__/(___/                                                                                                                                                                                        
+                           BIENVENIDO 
+                                     AL
+                                       MENU
+                                           DE
+                                              PRODUCTOS                                                                                                                                                                                 
                                                                                                                               
              
-                   1.Repotar los productos
-                   2.Guardar actualizar y eliminar productos 
+                   1.Repotar empleados
+                   2.Guardar actualizar y eliminar empleados
                    0.regresar al menu principal 
                        """)
                
@@ -154,8 +152,8 @@ def menuGAMA():
 ( (/\/__\ )    ( /__\                                                                       
  \__(_)(_|_/\/\_|_)(_)                                                                                                                                                     
              
-                   1.Repotar los productos
-                   2.Guardar actualizar y eliminar productos 
+                   1.Repotar gama
+                   2.Guardar actualizar y eliminar gama 
                    0.regresar al menu principal 
                        """)
                
@@ -189,8 +187,8 @@ def menuOFICINA():
 ( () ) _))( (_ )( )  ( /__\                                                                 
  \__(_) (__)__|__|_)\_|_)(_)                                                                                                                                               
              
-                   1.Repotar los productos
-                   2.Guardar actualizar y eliminar productos 
+                   1.Repotar oficina
+                   2.Guardar actualizar y eliminar oficina
                    0.regresar al menu principal 
                        """)
                
@@ -224,8 +222,8 @@ def menuPAGO():
  ) _/__( (/( () )                                                                           
 (_)(_)(_)__/\__/                                                                                                                                                                                                                   
              
-                   1.Repotar los productos
-                   2.Guardar actualizar y eliminar productos 
+                   1.Repotar pago
+                   2.Guardar actualizar y eliminar pagos 
                    0.regresar al menu principal 
                        """)
                
@@ -258,8 +256,8 @@ ___ __ ___ _  _ _  _ ___ _  _ __ ___   __      __  __      __  __ ___ _  _ _  _ 
  ) _/) _)) ) )( ) ) | () )                                                                  
 (_) (___|___(__|___/ \__/                                                                                                                                                                                                                                                                                      
              
-                   1.Repotar los productos
-                   2.Guardar actualizar y eliminar productos 
+                   1.Repotar los pedidos
+                   2.Guardar actualizar y eliminar pedidos
                    0.regresar al menu principal 
               
                        """)

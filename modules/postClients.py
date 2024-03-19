@@ -154,7 +154,28 @@ def guardarCliente():
     peticion = requests.post("http://154.38.171.54:5001/cliente", data=json.dumps(cliente, indent=4).encode("UTF-8"))
     res = peticion.json()
     res["Mensaje"] = "Cliente Guardado exitosamente"
-    return [res]   
+    return [res]  
+
+ 
+
+def Deletecliente(id):
+    data = gC.getcodigoClientee(id)
+    if len(data):
+        peticion = requests.delete("http://154.38.171.54:5001/cliente/{id}")
+        if peticion.status_code == 204:
+            data.append({"message":  "Producto eliminado correctamente"})
+            return {
+                "body": data,
+                "status": peticion.status_code,
+            }     
+    else:
+        return {
+                "body":[{
+                    "Mensaje": "Producto no encontrado.",
+                    "id": id,
+            }],
+            "status": 400,
+            }
 
 
 def menu():
@@ -166,6 +187,7 @@ def menu():
                                             CLIENTES
                 
                     1.Guardar un cliente nuevo
+                    2.Eliminar
                     0.regresar al menu principal  
                 
                     
@@ -178,6 +200,11 @@ def menu():
         if (opcion == 1):
                     print(tabulate(guardarCliente(),headers="keys",tablefmt="github"))
                     input("precione una tecla para continuar ......")
+                    
+                    
+        if (opcion == 2):
+            idcliENTE=input("ingrese el id del cliente")
+            print(tabulate(Deletecliente(idcliENTE),headers="keys",tablefmt="github"))
 
         elif (opcion == 0):
             break

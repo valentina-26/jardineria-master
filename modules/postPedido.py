@@ -4,10 +4,11 @@ import os
 import re
 import modules.getPedido as Pe
 from tabulate import tabulate
+import modules.getClients as Gc
 
 def guardarPedido():
     
-    pedido = dict ()
+    pedido = dict()
     while True:
         try:
             
@@ -15,7 +16,7 @@ def guardarPedido():
             
             #CODIGO PEDIDO
             if not pedido.get("codigo_pedido"):
-                codigo = input ("ingrese el codigo del producto: ")
+                codigo = input ("ingrese el codigo del pedido: ")
                 if re.match(r'^[A-Z]{2}-\d{3}$', codigo)is not None:
                     if Pe.getAllCodigoPedido(codigo):
                         raise Exception ("el codigo ingresado ya existe")
@@ -28,51 +29,51 @@ def guardarPedido():
             
             #FECHA PEDIDO
             if not pedido.get("fechas_pedido"):
-                fecha_pedido = input("ingrese la fecha del pedidoo")
+                fecha_pedido = input("ingrese la fecha del pedido: ")
                 if re.match(r'^\d{4}-\d{2}-\d{2}$',fecha_pedido)is not None:
                     pedido["fecha_pedidio"] = fecha_pedido
                     
             #FECHA ESPERADA
             if not pedido.get("fechas_esperada"):
-                fecha_esperada = input("ingrese la fecha esperada del producto")
+                fecha_esperada = input("ingrese la fecha esperada del producto: ")
                 if re.match(r'^\d{4}-\d{2}-\d{2}$',fecha_esperada)is not None:
                     pedido["fecha_esperada"] = fecha_esperada
                     
                     
             #FECHA ENTREGA
             if not pedido.get("fechas_entrega"):
-                fecha_entrega = input("ingrese la fecha esperada del producto")
+                fecha_entrega = input("ingrese la fecha de entraga del producto: ")
                 if re.match(r'^\d{4}-\d{2}-\d{2}$',fecha_entrega)is not None:
                     pedido["fecha_entrega"] = fecha_entrega
                     
                     
             #ESTADO
             if not pedido.get("estado"):
-                estado=input("ingrese el estado del producto")
+                estado=input("ingrese el estado del producto: ")
                 if re.match(r'^[A-Z][a-z]*$',estado) is not None:
                    pedido["estado"] = estado
                    
                    
             #COMENTARIO
             if not pedido.get("comentario"):
-                comentario =input("ingrese el cometario del producto")
+                comentario =input("ingrese el cometario del producto: ")
                 if comentario.strip() == "":
                     pedido["comentario"] = comentario
                     
                     
             #CODIGO CLIENTE
             if not pedido.get("codigo_cliente"):
-                codigo_cliente=input("ingrese el codigo del cliente")
+                codigo = input("Ingrese el codigo del cliente: ")
                 if re.match(r'^[0-9]+$',codigo)is not None:
-                    codigo_cliente = int(codigo_cliente)
-                    AAA =Pe.getAllcodigoCliente(codigo)
-                    if AAA:
-                        pedido["codigo_producto"] = codigo
+                    codigo = int(codigo)
+                    asd = Gc.getOneClienteCodigo(codigo)
+                    if asd:
+                        pedido["codigo_cliente"] = codigo
                         break
                     else:
-                        raise Exception ("el codigo del cliente no esta registrado") 
+                        raise Exception("El codigo del cliente no esta registrado.")
                 else:
-                    raise Exception ("el codigo del cliente no esta registrado")                  
+                    raise Exception("El codigo del cliente no esta registrado.")                  
             
         except Exception as error:
             print(error)
@@ -117,8 +118,8 @@ def menu():
                                                                        PEDIDO
                     
                 
-                    1.Guardar un producto nuevo
-                    2. eliminar un producto
+                    1.Guardar un pedido nuevo
+                    2.Eliminar un pedido
                     0.regresar al menu principal  
                 
                     

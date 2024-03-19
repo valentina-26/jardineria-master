@@ -30,13 +30,12 @@ def GuardarProducto():
 
             #NOMBRE
             # validacion de cadena solo  letras primera Mayus
-            if(not producto.get("nombre")):
-                nombre = input("ingrese el nombre del producto")
-                if(re.match(r'^[A-Z][a-z]*\s*)+$',nombre)is not None):
+            if not producto.get("nombre"):
+                nombre = input(f"Ingrese el nombre del producto: ")
+                if re.match(r'^[A-Z][a-zA-Z0-9\s]*$', nombre) is not None:
                     producto["nombre"] = nombre
-                    break
                 else:
-                    raise Exception("el nombre del producto no cumple con el estandar establecido")
+                    raise Exception("Nombre no valido, por favor  todas las palabras deben iniciar con mayúsculas.")
                 
 
             #DIMENSIONES
@@ -44,7 +43,7 @@ def GuardarProducto():
             if not producto.get("dimensiones"):
                 dimensiones = input("ingrese las dimensiones del producto: ")
                 if(re.match) (r'^\d+-\d+$', dimensiones) is not None:
-                    producto[dimensiones] = dimensiones
+                    producto["dimensiones"] = dimensiones
                 else:
                     raise Exception("Dimensiones no válidas, la forma correcta es ( numero-numero ).")
                     
@@ -53,22 +52,22 @@ def GuardarProducto():
             if not producto.get("proveedor"):
                 proveedor = input("ingrese el proveedor del producto: ")
                 if(re.match) (r'^[A-Z][a-zA-Z0-9\s.]*$', proveedor) is not None:
-                    producto[proveedor] = proveedor
+                    producto["proveedor"] = proveedor
                 else:
                     raise Exception("Proveedor no valido, recuerde que la primera palabra debe iniciar con mayúsculas.")
                     
             #DESCRIPCION
             if not producto.get("descripcion"):
                 descripcion= input("ingrese la descripcion del producto del producto: ")
-                producto[descripcion] = descripcion
+                producto["descripcion"] = descripcion
                     
             #CANTIDAD EN STOCK
 
-            if not producto.get("cantidad_en_stock"):
-                cantidad_en_stock= input("ingrese la cantidad en stock  del producto: ")
-                if(re.match) (r'^[0-9]+$', cantidad_en_stock) is not None:
-                    cantidad_en_stock = int (cantidad_en_stock)
-                    producto[cantidad_en_stock] = cantidad_en_stock
+            if not producto.get("CantidadEnStock"):
+                CantidadEnStock= input("ingrese la cantidad en stock  del producto: ")
+                if(re.match) (r'^[0-9]+$', CantidadEnStock) is not None:
+                    CantidadEnStock = int (CantidadEnStock)
+                    producto["CantidadEnStock"] = CantidadEnStock
                 else:
                     raise Exception("Cantidad no valida, asegurese de ingresar solo dígitos numéricos.")
                     
@@ -78,7 +77,7 @@ def GuardarProducto():
                 precio_venta= input("ingrese el precio de venta del producto: ")
                 if(re.match) (r'^[0-9]+$', precio_venta) is not None:
                     precio_venta = int (precio_venta)
-                    producto[precio_venta] = precio_venta
+                    producto["precio_venta"] = precio_venta
                 else:
                     raise Exception("Precio de venta no valido, asegurese de ingresar solo dígitos numéricos.")
                     
@@ -88,7 +87,7 @@ def GuardarProducto():
                 precio_proveedor= input("ingrese el precio proveedor del producto: ")
                 if(re.match) (r'^[0-9]+$', precio_proveedor) is not None:
                     precio_proveedor = int (precio_proveedor)
-                    producto[precio_proveedor] = precio_proveedor
+                    producto["precio_proveedor"] = precio_proveedor
                 else:
                     raise Exception("Precio de proveedor no valido, asegurese de ingresar solo dígitos numéricos.")
             
@@ -97,10 +96,10 @@ def GuardarProducto():
                 
 
 
-    peticion = requests.post("http://154.38.171.54:5008/productos",data=json.dumps(producto, indent=4).encode("UTF-8"))
-    res =peticion.json()
-    res["Mensaje"] = "producto guardado exitosamente"
-    return [res]
+        peticion = requests.post("http://154.38.171.54:5008/productos",data=json.dumps(producto, indent=4).encode("UTF-8"))
+        res =peticion.json()
+        res["Mensaje"] = "producto guardado exitosamente"
+        return [res]
 
 
 

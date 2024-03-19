@@ -27,7 +27,7 @@ def guardaroficina():
                 
             #CIUDAD
             if not oficina.get("ciudad"):
-                ciudad=input("ingrese la ciudad")
+                ciudad=input("ingrese la ciudad: ")
                 if re.match(r'^[A-Z][a-zA-Z0-9\s]*$', ciudad) is not None:
                     oficina["ciudad"] = ciudad
                 else:
@@ -35,7 +35,7 @@ def guardaroficina():
             
             #PAIS
             if not oficina.get("pais"):
-                pais=input("ingrese el pais")
+                pais=input("ingrese el pais:")
                 if re.match(r'^[A-Z][a-zA-Z0-9\s]*$', pais) is not None:
                     oficina["pais"] = pais
                 else:
@@ -44,7 +44,7 @@ def guardaroficina():
              
             #REGION
             if not oficina.get("region"):
-                region=input("ingrese la region")
+                region=input("ingrese la region: ")
                 if re.match(r'^[A-Z][a-zA-Z0-9\s]*$', region) is not None:
                     oficina["region"] = region
                 else:
@@ -129,7 +129,7 @@ def menu():
         
         
         if opcion == 1:
-            print(tabulate(GuardarOficina(), headers="keys", tablefmt="github"))
+            print(tabulate(guardaroficina(), headers="keys", tablefmt="github"))
             input("precione una tecla para continuar: ")
             
         elif opcion == 2:

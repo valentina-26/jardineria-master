@@ -11,6 +11,11 @@ def getAllCLIENTE():
      peticion = requests.get("http://154.38.171.54:5001/cliente")
      data = peticion.json()
      return data
+ 
+ 
+def getcodigoClientee(codigo):
+    peticion = requests.get(f"http://154.38.171.54:5001/cliente/{codigo}")
+    return [peticion.json()] if peticion.ok else []
 
 
 def getAllTelefono(telefono):
@@ -22,7 +27,7 @@ def getAllTelefono(telefono):
 #EJERCICIO 1
 def getAllClientName():
     clienteName=list()
-    for val in getAllCLIENTE:
+    for val in getAllCLIENTE():
         CodigoName=dict({
         
             "codigo_cliente": val.get('codigo_cliente'),
@@ -35,7 +40,7 @@ def getAllClientName():
 #EJERCICIO 2    
 def getOneClienteCodigo(codigo):
     clienteName=list()
-    for val in getAllCLIENTE:
+    for val in getAllCLIENTE():
         if(val.get("codigo_cliente")==codigo):
             return({
                     
@@ -48,7 +53,7 @@ def getOneClienteCodigo(codigo):
 #EJERCICIO 3                
 def getAllClientsCreditCiudad(limiteCredit, ciudad):
     ClienteCredito = list()
-    for val in getAllCLIENTE:
+    for val in getAllCLIENTE():
         if(val.get("limite_credito")>=limiteCredit and val.get("ciudad")==ciudad):
             ClienteCredito.append({
                 "Codigo": val.get('codigo_cliente'),
@@ -67,7 +72,7 @@ def getAllClientsCreditCiudad(limiteCredit, ciudad):
 
 def getAllClientPaisRegionCiudad(pais, region=None, ciudad=None):
     clientZone = list()
-    for val in getAllCLIENTE:
+    for val in getAllCLIENTE():
 
         if (val.get('pais') == pais):
 
@@ -89,7 +94,7 @@ def getAllClientPaisRegionCiudad(pais, region=None, ciudad=None):
 #EJERCICIO 4
 def getAllClientsCodigoEmpleadoRepVentas(codigo):
     codigo_empleado = list()
-    for val in getAllCLIENTE:
+    for val in getAllCLIENTE():
         if (val.get("codigo_empleado_rep_ventas")==codigo):
            codigo_empleado.append(val)
     return codigo_empleado
@@ -98,7 +103,7 @@ def getAllClientsCodigoEmpleadoRepVentas(codigo):
 
 def getAllCLientCreditCiudad(limitCredit, ciudad) :
     clienteCredic= list()
-    for val in getAllCLIENTE:
+    for val in getAllCLIENTE():
         if (val.get('limite_credito') >= limitCredit and val.get('ciudad') == ciudad) :
             clienteCredic.append(val)
     return clienteCredic
@@ -107,7 +112,7 @@ def getAllCLientCreditCiudad(limitCredit, ciudad) :
 # EJERCICIO 5
 def getAllclientesEspañoles():
     clientesEspañoles = []
-    for val in getAllCLIENTE:
+    for val in getAllCLIENTE():
         if(val.get("Region") == "Spain"):
         
             clientesEspañoles.append (val)
@@ -117,7 +122,7 @@ def getAllclientesEspañoles():
 #EJERCICIO 6
 def getAllclientesMadridRepre1138():
     clienMadr1138 = []
-    for val in getAllCLIENTE:
+    for val in getAllCLIENTE():
         if(val.get("ciudad")== ('Madrid')):
             if val.get("codigo_empleado_rep_ventas") == 11 or 38:
                 if val.get("nombre") == ("nombre_cliente"):
@@ -136,7 +141,7 @@ def getAllclientesMadridRepre1138():
 #EJERCICIO 7
 def getAllnombreCliapellidoRepre():
     NombreApell=[]
-    for val in getAllCLIENTE:
+    for val in getAllCLIENTE():
         for cast in emp.empleados:
             if val.get("codigo representante de ventas") == cast.get("codigo_empleado"):
                 

@@ -13,7 +13,7 @@ def GuardarEmpleado():
             
             #CODIGO EMPLEADO
             if not empleado.get("codigo_empleado"):
-                codigo = input("ingrese el codigo del empleado")
+                codigo = input("ingrese el codigo del empleado: ")
                 if re.match(r'^[0-9]+$', codigo) is not None:
                     codigo_empleado = int(codigo)
                     GFGF = gE.getallempleCode(codigo)
@@ -27,7 +27,7 @@ def GuardarEmpleado():
 
             #NOMBRE
             if not empleado.get("nombre"):
-                nombre = input("ingrese el nombre del empleado")
+                nombre = input("ingrese el nombre del empleado: ")
                 if re.match(r'^[A-Z][a-zA-Z0-9\s]*$', nombre) is not None:
                     empleado["nombre"] = nombre
                 else:
@@ -36,7 +36,7 @@ def GuardarEmpleado():
             
             #APELLIDO 1
             if not empleado.get("apellido1"):
-                apellido1 = input("ingrese el primer apellido del empleado")
+                apellido1 = input("ingrese el primer apellido del empleado: ")
                 if re.match(r'^[A-Z][a-zA-Z0-9\s]*$', apellido1) is not None:
                     empleado["apellido1"] = apellido1
                 else:
@@ -45,7 +45,7 @@ def GuardarEmpleado():
             
             #APELLIDO2
             if not empleado.get("apellido2"):
-                apellido2=input("ingrese el segundo apellido del empleado")
+                apellido2=input("ingrese el segundo apellido del empleado: ")
                 if re.match(r'^[A-Z][a-zA-Z0-9\s]*$', apellido2) is not None:
                     empleado["apellido2"] = apellido2
                 else:
@@ -64,7 +64,7 @@ def GuardarEmpleado():
             
             #EMAIL    
             if not empleado.get("email"):
-                email = input(f"Ingrese el email del empleado: ")
+                email = input("Ingrese el email del empleado: ")
                 if re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$', email) is not None:
                     empleado["email"] = email
                 else:
@@ -111,8 +111,8 @@ def GuardarEmpleado():
                 
             
             
-    peticion = requests.get("http://154.38.171.54:5003/empleados",data=json.dumps(guardar, indent=4).encode("UTF-8"))
-    res = peticion.json.json()
+    peticion = requests.post("http://154.38.171.54:5003/empleados",data=json.dumps(empleado, indent=4).encode("UTF-8"))
+    res = peticion.json()
     res["mensaje"] = "Empleado guardado exitosamnete"
     return[res]
 
@@ -148,7 +148,7 @@ def menu():
                                          DE
                                             EMPLEADOS                  
                 
-                    1.Guardar un producto nuevo
+                    1.Guardar un empleado nuevo
                     2.Eliminar empleado
                     0.regresar al menu principal  
                 
