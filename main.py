@@ -53,7 +53,7 @@ if __name__ == "__main__":
                                 menu.menuEMPLEADO()
                                     
                 elif(opcion == 4):
-                                menu.menuPEDIDIO()
+                                menu.menuPEDIDO()
                             
                 elif(opcion == 5):
                                 menu.menuPRODUCTO()

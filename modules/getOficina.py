@@ -3,13 +3,13 @@ from tabulate import tabulate
 import requests
 
 def getAllOFICINA():
-     peticion = requests.get("http://154.38.171.54:5005/oficinas")
+     peticion = requests.get(f"http://154.38.171.54:5005/oficinas")
      data = peticion.json()
      return data
  
  
 def getCodigosOficiina(codigo):
-    peticion = requests.get("http://154.38.171.54:5005/oficinas/{codigo}")
+    peticion = requests.get(f"http://154.38.171.54:5005/oficinas/{codigo}")
     return [peticion.json()] if peticion.ok else []
  
  
@@ -19,7 +19,7 @@ def GETCodigoOficina(codigo):
         if val.get("codigo_oficina") == codigo:
             return [val]
         
-def DeleteOficina(id):
+def DeleteOficinaaaa(id):
     peticion = requests.get(f"http://154.38.171.54:5005/oficinas/{id}")
     return [peticion.json()] if peticion.ok else []
 

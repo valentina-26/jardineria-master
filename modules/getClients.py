@@ -4,8 +4,10 @@ import requests
 import os
 import modules.getEmpleados as emp
 
-
-
+def getAllEMPLEADO():
+     peticion = requests.get("http://154.38.171.54:5003/empleados")
+     data = peticion.json()
+     return data
 
 def getAllCLIENTE():
      peticion = requests.get("http://154.38.171.54:5001/cliente")
@@ -18,7 +20,7 @@ def getcodigoClientee(codigo):
     return [peticion.json()] if peticion.ok else []
 
 
-def DeleteCliente(id):
+def DeleteClienteaaa(id):
     peticion = requests.get(f"http://154.38.171.54:5001/cliente/{id}")
     return [peticion.json()] if peticion.ok else []
 
@@ -147,7 +149,7 @@ def getAllclientesMadridRepre1138():
 def getAllnombreCliapellidoRepre():
     NombreApell=[]
     for val in getAllCLIENTE():
-        for cast in emp.empleados:
+        for cast in getAllEMPLEADO:
             if val.get("codigo representante de ventas") == cast.get("codigo_empleado"):
                 
                 otra ={

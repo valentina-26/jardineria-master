@@ -4,29 +4,29 @@ from datetime import datetime
 
 
 def getAllPAGO():
-     peticion = requests.get("http://154.38.171.54:5006/pagos")
+     peticion = requests.get(f"http://154.38.171.54:5006/pagos")
      data = peticion.json()
      return data
 
 def getAllCLIENTE():
-     peticion = requests.get("http://154.38.171.54:5001/cliente")
+     peticion = requests.get(f"http://154.38.171.54:5001/cliente")
      data = peticion.json()
      return data
 
 def getAllEMPLEADO():
-     peticion = requests.get("http://154.38.171.54:5003/empleados")
+     peticion = requests.get(f"http://154.38.171.54:5003/empleados")
      data = peticion.json()
      return data
  
  
  
-def DeletePago(id):
+def DeletePagoaaaaaa(id):
     peticion = requests.get(f"http://154.38.171.54:5006/pagos/{id}")
     return [peticion.json()] if peticion.ok else []
 
  
 def GETpagocodigo(codigo):
-    peticion = requests.get("http://172.16.103.34:5505/{codigo}")
+    peticion = requests.get(f"http://172.16.103.34:5505/{codigo}")
     return [peticion.json()] if peticion.ok else []
  
 

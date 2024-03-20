@@ -23,7 +23,7 @@ def guardaroficina():
                     else:
                         oficina["codigo_oficina"] = codigo_oficina
                 else:
-                    raise Exception("Codigo no valido")
+                    raise Exception("Codigo no valido,ejm:BCN-ES")
                 
             #CIUDAD
             if not oficina.get("ciudad"):
@@ -90,7 +90,7 @@ def guardaroficina():
     return [res]
 
 def DeleteOficina(id):
-    data = gO.DeleteOficina(id)
+    data = gO.DeleteOficinaaaa(id)
     if len(data):
         peticion = requests.delete(f"http://154.38.171.54:5005/oficinas/{id}")
         if peticion.status_code == 204:
@@ -106,7 +106,12 @@ def DeleteOficina(id):
                     "id": id,
             }],
             "status": 400,
+            
             }
+        
+    asdasdasdasd =dict()
+    return asdasdasdasd    
+        
         
         
 

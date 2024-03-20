@@ -119,7 +119,7 @@ def GuardarEmpleado():
 
 
 def DeleteEmpleado(id):
-    data = gE.DeleteEmpleado(id)
+    data = gE.DeleteEmpleadoaaaa(id)
     if len(data):
         peticion = requests.delete(f"http://154.38.171.54:5003/empleados/{id}")
         if peticion.status_code == 204:
@@ -136,6 +136,9 @@ def DeleteEmpleado(id):
             }],
             "status": 400,
             }
+        
+    asdasdasdasd =dict()
+    return asdasdasdasd    
 
 
 

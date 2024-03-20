@@ -232,7 +232,7 @@ def menuPAGO():
           
 #MENU PEDIDO
                                    
-def menuPEDIDIO():
+def menuPEDIDO():
        while True:
               os.system("clear")
               print("""

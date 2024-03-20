@@ -16,43 +16,43 @@ def GuardarPago():
             #CODIGO CLIENTE
             
             if not pago.get("codigo_cliente"):
-                codigo_cliente = input("ingrese el codigo del cliente: ")
-                if re.match(r'^[0-9]+$', codigo_cliente) is not None:
-                    codigo_cliente =int(codigo_cliente)
-                    adios= gC.getOneClienteCodigo(codigo_cliente)
+                codigo =  input("Ingrese el codigo del cliente: ")
+                if re.match(r'^[0-9]+$', codigo) is not None:
+                    codigo =int(codigo)
+                    adios = gC.getOneClienteCodigo(codigo)
                     if adios:
-                        pago["codigo_cliente"] = codigo_cliente
+                        pago["codigo_cliente"] = codigo
                     else:
                         raise Exception("Codigo cliente no encontrado.")
                 else:
-                    raise Exception("Codigo no valido,por favor ingresar solo sigitos numericos")
+                    raise Exception("Codigo no valido, por favor ingresar solo digitos numéricos.")
 
             
             # FORMA PAGO
             if not pago.get("forma_pago"):
-                forma_pago = input("ingrese la forma de pago: ")
+                forma_pago = input("Ingrese el metodo de pago: ")
                 if re.match(r'^[A-Z][a-zA-Z0-9-\s]*$', forma_pago) is not None:
-                    holi =Gp.getAllformapago(forma_pago)
-                    if holi:
+                    mmmmm = Gp.getAllformapago(forma_pago)
+                    if mmmmm:
                         pago["forma_pago"] = forma_pago
                     else:
-                        raise Exception("Forma de pago no valida,por favor intente con:PayPal / Transferencia / Cheque")
+                        raise Exception("Formas de pago validas:PayPal / Transferencia / Cheque ")
                 else:
-                    raise Exception("por favor intente con:PayPal / Transferencia / ChequeP")
+                    raise Exception("Formas de pago validas:PayPal / Transferencia / Cheque ")
             
            
             # ID TRANSACCION
             
             if not pago.get("id_transaccion"):
-                id_transaccion = input("Ingrear el ID de transaccion: ")
+                id_transaccion = input("Ingrese el ID de transaccion: ")
                 if re.match(r'^[a-zA-Z]{2}-[a-zA-Z]{3}-\d{6}$', id_transaccion) is not None:
-                    Nose = Gp.getAllIDTransac(id_transaccion)
-                    if Nose:
+                    sss = Gp.getAllIDTransac(id_transaccion)
+                    if sss:
                         raise Exception("El ID de transaccion ya existe.")
                     else:
                         pago["id_transaccion"] = id_transaccion
                 else:
-                    raise Exception("ID no valido, porfavor rectificar")
+                    raise Exception("ID no valido, sigue el formato ejm: ak-std-000026 ")
                 
             # FECHA PAGO
 
@@ -61,7 +61,7 @@ def GuardarPago():
                 if re.match(r'^\d{4}-\d{2}-\d{2}$',fecha_pago)is not None:
                     pago["fecha_pago"] = fecha_pago
                 else:
-                    raise Exception("Fecha ingresada no valida,por favor utilice el formato (Año/mes-/dia)")
+                    raise Exception("Fecha no valida,utilice Año-mes-dia")
 
 
             # PAGO
@@ -73,25 +73,24 @@ def GuardarPago():
                     pago["total"] = total
                     break
                 else:
-                    raise Exception("Total por favor ingresar solo digitos numericos.")
+                    raise Exception("Total no valido, por favor solo digitos numericos.")
 
         except Exception as error:
             print(error)
 
 
-    peticion = requests.post("http://154.38.171.54:5006/pagos",data=json.dumps(GuardarPago, indent=4).encode("UTF-8"))
+    peticion = requests.post("http://154.38.171.54:5006/pagos", data=json.dumps(pago, indent=4).encode("UTF-8"))
     res = peticion.json()
-    res["mensaje"] = "Pago guardado exitosamnete"
-    return[res]
-
+    res["Mensaje"] = "Pago Guardado exitosamente"
+    return [res]
 
 
 def DeletePago(id):
-    data = Gp.DeletePago(id)
+    data = Gp.DeletePagoaaaaaa(id)
     if len(data):
         peticion = requests.delete(f"http://154.38.171.54:5006/pagos/{id}")
         if peticion.status_code == 204:
-            data.append({"message":  "Pago eliminado correctamente"})
+            data.append({"message":  "Pedido eliminado correctamente"})
             return {
                 "body": data,
                 "status": peticion.status_code,
@@ -99,11 +98,14 @@ def DeletePago(id):
     else:
         return {
                 "body":[{
-                    "Mensaje": "Pago no encontrado.",
+                    "Mensaje": "Pedido no encontrado.",
                     "id": id,
             }],
             "status": 400,
-        }
+            }
+        
+    asdasdasdasd =dict()
+    return asdasdasdasd    
 
 
 
@@ -129,15 +131,15 @@ def menu():
         opcion = int(input("seleccione una de las opciones: "))
                 
         if (opcion == 1):
-                    print(tabulate(GuardarPago(),headers="keys",tablefmt="github"))
-                    input("precione una tecla para continuar ......")
+                print(tabulate(GuardarPago(),headers="keys",tablefmt="github"))
+                input("precione una tecla para continuar ......")
                     
                     
                     
-        if opcion == 2:
-                idPago = input("Ingrese el id del pago: ")
-                print(tabulate(DeletePago(idPago), headers="keys", tablefmt="github"))
-                input("precione una tecla para continuar .....")
+        elif opcion == 2:
+            pagoid = input("Ingrese el id del Pedido: ")
+            print(tabulate(DeletePago(pagoid), headers="keys", tablefmt="github"))
+            input("precione una tecla para continuar ......")
             
 
         if (opcion == 0):

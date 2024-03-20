@@ -8,99 +8,104 @@ import modules.getProductos as gP
 
 
 def GuardarProducto():
-        
-
     producto = dict()
-
     while True:
         try:
             
+            
             #CODIGO
             if not producto.get("codigo_producto"):
-             codigo = input("Ingrese el codigo del producto: ")
-            if re.match(r'^[A-Z]{2}-\d{3}$', codigo) is not None:
-                if gP.getProductoCodigo(codigo):
-                    raise Exception("El codigo ingresado ya existe.")
+                codigo = input("Ingrese el codigo del prodcuto: ")
+                if re.match(r'^[A-Z]{2}-\d{3}$', codigo) is not None:
+                    if gP.getProductoCodigo(codigo):
+                        raise Exception("El codigo ingresado ya existe.")
+                    else:
+                        producto["codigo_producto"] = codigo
                 else:
-                    producto["codigo_producto"] = codigo
-            else:
-                raise Exception("El codigo no cumple con el estandar establecido ejm: XX-444 ")      
+                    raise Exception("El codigo no cumple con el estandar por favor:ejm XX-111")
                 
-
-
-            #NOMBRE
-            # validacion de cadena solo  letras primera Mayus
+                
+             #NOMBRE   
+                
             if not producto.get("nombre"):
-                nombre = input(f"Ingrese el nombre del producto: ")
+                nombre = input("Ingrese el nombre del producto: ")
                 if re.match(r'^[A-Z][a-zA-Z0-9\s]*$', nombre) is not None:
                     producto["nombre"] = nombre
                 else:
-                    raise Exception("Nombre no valido, por favor  todas las palabras deben iniciar con mayúsculas.")
+                    raise Exception("Nombre no valido, por favor todas las palabras iniciar con mayúsculas.")
                 
-
+                
+                
+            #GAMA    
+            if not producto.get("gama"):
+                gama = input("Ingrese la gama del producto: ")
+                if re.match(r'^[A-Z][a-zA-Z0-9\s.]*$', nombre) is not None:
+                        producto["gama"] = gama
+                else:
+                    raise Exception("Gamas validas: ( Herbaceas, Herramientas, Aromáticas, Frutales, Ornamentales )")
+                
+                
             #DIMENSIONES
-            # VALIDAR NUMEROS
             if not producto.get("dimensiones"):
-                dimensiones = input("ingrese las dimensiones del producto: ")
-                if(re.match) (r'^\d+-\d+$', dimensiones) is not None:
+                dimensiones = input("Ingrese las dimensiones del producto: ")
+                if re.match(r'^\d+-\d+$', dimensiones) is not None:
                     producto["dimensiones"] = dimensiones
                 else:
-                    raise Exception("Dimensiones no válidas, la forma correcta es ( numero-numero ).")
-                    
-            # PROVEEDOR
-            #VALIDAR LETRAS,SOLO  PRIMERA EN MAYUSCULA
-            if not producto.get("proveedor"):
-                proveedor = input("ingrese el proveedor del producto: ")
-                if(re.match) (r'^[A-Z][a-zA-Z0-9\s.]*$', proveedor) is not None:
+                    raise Exception("Dimensiones no válidas intente asi: numero-numero ")
+                
+                
+            #PROVEEDOR    
+            if not producto.get("proveedor"): 
+                proveedor = input("Ingrese el proveedor: ")
+                if re.match(r'^[A-Z][a-zA-Z0-9\s.]*$', proveedor) is not None:
                     producto["proveedor"] = proveedor
                 else:
-                    raise Exception("Proveedor no valido, recuerde que la primera palabra debe iniciar con mayúsculas.")
-                    
-            #DESCRIPCION
-            if not producto.get("descripcion"):
-                descripcion= input("ingrese la descripcion del producto del producto: ")
-                producto["descripcion"] = descripcion
-                    
-            #CANTIDAD EN STOCK
-
-            if not producto.get("CantidadEnStock"):
-                CantidadEnStock= input("ingrese la cantidad en stock  del producto: ")
-                if(re.match) (r'^[0-9]+$', CantidadEnStock) is not None:
-                    CantidadEnStock = int (CantidadEnStock)
-                    producto["CantidadEnStock"] = CantidadEnStock
-                else:
-                    raise Exception("Cantidad no valida, asegurese de ingresar solo dígitos numéricos.")
-                    
-            #PRECIO VENTA
-
-            if not producto.get("precio_venta"):
-                precio_venta= input("ingrese el precio de venta del producto: ")
-                if(re.match) (r'^[0-9]+$', precio_venta) is not None:
-                    precio_venta = int (precio_venta)
-                    producto["precio_venta"] = precio_venta
-                else:
-                    raise Exception("Precio de venta no valido, asegurese de ingresar solo dígitos numéricos.")
-                    
-            #PRECIO PROVEEDOR
-
-            if not producto.get("precio_proveedor"):
-                precio_proveedor= input("ingrese el precio proveedor del producto: ")
-                if(re.match) (r'^[0-9]+$', precio_proveedor) is not None:
-                    precio_proveedor = int (precio_proveedor)
-                    producto["precio_proveedor"] = precio_proveedor
-                else:
-                    raise Exception("Precio de proveedor no valido, asegurese de ingresar solo dígitos numéricos.")
+                    raise Exception("Proveedor no valido, por favor ingrese la primera letra en MAYUSCULA")
             
-        except Exception as error:
-            print(error)                        
+            
+            #DESCRIPCION   
+            if not producto.get("descripcion"):
+                descripcion = input("Ingrese una descripción: ")
+                producto["descripcion"] = descripcion
+            
+            
+            #CANTIDAD STOCK
+            if not producto.get("cantidadEnStock"):
+                cantidad = input("Ingrese el precio de venta: ")
+                if re.match(r'^[0-9]+$', cantidad) is not None:
+                    cantidad = int(cantidad)
+                    producto["cantidadEnStock"] = cantidad
+                else:
+                    raise Exception("Cantidad no valida, por favor ingrese solo digitos numericos.")
                 
-
-
-        peticion = requests.post("http://154.38.171.54:5008/productos",data=json.dumps(producto, indent=4).encode("UTF-8"))
-        res =peticion.json()
-        res["Mensaje"] = "producto guardado exitosamente"
-        return [res]
-
+                
+            #PRECIO VENTA   
+            if not producto.get("precio_venta"):
+                PrecioVenta = input("Ingrese el precio de venta: ")
+                if re.match(r'^[0-9]+$', PrecioVenta) is not None:
+                    PrecioVenta = int(PrecioVenta)
+                    producto["precio_venta"] = PrecioVenta
+                else:
+                    raise Exception("Precio de venta no valido, por favor ingrese solo dígitos numéricos.")
+                
+                
+            #PROVEEDOR    
+            if not producto.get("precio_proveedor"):
+                PrecioProveedor = input("Ingrese el precio del proveedor: ")
+                if re.match(r'^[0-9]+$', PrecioProveedor) is not None:
+                    PrecioProveedor = int(PrecioProveedor)
+                    producto["precio_proveedor"] = PrecioProveedor
+                    break
+                else:
+                    raise Exception("Precio de proveedor no valido, porfavor solo dígitos numéricos.")
+        
+        except Exception as error:
+            print(error)                     
+    
+    peticion = requests.post("http://154.38.171.54:5008/productos", data=json.dumps(producto, indent=4).encode("UTF-8"))
+    res = peticion.json()
+    res["Mensaje"] = "Producto Guardado"
+    return [res]
 
 
 
@@ -123,8 +128,12 @@ def DeleteProducto(id):
             }],
             "status": 400,
             }
+
+    asdasdasdasd =dict()
+    return asdasdasdasd
         
-        return [res]
+        
+
         
         
         
@@ -156,16 +165,19 @@ def menu():
         opcion = int(input("seleccione una de las opciones: "))
                 
         if (opcion == 1):
-                    print(tabulate(GuardarProducto(),headers="keys",tablefmt="github"))
-                    input("precione una tecla para continuar ......")
+            print(tabulate(GuardarProducto(),headers="keys",tablefmt="github"))
+            input("precione una tecla para continuar ......")
                     
-        elif opcion == 2:
+        if opcion == 2:
             idProducto = input("Ingrese el id del producto: ")
             print(tabulate(DeleteProducto(idProducto), headers="keys", tablefmt="github"))
-            input("precione una tecla para continuar:......")
-            
-            
-        elif (opcion == 0):
+            input("precione una tecla para continuar......")
+        if opcion  == 0:
             break
+        
+       
+            
+            
+        
             
             

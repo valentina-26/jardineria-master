@@ -9,7 +9,7 @@ def getAllPEDIDO():
  
  
 def getPedidoCodigoasd(codigo):
-    peticion = requests.get("http://154.38.171.54:5007/pedidos/{codigo}")
+    peticion = requests.get(f"http://154.38.171.54:5007/pedidos/{codigo}")
     return [peticion.json()] if peticion.ok else []
  
 def DeletePEDIDO(id):
@@ -126,16 +126,18 @@ def getAllcodigoPedidoCodigoClienteFecha():
 
 #todos los pedidios rechazados en el 2009 EJERCICIO 11
 #EJERCICIO 7
+
+
 def getAllpedidosRechazados2009():
-    pedidosRechazados= []
+    pedidosRechazados2009 = []
     for val in getAllPEDIDO():
-        fechaPedido = "/".join(val.get("fecha_pedido").split("-")[::-1])
-        start = datetime.strptime(fechaPedido,"%d/%m/%Y") 
-        
-        if val.get("estado") == "Rechazado" and start.year == 2009:
-        
-              pedidosRechazados.append(val)
-    return pedidosRechazados 
+        fechaRechazo = val.get("fecha_esperada")
+        if val.get("estado") == "Rechazado" and fechaRechazo.startswith("2009"):
+            pedidosRechazados2009.append(val)
+    return pedidosRechazados2009
+
+
+
 
 #EJERCICIO 8
 #lista pedidos entregados en enero de cualquier año EJERCICIO 12

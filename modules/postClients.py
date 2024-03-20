@@ -73,7 +73,7 @@ def guardarCliente():
                 if re.match(r'^\d{1,3} ?\d{4}-?\d{4}$',fax) is not None:
                     cliente["fax"]= fax
                 else:
-                    raise Exception("el fax ingresado no es valido")
+                    raise Exception("el fax ingresado no es valido,ejm 5556901746")
                 
             #LINEA DIRECCION 1
             
@@ -123,7 +123,7 @@ def guardarCliente():
                 if re.match(r'^\d{4,5}$', codigo_postal) is not None:
                     cliente["codigo_postal"] = codigo_postal
                 else:
-                    raise Exception("Codigo postal no valido, asegurese de ingresar 4 o 5 dígitos numéricos")
+                    raise Exception("Codigo postal no valido, ejm:24006")
             
             
             #CODIGO EMPLEADO REP VENTAS
@@ -134,7 +134,7 @@ def guardarCliente():
                     codigo_empleado_rep_ventas = int(codigo_empleado_rep_ventas)
                     cliente["codigo_empleado_rep_ventas"] = codigo_empleado_rep_ventas
                 else:
-                    raise Exception("Codigo ingresado no valido,por favor ingresar solo dígitos numéricos")
+                    raise Exception("Codigo ingresado no valido,ejm:19")
             
             
             #LIMITE CREDITO
@@ -159,7 +159,7 @@ def guardarCliente():
  
 
 def DeleteClientes(id):
-    data = gC.DeleteCliente(id)
+    data = gC.DeleteClienteaaa(id)
     if len(data):
         peticion = requests.delete(f"http://154.38.171.54:5001/cliente/{id}")
         if peticion.status_code == 204:
@@ -176,6 +176,10 @@ def DeleteClientes(id):
             }],
             "status": 400,
             }
+        
+        
+    asdasdasdasd =dict()
+    return asdasdasdasd    
 
 
 def menu():
