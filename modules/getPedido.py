@@ -12,14 +12,17 @@ def getPedidoCodigoasd(codigo):
     peticion = requests.get("http://154.38.171.54:5007/pedidos/{codigo}")
     return [peticion.json()] if peticion.ok else []
  
-def DeletePedido(id):
+def DeletePEDIDO(id):
     peticion = requests.get(f"http://154.38.171.54:5007/pedidos/{id}")
     return [peticion.json()] if peticion.ok else []
  
+def getAllEstdo(estado):
+    for val in getAllPEDIDO():
+        if val.get("estado") == estado:
+            return [val] 
  
  
- 
-def getAllcodigoCliente(codigo):
+def GETALLCODIGOPEDIDO(codigo):
     for val in getAllPEDIDO():
         if(val.get("codigo_cliente") == codigo):
             return val

@@ -38,9 +38,9 @@ if __name__ == "__main__":
         
         opcion = (input("seleccione una de las opciones: "))
 
-        if(re.match(r'[1-9]+$', opcion)is not None ):
+        if(re.match(r'[0-9]+$', opcion)is not None ):
             opcion =int(opcion)
-            if(opcion>=0 and opcion<=5):
+            if(opcion>=0 and opcion<=6):
        
 
                 if(opcion == 1):

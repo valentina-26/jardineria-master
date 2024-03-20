@@ -124,6 +124,8 @@ def DeleteProducto(id):
             "status": 400,
             }
         
+        return [res]
+        
         
         
         

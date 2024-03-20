@@ -16,43 +16,62 @@ def guardarPedido():
             
             #CODIGO PEDIDO
             if not pedido.get("codigo_pedido"):
-                codigo = input ("ingrese el codigo del pedido: ")
-                if re.match(r'^[A-Z]{2}-\d{3}$', codigo)is not None:
-                    if Pe.getAllCodigoPedido(codigo):
-                        raise Exception ("el codigo ingresado ya existe")
-                    
-                    else: pedido["codigo_producto"] = codigo
-                    
-            else:
-                raise Exception("el codigo no cumple con el estandar establecido")
+                codigo = input("Ingrese el codigo del pedido: ")
+                if re.match(r'^[0-9]+$',codigo)is not None:
+                    codigo = int(codigo)
+                    asd = Pe.GETALLCODIGOPEDIDO(codigo)
+                    if asd:
+                        raise Exception("El codigo del pedido ya existe.")
+                    else:
+                        pedido["codigo_pedido"] = codigo
+                else:
+                    raise Exception("Codigo no valido, recuerde ingresar solo digitos numéricos")
+            
+        
             
             
             #FECHA PEDIDO
-            if not pedido.get("fechas_pedido"):
-                fecha_pedido = input("ingrese la fecha del pedido: ")
+            if not pedido.get("fecha_pedido"):
+                fecha_pedido = input("Ingrese la fecha del pedido: ")
                 if re.match(r'^\d{4}-\d{2}-\d{2}$',fecha_pedido)is not None:
-                    pedido["fecha_pedidio"] = fecha_pedido
+                    pedido["fecha_pedido"] = fecha_pedido
+                else:
+                    raise Exception("Fecha no valida, utilice el formato Año-mes-dia")
+
                     
             #FECHA ESPERADA
-            if not pedido.get("fechas_esperada"):
-                fecha_esperada = input("ingrese la fecha esperada del producto: ")
+            if not pedido.get("fecha_esperada"):
+                fecha_esperada = input("Ingrese la fecha estimada: ")
                 if re.match(r'^\d{4}-\d{2}-\d{2}$',fecha_esperada)is not None:
                     pedido["fecha_esperada"] = fecha_esperada
+                else:
+                    raise Exception("Fecha no valida, utilice el formato Año-mes-dia ")
+            
                     
                     
             #FECHA ENTREGA
-            if not pedido.get("fechas_entrega"):
-                fecha_entrega = input("ingrese la fecha de entraga del producto: ")
-                if re.match(r'^\d{4}-\d{2}-\d{2}$',fecha_entrega)is not None:
+            if not pedido.get("fecha_entrega"):
+                fecha_entrega = input("Ingrese la fecha de entrega: ")
+                if fecha_entrega.strip().lower() == "none":
+                    pedido["fecha_entrega"] = None
+                elif re.match(r'^\d{4}-\d{2}-\d{2}$',fecha_entrega)is not None:
                     pedido["fecha_entrega"] = fecha_entrega
+                else:
+                    raise Exception("Fecha no valida, utilice el formato Año-mes-dia")
                     
                     
             #ESTADO
             if not pedido.get("estado"):
-                estado=input("ingrese el estado del producto: ")
-                if re.match(r'^[A-Z][a-z]*$',estado) is not None:
-                   pedido["estado"] = estado
-                   
+                estado = input("Ingrese el estado del pedido: ")
+                if re.match(r'^[A-Z][a-z]*$',estado)is not None:
+                    asd = Pe.getAllEstdo(estado)
+                    if asd:
+                        pedido["estado"] = estado
+                    else:
+                        raise Exception("Opciones validas: Entregado / Rechazado / Pendiente ")
+                else:
+                    raise Exception("OPciones validas: Entregado / Rechazado / Pendiente ")
+                
                    
             #COMENTARIO
             if not pedido.get("comentario"):
@@ -73,11 +92,12 @@ def guardarPedido():
                     else:
                         raise Exception("El codigo del cliente no esta registrado.")
                 else:
-                    raise Exception("El codigo del cliente no esta registrado.")                  
+                    raise Exception("El codigo del cliente no esta registrado.")                 
             
         except Exception as error:
             print(error)
-            
+        
+    
     peticion = requests.post("http://154.38.171.54:5007/pedidos", data=json.dumps(pedido, indent=4).encode("UTF-8"))
     res = peticion.json()
     res["Mensaje"] = "Pedido Guardado exitosamente"
@@ -86,9 +106,9 @@ def guardarPedido():
 
 
 def DeletePedido(id):
-    data = Pe.DeletePedido(id)
+    data = Pe.DeletePEDIDO(id)
     if len(data):
-        peticion = requests.delete(f"http://154.38.171.54:5007/pedidos/{id}")
+        peticion = requests.delete("http://154.38.171.54:5007/pedidos/{id}")
         if peticion.status_code == 204:
             data.append({"message":  "Pedido eliminado correctamente"})
             return {
@@ -133,13 +153,13 @@ def menu():
                     print(tabulate(guardarPedido(),headers="keys",tablefmt="github"))
                     input("precione una tecla para continuar ......")
                     
-        elif opcion == 2:
-                idPedido = input("Ingrese el id del Pedido: ")
-                print(tabulate(DeletePedido(idPedido), headers="keys", tablefmt="github"))
-                input("precione una tecla para continuar ......")
+        # elif opcion == 2:
+        #          idPedido = input("Ingrese el id del Pedido: ")
+        #          print(tabulate(DeletePedido(id), headers="keys", tablefmt="github"))
+        #          input("precione una tecla para continuar ......")
             
             
         elif (opcion == 0):
-            break
+           break
             
             

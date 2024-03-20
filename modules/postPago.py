@@ -16,7 +16,7 @@ def GuardarPago():
             #CODIGO CLIENTE
             
             if not pago.get("codigo_cliente"):
-                codigo_cliente = input("ingrese el codigo del cliente")
+                codigo_cliente = input("ingrese el codigo del cliente: ")
                 if re.match(r'^[0-9]+$', codigo_cliente) is not None:
                     codigo_cliente =int(codigo_cliente)
                     adios= gC.getOneClienteCodigo(codigo_cliente)
@@ -30,15 +30,15 @@ def GuardarPago():
             
             # FORMA PAGO
             if not pago.get("forma_pago"):
-                forma_pago = input("ingrese la forma de pago")
+                forma_pago = input("ingrese la forma de pago: ")
                 if re.match(r'^[A-Z][a-zA-Z0-9-\s]*$', forma_pago) is not None:
                     holi =Gp.getAllformapago(forma_pago)
                     if holi:
                         pago["forma_pago"] = forma_pago
                     else:
-                        raise Exception("Codigo cliente no encontrado.")
+                        raise Exception("Forma de pago no valida,por favor intente con:PayPal / Transferencia / Cheque")
                 else:
-                    raise Exception("Codigo no valido,por favor ingresar solo sigitos numericos")
+                    raise Exception("por favor intente con:PayPal / Transferencia / ChequeP")
             
            
             # ID TRANSACCION
@@ -80,7 +80,7 @@ def GuardarPago():
 
 
     peticion = requests.post("http://154.38.171.54:5006/pagos",data=json.dumps(GuardarPago, indent=4).encode("UTF-8"))
-    res = peticion.json.json()
+    res = peticion.json()
     res["mensaje"] = "Pago guardado exitosamnete"
     return[res]
 
@@ -118,7 +118,7 @@ def menu():
                                            DE
                                               PAGO                                                         
                 
-                    1.Guardar un producto nuevo
+                    1.Guardar un pAGO nuevo
                     2.eliminar pago
                     0.regresar al menu principal  
                 

@@ -40,35 +40,30 @@ def menuPRODUCTO():
        while True:
               os.system("clear")
               print("""
-       ___  __  ___  _  _  _  _  ___  _  _  __  ___    __      __   __      __  __  ___  _  _  _  _   
-       (  ,)(  )(  _)( \( )( )( )(  _)( \( )(  )(   \  /  \    (  ) (  )    (  \/  )(  _)( \( )( )( )  
-       ) ,\ )(  ) _) )  (  \\//  ) _) )  (  )(  ) ) )( () )   /__\  )(__    )    (  ) _) )  (  )()(   
-       (___/(__)(___)(_)\_) (__) (___)(_)\_)(__)(___/  \__/   (_)(_)(____)  (_/\/\_)(___)(_)\_) \__/   
-       ___  ___    ___  ___   __  ___  _  _  __  ____  __   ___                                       
-       (   \(  _)  (  ,\(  ,) /  \(   \( )( )/ _)(_  _)/  \ / __)                                      
-       ) ) )) _)   ) _/ )  \( () )) ) ))()(( (_   )( ( () )\__ \                                      
-       (___/(___)  (_)  (_)\_)\__/(___/ \__/ \__) (__) \__/ (___/           
+                                         BIENVENIDO 
+                                                   AL 
+                                                      MENU
+                                                           DE
+                                                               PRODUCTOS   
               
               
                      1.Repotar los productos
                      2.Guardar actualizar y eliminar productos 
                      0.regresar al menu principal 
                             """)
-                     
-              opcion = (input("\nSelecione una de las opciones: "))
               
-              if(re.match(r'[1-9]+$', opcion)is not None ):
-                                   opcion =int(opcion)
-                                   if(opcion>=0 and opcion<=5):
-                     
+              opcion = (input("\nSelecione una de las opciones: "))
+              if(re.match(r'[0-9]+$', opcion)is not None ):
+               
+                     opcion =int(opcion)
+                     if(opcion>=0 and opcion<=5):
+                            if (opcion == 1):
+                                   Repproducto.menu()
+                            if (opcion == 2):
+                                   CRUDproducto.menu()
+                            if (opcion == 0):
+                                   break
 
-                                          if (opcion == 1):
-                                                 Repproducto.menu()
-                                          if (opcion == 2):
-                                                 CRUDproducto.menu()
-
-                                          if (opcion == 0):
-                                                 break
 
 
 #MENU CLIENTES
@@ -91,18 +86,16 @@ def menuCLIENTE():
                
         opcion = (input("\nSelecione una de las opciones: "))
         
-        if(re.match(r'[1-9]+$', opcion)is not None ):
-                            opcion =int(opcion)
-                            if(opcion>=0 and opcion<=5):
-              
-
-                                   if (opcion == 1):
-                                          repCliente.menu()
-                                   if (opcion == 2):
-                                          CRUDcliente.menu()
-
-                                   if (opcion == 0):
-                                          break
+        if(re.match(r'[0-9]+$', opcion)is not None ):
+               
+              opcion =int(opcion)
+              if(opcion>=0 and opcion<=5):
+                     if (opcion == 1):
+                            repCliente.menu()
+                     if (opcion == 2):
+                            CRUDcliente.menu()
+                     if (opcion == 0):
+                            break
 
 #MENU DE EMPLEADOS
                                    
@@ -124,53 +117,53 @@ def menuEMPLEADO():
                
         opcion = (input("\nSelecione una de las opciones: "))
         
-        if(re.match(r'[1-9]+$', opcion)is not None ):
-                            opcion =int(opcion)
-                            if(opcion>=0 and opcion<=5):
-              
-
-                                   if (opcion == 1):
-                                          RepEmpleado.menu()
-                                   if (opcion == 2):
-                                          CRUDempleado.menu()
-
-                                   if (opcion == 0):
-                                          break
+        if(re.match(r'[0-9]+$', opcion)is not None ):
+              opcion =int(opcion)
+              if(opcion>=0 and opcion<=5):
 
 
-#MENU GAMA
+                     if (opcion == 1):
+                            RepEmpleado.menu()
+                     if (opcion == 2):
+                            CRUDempleado.menu()
 
-def menuGAMA():
-       while True:
-        os.system("clear")
-        print("""
- ___ __ ___ _  _ _  _ ___ _  _ __ ___   __      __  __      __  __ ___ _  _ _  _    ___ ___ 
-(  ,|  |  _| \( | )( |  _| \( |  |   \ /  \    (  )(  )    (  \/  |  _| \( | )( )  (   (  _)
- ) ,\)( ) _))  ( \\// ) _))  ( )( ) ) | () )   /__\ )(__    )    ( ) _))  ( )()(    ) ) ) _)
-(___(__|___|_)\_)(__)(___|_)\_|__|___/ \__/   (_)(_|____)  (_/\/\_|___|_)\_)\__/   (___(___)
- / _)(  )(  \/  )(  )                                                                       
-( (/\/__\ )    ( /__\                                                                       
- \__(_)(_|_/\/\_|_)(_)                                                                                                                                                     
+                     if (opcion == 0):
+                            break
+
+
+# #MENU GAMA
+
+# def menuGAMA():
+#        while True:
+#         os.system("clear")
+#         print("""
+#  ___ __ ___ _  _ _  _ ___ _  _ __ ___   __      __  __      __  __ ___ _  _ _  _    ___ ___ 
+# (  ,|  |  _| \( | )( |  _| \( |  |   \ /  \    (  )(  )    (  \/  |  _| \( | )( )  (   (  _)
+#  ) ,\)( ) _))  ( \\// ) _))  ( )( ) ) | () )   /__\ )(__    )    ( ) _))  ( )()(    ) ) ) _)
+# (___(__|___|_)\_)(__)(___|_)\_|__|___/ \__/   (_)(_|____)  (_/\/\_|___|_)\_)\__/   (___(___)
+#  / _)(  )(  \/  )(  )                                                                       
+# ( (/\/__\ )    ( /__\                                                                       
+#  \__(_)(_|_/\/\_|_)(_)                                                                                                                                                     
              
-                   1.Repotar gama
-                   2.Guardar actualizar y eliminar gama 
-                   0.regresar al menu principal 
-                       """)
+#                    1.Repotar gama
+#                    2.Guardar actualizar y eliminar gama 
+#                    0.regresar al menu principal 
+#                        """)
                
-        opcion = (input("\nSelecione una de las opciones: "))
+#         opcion = (input("\nSelecione una de las opciones: "))
         
-        if(re.match(r'[1-9]+$', opcion)is not None ):
-                            opcion =int(opcion)
-                            if(opcion>=0 and opcion<=5):
+#         if(re.match(r'[0-9]+$', opcion)is not None ):
+#                             opcion =int(opcion)
+#                             if(opcion>=0 and opcion<=5):
               
 
-                                   if (opcion == 1):
-                                          Repgama.menu()
-                                   if (opcion == 2):
-                                          CRUDgama.menu()
+#                                    if (opcion == 1):
+#                                           Repgama.menu()
+#                                    if (opcion == 2):
+#                                           CRUDgama.menu()
 
-                                   if (opcion == 0):
-                                          break                     
+#                                    if (opcion == 0):
+#                                           break                     
 
 #MENU OFICINA
                                    
@@ -179,13 +172,11 @@ def menuOFICINA():
        while True:
         os.system("clear")
         print("""
- ___ __ ___ _  _ _  _ ___ _  _ __ ___   __      __  __      __  __ ___ _  _ _  _    ___ ___ 
-(  ,|  |  _| \( | )( |  _| \( |  |   \ /  \    (  )(  )    (  \/  |  _| \( | )( )  (   (  _)
- ) ,\)( ) _))  ( \\// ) _))  ( )( ) ) | () )   /__\ )(__    )    ( ) _))  ( )()(    ) ) ) _)
-(___(__|___|_)\_)(__)(___|_)\_|__|___/ \__/   (_)(_|____)  (_/\/\_|___|_)\_)\__/   (___(___)
- /  (  _|  ) _|  | \( )(  )                                                                 
-( () ) _))( (_ )( )  ( /__\                                                                 
- \__(_) (__)__|__|_)\_|_)(_)                                                                                                                                               
+                                   BIENVENIDO
+                                              AL
+                                                 MENU
+                                                      DE
+                                                         OFICINA                                                                                                                                   
              
                    1.Repotar oficina
                    2.Guardar actualizar y eliminar oficina
@@ -193,19 +184,18 @@ def menuOFICINA():
                        """)
                
         opcion = (input("\nSelecione una de las opciones: "))
-        
-        if(re.match(r'[1-9]+$', opcion)is not None ):
-                            opcion =int(opcion)
-                            if(opcion>=0 and opcion<=5):
-              
+        if(re.match(r'[0-9]+$', opcion)is not None ):
+              opcion =int(opcion)
+              if(opcion>=0 and opcion<=5):
 
-                                   if (opcion == 1):
-                                          Repoficina.menu()
-                                   if (opcion == 2):
-                                          CRUDoficina.menu()
 
-                                   if (opcion == 0):
-                                          break     
+                     if (opcion == 1):
+                            Repoficina.menu()
+                     if (opcion == 2):
+                            CRUDoficina.menu()
+
+                     if (opcion == 0):
+                            break     
 
                                                                                                                                                 
 #MENU PAGO
@@ -214,13 +204,11 @@ def menuPAGO():
        while True:
         os.system("clear")
         print("""
- ___ __ ___ _  _ _  _ ___ _  _ __ ___   __      __  __      __  __ ___ _  _ _  _    ___ ___ 
-(  ,|  |  _| \( | )( |  _| \( |  |   \ /  \    (  )(  )    (  \/  |  _| \( | )( )  (   (  _)
- ) ,\)( ) _))  ( \\// ) _))  ( )( ) ) | () )   /__\ )(__    )    ( ) _))  ( )()(    ) ) ) _)
-(___(__|___|_)\_)(__)(___|_)\_|__|___/ \__/   (_)(_|____)  (_/\/\_|___|_)\_)\__/   (___(___)
-(  ,(  )/ _)/  \                                                                            
- ) _/__( (/( () )                                                                           
-(_)(_)(_)__/\__/                                                                                                                                                                                                                   
+                              BIENVENIDO
+                                         AL 
+                                            MENU
+                                                 DE
+                                                    PAGO                                                                                                                                                                                                               
              
                    1.Repotar pago
                    2.Guardar actualizar y eliminar pagos 
@@ -229,18 +217,18 @@ def menuPAGO():
                
         opcion = (input("\nSelecione una de las opciones: "))
         
-        if(re.match(r'[1-9]+$', opcion)is not None ):
-                            opcion =int(opcion)
-                            if(opcion>=0 and opcion<=5):
-              
+        if(re.match(r'[0-9]+$', opcion)is not None ):
+              opcion =int(opcion)
+              if(opcion>=0 and opcion<=5):
 
-                                   if (opcion == 1):
-                                           Reppago.menu()
-                                   if (opcion == 2):
-                                          CRUDpago.menu()
 
-                                   if (opcion == 0):
-                                          break     
+                     if (opcion == 1):
+                                   Reppago.menu()
+                     if (opcion == 2):
+                            CRUDpago.menu()
+
+                     if (opcion == 0):
+                            break     
           
 #MENU PEDIDO
                                    
@@ -248,13 +236,11 @@ def menuPEDIDIO():
        while True:
               os.system("clear")
               print("""
-___ __ ___ _  _ _  _ ___ _  _ __ ___   __      __  __      __  __ ___ _  _ _  _    ___ ___ 
-(  ,|  |  _| \( | )( |  _| \( |  |   \ /  \   (  )(  )    (  \/  |  _| \( | )( )  (   (  _)
- ) ,\)( ) _))  ( \\// ) _))  ( )( ) ) | () )   /__\ )(__    )    ( ) _))  ( )()(    ) ) ) _)
-(___(__|___|_)\_)(__)(___|_)\_|__|___/ \__/   (_)(_|____)  (_/\/\_|___|_)\_)\__/   (___(___)
-(  ,(  _|   (  |   \ /  \                                                                   
- ) _/) _)) ) )( ) ) | () )                                                                  
-(_) (___|___(__|___/ \__/                                                                                                                                                                                                                                                                                      
+                                            BIENVENIDO
+                                                       AL
+                                                           MENU    
+                                                               DE
+                                                                  PEDIDO                                                                                                                                                                                                                                                                             
              
                    1.Repotar los pedidos
                    2.Guardar actualizar y eliminar pedidos
@@ -264,7 +250,7 @@ ___ __ ___ _  _ _  _ ___ _  _ __ ___   __      __  __      __  __ ___ _  _ _  _ 
                      
               opcion = input("\nSelecione una de las opciones: ")
               
-              if re.match(r'[1-9]+$', opcion)is not None :
+              if re.match(r'[0-9]+$', opcion)is not None :
                      opcion =int(opcion)
                      
                      if (opcion == 1):
