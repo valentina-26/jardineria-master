@@ -86,11 +86,11 @@ def guardarPedido():
 
 
 def DeletePedido(id):
-    data = Pe.getPedidoCodigoasd(id)
+    data = Pe.DeletePedido(id)
     if len(data):
-        peticion = requests.delete("http://154.38.171.54:5007/pedidos/{id}")
+        peticion = requests.delete(f"http://154.38.171.54:5007/pedidos/{id}")
         if peticion.status_code == 204:
-            data.append({"message":  "Pedido eliminado exitosamente"})
+            data.append({"message":  "Pedido eliminado correctamente"})
             return {
                 "body": data,
                 "status": peticion.status_code,
@@ -133,10 +133,10 @@ def menu():
                     print(tabulate(guardarPedido(),headers="keys",tablefmt="github"))
                     input("precione una tecla para continuar ......")
                     
-        if (opcion == 2): 
-            idpedido= int(input("ingrese elid del pedido que desea eliminar: "))
-            print(tabulate(DeletePedido(idpedido),headers = "keys",tablefmt="github"))
-            input("precione una tecla para continuar ......")
+        elif opcion == 2:
+                idPedido = input("Ingrese el id del Pedido: ")
+                print(tabulate(DeletePedido(idPedido), headers="keys", tablefmt="github"))
+                input("precione una tecla para continuar ......")
             
             
         elif (opcion == 0):

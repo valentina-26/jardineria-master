@@ -18,6 +18,10 @@ def GETCodigoOficina(codigo):
     for val in getAllOFICINA():
         if val.get("codigo_oficina") == codigo:
             return [val]
+        
+def DeleteOficina(id):
+    peticion = requests.get(f"http://154.38.171.54:5005/oficinas/{id}")
+    return [peticion.json()] if peticion.ok else []
 
 
 

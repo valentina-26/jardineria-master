@@ -106,9 +106,9 @@ def GuardarProducto():
 
 
 def DeleteProducto(id):
-    data = gP.getProductoCodigooo(id)
+    data = gP.DeleteProducto(id)
     if len(data):
-        peticion = requests.delete("http://154.38.171.54:5008/productos/{id}")
+        peticion = requests.delete(f"http://154.38.171.54:5008/productos/{id}")
         if peticion.status_code == 204:
             data.append({"message":  "Producto eliminado correctamente"})
             return {
@@ -158,9 +158,9 @@ def menu():
                     input("precione una tecla para continuar ......")
                     
         elif opcion == 2:
-                idProducto = int(input("Ingrese el id del producto: "))
-                print(tabulate(DeleteProducto(idProducto), headers="keys", tablefmt="github"))
-                input("precione una tecla para continuar:......")
+            idProducto = input("Ingrese el id del producto: ")
+            print(tabulate(DeleteProducto(idProducto), headers="keys", tablefmt="github"))
+            input("precione una tecla para continuar:......")
             
             
         elif (opcion == 0):

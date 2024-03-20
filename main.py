@@ -30,7 +30,6 @@ if __name__ == "__main__":
                                     4.Pedidos
                                     5.productos
                                     6.pago
-                                    7.Gama
                                     0.salir                                                   
                                                                         
                                                         
@@ -62,8 +61,6 @@ if __name__ == "__main__":
                 elif(opcion == 6):
                                 menu.menuPAGO()
 
-                elif(opcion == 7):
-                                menu.menuGAMA()
                                     
                 elif(opcion == 0):
                                     break

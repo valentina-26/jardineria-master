@@ -19,6 +19,12 @@ def getAllEMPLEADO():
      return data
  
  
+ 
+def DeletePago(id):
+    peticion = requests.get(f"http://154.38.171.54:5006/pagos/{id}")
+    return [peticion.json()] if peticion.ok else []
+
+ 
 def GETpagocodigo(codigo):
     peticion = requests.get("http://172.16.103.34:5505/{codigo}")
     return [peticion.json()] if peticion.ok else []

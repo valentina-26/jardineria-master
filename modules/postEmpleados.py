@@ -119,9 +119,9 @@ def GuardarEmpleado():
 
 
 def DeleteEmpleado(id):
-    data = gE.getcodigoEmpleado(id)
+    data = gE.DeleteEmpleado(id)
     if len(data):
-        peticion = requests.delete("http://154.38.171.54:5003/empleados/{id}")
+        peticion = requests.delete(f"http://154.38.171.54:5003/empleados/{id}")
         if peticion.status_code == 204:
             data.append({"message":  "Empleado eliminado correctamente"})
             return {
@@ -163,10 +163,10 @@ def menu():
                     print(tabulate(GuardarEmpleado(),headers="keys",tablefmt="github"))
                     input("Precione una tecla para continuar ......")
                     
-        if (opcion == 2):
-            idEmpleado = int(input("Ingrese el id del Empleado: "))
-            print(tabulate(DeleteEmpleado(idEmpleado), headers="keys", tablefmt="github"))
-            input("precione una tecla para continuar........")
+        elif opcion == 2:
+                idEmpleado = input("Ingrese el id del Empleado: ")
+                print(tabulate(DeleteEmpleado(idEmpleado), headers="keys", tablefmt="github"))
+                input("precione una tecla para continuar........")
 
         elif (opcion == 0):
             break

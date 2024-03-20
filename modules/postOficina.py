@@ -90,9 +90,9 @@ def guardaroficina():
     return [res]
 
 def DeleteOficina(id):
-    data = gO.getCodigosOficiina(id)
+    data = gO.DeleteOficina(id)
     if len(data):
-        peticion = requests.delete("http://154.38.171.54:5005/oficinas/{id}")
+        peticion = requests.delete(f"http://154.38.171.54:5005/oficinas/{id}")
         if peticion.status_code == 204:
             data.append({"message":  "Oficina eliminada correctamente"})
             return {
@@ -133,8 +133,8 @@ def menu():
             input("precione una tecla para continuar: ")
             
         elif opcion == 2:
-                IDOFICINA = int(input("Ingrese el id de la oficina: "))
-                print(tabulate(DeleteOficina(IDOFICINA), headers="keys", tablefmt="github"))
+                idOficina = input("Ingrese el id de la oficina: ")
+                print(tabulate(DeleteOficina(idOficina), headers="keys", tablefmt="github"))
                 input("Escriba una tecla para continuar: ")
             
         if opcion == 0:
