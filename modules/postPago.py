@@ -5,6 +5,7 @@ import os
 import modules.getClients as gC
 import re
 import modules.getPago as Gp
+import modules.updatepago as UPAGO
 
 
 def GuardarPago():
@@ -122,6 +123,7 @@ def menu():
                 
                     1.Guardar un pAGO nuevo
                     2.eliminar pago
+                    3.Actualizar
                     0.regresar al menu principal  
                 
                     
@@ -136,10 +138,17 @@ def menu():
                     
                     
                     
-        elif opcion == 2:
+        if opcion == 2:
             pagoid = input("Ingrese el id del Pedido: ")
             print(tabulate(DeletePago(pagoid), headers="keys", tablefmt="github"))
             input("precione una tecla para continuar ......")
+            
+            
+        if opcion == 3:
+            UPAGO.menu()
+                
+            
+            
             
 
         if (opcion == 0):

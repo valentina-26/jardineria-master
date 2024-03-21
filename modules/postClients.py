@@ -4,6 +4,7 @@ import re
 from tabulate import tabulate 
 import requests
 import modules.getClients as gC
+import modules.updateclients as UPC
 
 
 def guardarCliente():
@@ -192,6 +193,7 @@ def menu():
                 
                     1.Guardar un cliente nuevo
                     2.Eliminar
+                    3.Actualizar
                     0.regresar al menu principal  
                 
                     
@@ -206,11 +208,17 @@ def menu():
                     input("precione una tecla para continuar ......")
                     
                     
-        elif opcion == 2:
+        if opcion == 2:
                 idCliente = input("Ingrese el id del cliente: ")
                 print(tabulate(DeleteClientes(idCliente), headers="keys", tablefmt="github"))
                 input("precione una tecla para continuar ......")
-        elif (opcion == 0):
+                
+        if opcion ==3:
+                UPC.menu()
+            
+            
+                    
+        if (opcion == 0):
             break
             
             

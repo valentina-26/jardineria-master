@@ -16,6 +16,17 @@ def DeletePEDIDO(id):
     peticion = requests.get(f"http://154.38.171.54:5007/pedidos/{id}")
     return [peticion.json()] if peticion.ok else []
  
+ 
+ 
+def getPedidoCodigoOTRO(codigo):
+    peticion = requests.get(f"http://154.38.171.54:5007/pedidos?codigo_pedido={codigo.upper()}")
+    data = peticion.json()
+    if(data)== 0:
+        data=None
+    return data
+ 
+ 
+ 
 def getAllEstdo(estado):
     for val in getAllPEDIDO():
         if val.get("estado") == estado:

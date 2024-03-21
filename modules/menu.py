@@ -48,7 +48,7 @@ def menuPRODUCTO():
               
               
                      1.Repotar los productos
-                     2.Guardar actualizar y eliminar productos 
+                     2.Guardar,actualizar y eliminar productos 
                      0.regresar al menu principal 
                             """)
               
@@ -80,7 +80,7 @@ def menuCLIENTE():
                                                                                                                               
              
                    1.Repotar los clientes
-                   2.Guardar actualizar y eliminar clientes
+                   2.Guardar, actualizar y eliminar clientes
                    0.regresar al menu principal 
                        """)
                
@@ -111,7 +111,7 @@ def menuEMPLEADO():
                                                                                                                               
              
                    1.Repotar empleados
-                   2.Guardar actualizar y eliminar empleados
+                   2.Guardar, actualizar y eliminar empleados
                    0.regresar al menu principal 
                        """)
                
@@ -179,7 +179,7 @@ def menuOFICINA():
                                                          OFICINA                                                                                                                                   
              
                    1.Repotar oficina
-                   2.Guardar actualizar y eliminar oficina
+                   2.Guardar, actualizar y eliminar oficina
                    0.regresar al menu principal 
                        """)
                
@@ -211,7 +211,7 @@ def menuPAGO():
                                                     PAGO                                                                                                                                                                                                               
              
                    1.Repotar pago
-                   2.Guardar actualizar y eliminar pagos 
+                   2.Guardar, actualizar y eliminar pagos 
                    0.regresar al menu principal 
                        """)
                
@@ -243,7 +243,7 @@ def menuPEDIDO():
                                                                   PEDIDO                                                                                                                                                                                                                                                                             
              
                    1.Repotar los pedidos
-                   2.Guardar actualizar y eliminar pedidos
+                   2.Guardar, actualizar y eliminar pedidos
                    0.regresar al menu principal 
               
                        """)

@@ -4,6 +4,7 @@ from tabulate import tabulate
 import os
 import re
 import modules.getOficina as gO
+import modules.updateOficina as UPO
 
 
 
@@ -127,6 +128,7 @@ def menu():
 
                          1. Guardar una oficina nueva.
                          2.Eliminar
+                         3.Actualizar
                          0. Regresar                                                                                                    
  """)
         
@@ -137,10 +139,13 @@ def menu():
             print(tabulate(guardaroficina(), headers="keys", tablefmt="github"))
             input("precione una tecla para continuar: ")
             
-        elif opcion == 2:
+        if opcion == 2:
                 idOficina = input("Ingrese el id de la oficina: ")
                 print(tabulate(DeleteOficina(idOficina), headers="keys", tablefmt="github"))
                 input("Escriba una tecla para continuar: ")
+                
+        if opcion == 3:
+                UPO.menu()         
             
         if opcion == 0:
             break            

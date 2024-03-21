@@ -30,6 +30,13 @@ def GETpagocodigo(codigo):
     return [peticion.json()] if peticion.ok else []
  
 
+def getPagoCodigosOTRO(codigo):
+    peticion = requests.get(f"http://154.38.171.54:5006/pagos?codigo_cliente={codigo.upper()}")
+    data = peticion.json()
+    if(data)== 0:
+        data=None
+    return data
+
 
 
 def getAllformapago(Pago):

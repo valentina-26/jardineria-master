@@ -25,6 +25,16 @@ def DeleteClienteaaa(id):
     return [peticion.json()] if peticion.ok else []
 
 
+def getClienteCodigoOTRO(codigo):
+    peticion = requests.get(f"http://154.38.171.54:5001/cliente?codigo_cliente={codigo.upper()}")
+    data = peticion.json()
+    if(data)== 0:
+        data=None
+    return data
+
+
+
+
 def getAllTelefono(telefono):
     for val in getAllCLIENTE():
         if val.get("telefono") == telefono:

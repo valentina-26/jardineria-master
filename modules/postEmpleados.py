@@ -4,6 +4,7 @@ from tabulate import tabulate
 import os
 import re
 import modules.getEmpleados as gE
+import modules.updateEmpleado as UPE
 
 def GuardarEmpleado():
     empleado = dict ()
@@ -153,6 +154,7 @@ def menu():
                 
                     1.Guardar un empleado nuevo
                     2.Eliminar empleado
+                    3.Actualizar
                     0.regresar al menu principal  
                 
                     
@@ -170,7 +172,11 @@ def menu():
                 idEmpleado = input("Ingrese el id del Empleado: ")
                 print(tabulate(DeleteEmpleado(idEmpleado), headers="keys", tablefmt="github"))
                 input("precione una tecla para continuar........")
-
-        elif (opcion == 0):
+                
+                
+        if opcion == 3: 
+                UPE.menu()       
+ 
+        if (opcion == 0):
             break
             

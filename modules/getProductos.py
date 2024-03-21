@@ -9,6 +9,14 @@ def getAllPRODUCTOS():
      return data
  
  
+def getProductoCodigoOTRO(codigo):
+    peticion = requests.get(f"http://154.38.171.54:5008/productos?codigo_producto={codigo.upper()}")
+    data = peticion.json()
+    if(data)== 0:
+        data=None
+    return data
+ 
+ 
  
 def DeleteProducto(id):
     peticion = requests.get(f"http://154.38.171.54:5008/productos/{id}")

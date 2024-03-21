@@ -5,6 +5,7 @@ import modules.getGama as gG
 import requests
 import re
 import modules.getProductos as gP
+import modules.updateProducto as UP
 
 
 def GuardarProducto():
@@ -155,6 +156,7 @@ def menu():
                                                           
                     1.Guardar un producto nuevo
                     2. eliminar un producto
+                    3.Actualizar
                     0.regresar al menu principal  
                 
                     
@@ -171,7 +173,13 @@ def menu():
         if opcion == 2:
             idProducto = input("Ingrese el id del producto: ")
             print(tabulate(DeleteProducto(idProducto), headers="keys", tablefmt="github"))
-            input("precione una tecla para continuar......")
+            input("presione una tecla para continuar......")
+            
+            
+        if opcion == 3:
+            UP.menu()
+            
+            
         if opcion  == 0:
             break
         

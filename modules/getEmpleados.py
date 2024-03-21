@@ -18,6 +18,12 @@ def getcodigoEmpleado(id):
     return [peticion.json()] if peticion.ok else []
 
 
+def getEmpleadoCodigoOTRO(codigo):
+    peticion = requests.get(f"http://154.38.171.54:5003/empleados?codigo_empleado={codigo.upper()}")
+    data = peticion.json()
+    if(data)== 0:
+        data=None
+    return data
 
 
 def getallempleCode(codigo):

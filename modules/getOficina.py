@@ -14,6 +14,14 @@ def getCodigosOficiina(codigo):
  
  
  
+def getOficinaCodigosOTRO(codigo):
+    peticion = requests.get(f"http://154.38.171.54:5005/oficinas?codigo_oficina={codigo.upper()}")
+    data = peticion.json()
+    if(data)== 0:
+        data=None
+    return data
+ 
+ 
 def GETCodigoOficina(codigo):
     for val in getAllOFICINA():
         if val.get("codigo_oficina") == codigo:

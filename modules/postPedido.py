@@ -5,6 +5,7 @@ import re
 import modules.getPedido as Pe
 from tabulate import tabulate
 import modules.getClients as Gc
+import modules.updatePedido as UPP
 
 def guardarPedido():
     
@@ -143,6 +144,7 @@ def menu():
                 
                     1.Guardar un pedido nuevo
                     2.Eliminar un pedido
+                    3.Actualizar
                     0.regresar al menu principal  
                 
                     
@@ -159,6 +161,9 @@ def menu():
         elif opcion == 2:
                     idPedido = input("Ingrese el id del Pedido : ")
                     print(tabulate(DeletePedido(idPedido), headers="keys", tablefmt="github"))
+                    
+        elif opcion == 3:
+            UPP.menu()
             
             
         elif (opcion == 0):
