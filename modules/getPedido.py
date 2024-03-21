@@ -82,27 +82,25 @@ def getAllcomentario():
 
 
 #EJERCICIO 5
-def getAllpedidosEntregadosAtrasadosTiempo():
-    pedidosEntregados=[]
+def getAllPedidosEntregadosAtrasadosDeTiempo():
+    pedidosEntregado = list()
     for val in getAllPEDIDO():
-        
-        if (val.get("estado") == "Entregado" and val.get("fecha_entrega") == None):
-            val["fecha_entrega"] = val.get("fecha_esperada")
-        if val.get("estado") == "Entregado":
-                date_1 = "/".join(val.get("fecha_entrega").split("-")[::-1])
-                date_2 = "/".join(val.get("fecha_esperada").split("-")[::-1])
-                start = datetime.strptime(date_1,"%d/%m/%Y")
-                end = datetime.strptime(date_2,"%d/%m/%Y")
-                
-                diff = end.date() - start.date()
-                if(diff.days < 0):
-                   pedidosEntregados.append({
-                       "codigo_de_pedido":val.get("codigo_pedido"),
-                       "codigo_de_cliente":val.get("codigo_cliente"),
-                       "fecha_esperada":val.get("fecha_esperada"),
-                       "fecha_de_entrega":val.get("fecha_entrega")
-                   })
-    return pedidosEntregados       
+        if (val.get("estado") == "Entregado" and val.get("fechaEntrega") == None):
+            val["fechaEntrega"] = val.get("fecha_esperada")
+        if (val.get("estado") == "Entregado"):
+            date_1 = "/".join(val.get("fechaEntrega").split("-")[::-1])
+            date_2 = "/".join(val.get("fecha_esperada").split("-")[::-1])
+            start = datetime.strptime(date_1, "%d/%m/%Y")
+            end = datetime.strptime(date_2, "%d/%m/%Y")
+            diff = end.date() - start.date()
+            if diff.days < 0:
+                pedidosEntregado.append({
+                    "codigo_de_pedido": val.get("codigo_pedido"),
+                    "codigo_de_cliente": val.get("codigo_cliente"),
+                    "fecha_esperada": val.get("fecha_esperada"),
+                    "fecha_de_entrega": val.get("fechaEntrega")
+                })
+    return pedidosEntregado
 
 #listado con el codigo pedido
 #codig cliente
@@ -211,7 +209,7 @@ def menu():
             
             
         elif (opcion == 5):
-            print(tabulate(getAllpedidosEntregadosAtrasadosTiempo(), headers="keys", tablefmt="github"))
+            print(tabulate(getAllPedidosEntregadosAtrasadosDeTiempo(), headers="keys", tablefmt="github"))
             
             
         elif (opcion == 6):

@@ -49,9 +49,9 @@ def getAllProveedor ():
 def getAllStockPriceGama(gama, stock):
     condiciones = []
     for val in  getAllPRODUCTOS():
-        if (val.get("gama") == gama and val.get("cantidad_en_stock")>= stock):
-         condiciones.append(val)
-    
+        if((val.get("gama") == gama) and (val.get("cantidadEnStock") >= stock)):
+            condiciones.append(val)
+            
     def price(val):
         return val.get("precio_venta")
     condiciones.sort(key=price, reverse = True)
@@ -91,8 +91,7 @@ def menu():
             
             0.Regresar
             1.obtener lista de todos los productos del proveedor "Murcia Seasons"
-            2.obtener todos losproductos de una categoria ordenandosu preciode venta,tambien que su stock sea
-            
+            2.obtener todos los productos de una categoria ordenandos precio de venta, y stock            
     """)
         
         opcion = int(input("seleccione una de las opciones: "))
@@ -104,9 +103,9 @@ def menu():
                     
         
         elif (opcion == 2):
-                gama = (input("ingrese la gama que desea filtrar: "))
-                stock =int(input("ingrese las unidades de stock.  "))
-                print(tabulate(getAllStockPriceGama(gama, stock), headers="keys", tablefmt="github"))
+            gama = (input("ingrese la gama que desea filtrar: "))
+            stock =int(input("ingrese las unidades de stock.  "))
+            print(tabulate(getAllStockPriceGama(gama, stock), headers="keys", tablefmt="github"))
 
         elif (opcion == 0 ):
             break

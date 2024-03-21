@@ -159,7 +159,7 @@ def getAllclientesMadridRepre1138():
 def getAllnombreCliapellidoRepre():
     NombreApell=[]
     for val in getAllCLIENTE():
-        for cast in getAllEMPLEADO:
+        for cast in getAllEMPLEADO():
             if val.get("codigo representante de ventas") == cast.get("codigo_empleado"):
                 
                 otra ={
