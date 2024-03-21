@@ -41,6 +41,7 @@ def getAllProveedor ():
            Nombre_proveedor.append(val)
     return Nombre_proveedor
 
+
 #(ejercicio  15 listado productos gama ornamentales
 #con mas de 100 unidades en stock
 #odenado de mayor a menor precio
@@ -100,12 +101,14 @@ def menu():
       
         if (opcion == 1):
                 print(tabulate(getAllProveedor(), headers="keys", tablefmt="github"))
+                input("presione una tecla para continuar.....")
                     
         
         elif (opcion == 2):
             gama = (input("ingrese la gama que desea filtrar: "))
             stock =int(input("ingrese las unidades de stock.  "))
             print(tabulate(getAllStockPriceGama(gama, stock), headers="keys", tablefmt="github"))
+            input("presione una tecla para continuar.....")
 
         elif (opcion == 0 ):
             break
