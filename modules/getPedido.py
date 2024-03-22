@@ -197,7 +197,7 @@ def menu():
             
         
         elif (opcion == 2):
-            print(tabulate(getAllEstadoPendiente(), headers="keys", tablefmt="github"))
+            print(tabulate(getAllEstadoRechazado(), headers="keys", tablefmt="github"))
             
         
         elif (opcion == 3):

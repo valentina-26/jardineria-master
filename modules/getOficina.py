@@ -65,8 +65,8 @@ def menu():
 (__\_|____|__)  \__(__\_)(__)(____)  (____(____)   \__(__) (__)___|__)_)__)_/\_/
             
             0.Regreasar
-            1.obtener icodigo y ciudad de la oficina
-            2.obtener informacion degun el pais
+            1.obtener codigo y ciudad de la oficina
+            2.obtener informacion segun el pais
             
            
             
@@ -74,7 +74,7 @@ def menu():
     """)
     
     
-        opcion = int(input("seleccione una de las opciones: "))
+        opcion =int(input("seleccione una de las opciones: "))
         
         if (opcion == 1):
         

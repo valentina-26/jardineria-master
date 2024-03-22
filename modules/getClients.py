@@ -130,7 +130,7 @@ def getAllCLientCreditCiudad(limitCredit, ciudad) :
 def getAllclientesEspañoles():
     clientesEspañoles = []
     for val in getAllCLIENTE():
-        if(val.get("Region") == "Spain"):
+        if(val.get("pais") == "Spain"):
         
             clientesEspañoles.append (val)
         
@@ -138,36 +138,37 @@ def getAllclientesEspañoles():
 
 #EJERCICIO 6
 def getAllclientesMadridRepre1138():
-    clienMadr1138 = []
+    MadridYCodigoRepresentante = list()
     for val in getAllCLIENTE():
-        if(val.get("ciudad")== ('Madrid')):
-            if val.get("codigo_empleado_rep_ventas") == 11 or 38:
-                if val.get("nombre") == ("nombre_cliente"):
-                    valen = {
-                        "ciudad": val.get("ciudad"),
-                        "codigo representante de ventas": val.get("codigo_empleado_rep_ventas"),
-                        "nombre":val.get("nombre_cliente")
-                        
-                    }
-            
-                    
-            
-                    clienMadr1138.append(valen)
-    return clienMadr1138
+        if val.get("ciudad") == "Madrid" and ((val.get("codigo_empleado_rep_ventas") == 11 or val.get("codigo_empleado_rep_ventas") == 30)):
+                MadridYCodigoRepresentante.append({
+                "Codigo":val.get("codigo_cliente"),
+                "Nombre":val.get("nombre_cliente"),
+                "Contacto":f'{val.get("nombre_contacto")} {val.get("apellido_contacto")}',
+                "Telefono":val.get("telefono"),
+                "Fax":val.get("fax"),
+                "Direccion": f'{val.get("linea_direccion1")} / {val.get("linea_direccion2")}',
+                "Pais":val.get("pais"),
+                "Ciudad":val.get("ciudad"),
+                "Codigo Postal":val.get("codigo_postal"),
+                "Codigo rep. de ventas":val.get("codigo_empleado_rep_ventas"),
+                "Limite de Credito":val.get("limite_credito")
+                })
+    return MadridYCodigoRepresentante
 
 #EJERCICIO 7
 def getAllnombreCliapellidoRepre():
     NombreApell=[]
     for val in getAllCLIENTE():
         for cast in getAllEMPLEADO():
-            if val.get("codigo representante de ventas") == cast.get("codigo_empleado"):
-                
-                otra ={
-                    "nombre cliente":val.get("nombre_cliente"),
-                    "representante de ventas":f' {cast.get("apellido_1")}'
-                }
-                NombreApell.append(otra)
+            if val.get("codigo_empleado_rep_ventas") == cast.get("codigo_empleado"):
+                NombreApell.append({
+                    "Nombre Cliente": val.get("nombre_cliente"),
+                    "Representante de ventas": (f' {cast.get("apellido1")}')
+                })
     return NombreApell
+                
+
 
 #EJERCICIO 8
 
@@ -218,6 +219,7 @@ def menu():
             limite = float(input("ingrese el limite credito de los clientes que desa visualizar: "))
             ciudad =input("ingrese el nombre de la ciudad que deseas filtar  de los clientes: ") 
             print(tabulate(getAllClientsCreditCiudad(limite, ciudad), headers="keys", tablefmt="github"))
+            input("presione una tecla par continar......")
                 
             
         elif (opcion == 4):
@@ -226,6 +228,7 @@ def menu():
                 
         elif (opcion == 5):
             print(tabulate(getAllclientesEspañoles(),headers="keys", tablefmt="github"))
+            input("presione una teclapara continuar.....")
                 
         
         elif (opcion == 6):
@@ -233,6 +236,7 @@ def menu():
                 
         elif (opcion == 7):
             print(tabulate(getAllnombreCliapellidoRepre(),headers="keys", tablefmt="github"))
+            input("presione una tacla para continuar.....")
     
             
         elif(opcion == 0):

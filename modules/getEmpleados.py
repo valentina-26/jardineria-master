@@ -117,7 +117,7 @@ def menu():
         
         
         if (opcion == 1):
-            codigoJefe=int(input("Por favor ingrese el codigo del jefe:" ))
+            codigoJefe=int(input("Por favor ingrese el codigo del jefe(1):" ))
             print(tabulate(getAllNombreApellidoEmailJefe(codigoJefe), headers="keys", tablefmt="github"))
             
         elif (opcion == 2):
